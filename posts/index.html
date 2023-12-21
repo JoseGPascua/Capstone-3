@@ -7,17 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <!-- Global CSS (CSS rules you want applied to all pages) -->
     <link rel="stylesheet" href="../global.css">
 
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="./posts.css">
+    <link rel="stylesheet" href="../css/posts.css">
 
     <title>/POSTS</title>
 
@@ -27,32 +24,55 @@
         if (isLoggedIn() === false) window.location.replace("/");
     </script>
 </head>
-<body class="bg-light">
-
-    <header class="bg-primary text-light py-4 text-center">
-        <h1>POSTS PAGE</h1>
-    </header>
-
-    <main class="container my-4">
+<body>
+    <!-- left side navigation -->
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
-                <h1>Welcome to the Posts Page</h1>
+            <div class="col-md-3 px-0">
+                <div id="side-nav">
+                    <div class="top-nav-icons">
+                        <i class="fa-solid fa-gear"></i>
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div class="header-box d-flex justify-content-center mt-2">
+                        <div class="nav-profile">
+                            <img src="https://placehold.co/50" alt="">
+                            <div class="profileInfo-container">
+                                <p>Username PlaceHolder</p>
+                                <span>Random placeholder</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-container">
+                        <ul class="list-unstyled px-2"> 
+                            <li class="active"><a href="" class="text-decoration-none d-block px-2 py-2"><i class="fa-solid fa-house"></i> Home</a></li>
+                            <li class=""><a href="" class="text-decoration-none d-block px-2 py-2"><i class="fa-regular fa-user"></i> Profile</a></li>
+                            <li class=""><a href="" class="text-decoration-none d-block px-2 py-2"><i class="fa-solid fa-message"></i> Messages</a></li>
+                            <li class=""><a href="" class="text-decoration-none d-block px-2 py-2"><i class="fa-solid fa-question"></i> About Us</a></li>
+                            <li class=""><a href="" class="text-decoration-none d-block px-2 py-2"><i class="fa-solid fa-circle-info"></i> Contributors</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation in the form of a sidebar -->
+            <!-- middle content -->
+            <main class="col-md-6" id="middleContent">
+                <div id="welcome-container">
 
+                </div>
+                
                 <div id="posts-container" class="mt-4">
                     <!-- Posts will be displayed here -->
                 </div>
-
-                <button class="btn btn-primary mt-3" onclick="fetchPosts()">Fetch Posts</button>
+                
                 <button class="btn btn-danger mt-3" onclick="logout()">Logout</button>
-            </div>
+            </main>
+            
+            <section class="col-md-3"></section>
         </div>
-    </main>
-
-    <footer class="bg-secondary text-light text-center py-3">
-        Footer Content
-    </footer>
-
+    </div>
     <!-- Page-specific code -->
     <script src="../scripts/posts.js"></script>
+    <script src="https://kit.fontawesome.com/9281e8684f.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,16 +1,41 @@
 "use strict";
+window.onload = () => {
 
-function fetchPostsOnClick() {
-    const fetchButton = document.querySelector('.btn-primary');
-    fetchButton.addEventListener('click', fetchPosts);
+    getLoginData();
+    displayPosts()
+}
+function getLoginData() {
+    const loginDataString = window.localStorage.getItem('login-data');
+    return loginDataString ? JSON.parse(loginDataString) : null;
 }
 
-function fetchPosts() {
+// function fetchPosts() {
+//     const loginData = getLoginData();
+
+//     if (!loginData || !loginData.token) {
+//         console.error('User not logged in.');
+//         return;
+//     }
+
+//     const options = {
+//         method: "GET",
+//         headers: {
+//             Authorization: `Bearer ${loginData.token}`,
+//         },
+//     };
+
+//     fetch(apiBaseURL + "/api/posts", options)
+//         .then(response => response.json())
+//         .then(posts => displayPosts(posts))
+//         .catch(error => console.error('Error fetching posts:', error));
+// }
+
+async function fetchPosts() {
     const loginData = getLoginData();
 
     if (!loginData || !loginData.token) {
         console.error('User not logged in.');
-        return;
+        return
     }
 
     const options = {
@@ -19,38 +44,39 @@ function fetchPosts() {
             Authorization: `Bearer ${loginData.token}`,
         },
     };
-
-    fetch(apiBaseURL + "/api/posts", options)
-        .then(response => response.json())
-        .then(posts => displayPosts(posts))
-        .catch(error => console.error('Error fetching posts:', error));
+    try {
+        const response = await fetch(apiBaseURL + "/api/posts", options);
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }
+    } catch (error) {
+        console.log('Fetch Failed', error);
+    }
 }
+async function displayPosts() {
+    const postData = await fetchPosts();
+    console.log(postData);
 
-function displayPosts(posts) {
     const postsContainer = document.getElementById('posts-container');
-    postsContainer.innerHTML = ''; // Clear previous posts
 
-    if (posts.length === 0) {
+    if (postData.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';
         return;
     }
 
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post');
-        postElement.innerHTML = `
-            <h3>${post.username}</h3>
-            <p>${post.text}</p>
+    postData.forEach(item => {
+        const createPostDiv = document.createElement('div');
+        createPostDiv.innerHTML = `
+            <h3>${item.username}</h3>
+            <p>${item.text}</p>
             <hr>
-        `;
-        postsContainer.appendChild(postElement);
-    });
+            `
+            postsContainer.appendChild(createPostDiv)
+    })
 }
 
-function getLoginData() {
-    const loginDataString = window.localStorage.getItem('login-data');
-    return loginDataString ? JSON.parse(loginDataString) : null;
-}
+
 
 function logout() {
     const loginData = getLoginData();
@@ -71,6 +97,4 @@ function logout() {
         });
 }
 
-// Call function to attach click event to fetch posts button
-fetchPostsOnClick();
 

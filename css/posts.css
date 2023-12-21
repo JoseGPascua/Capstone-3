@@ -1,24 +1,46 @@
+/* Posts Page CSS */
+body {
+    background-color: grey;
+}
+
 /* Styling for custom navigation bar */
 #side-nav {
-    position: absolute;
     background: rgba(0, 0, 0, 0.64);
+    position: fixed;
+    width: 20vw;
     height: 100vh;
-    min-width: 300px;
-    max-width: 400px;
     transition: all 0.5s;
     font-family: "Lucida Console", "Courier New", monospace;
 }
+
+/* Makes title disappear from home screen on smaller devices */
+@media screen and (max-width: 575px) {
+    .main-title.py-4 {
+        display: none;
+    }
+}
+
+/* Make the side-bar disappear on smaller devices */
+@media(max-width: 875px){
+    #side-nav{
+        margin-left: -300px;
+        position:fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+    #side-nav .active{
+        margin-left: 0;
+    }
+}
+
 .top-nav-icons {
     display: flex;
     justify-content: space-between;
     position: relative;
     color: white;
     font-size: 1.5rem;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-right: 20px;
-    width: auto
-    
+    width: auto;
+    padding: 10px;
 }
 .nav-profile {
     display: flex;
@@ -29,6 +51,7 @@
     padding: 8px;
     width: auto;
 }
+
 .nav-profile p {
     margin: 0;
     font-size: 0.9rem;
@@ -63,18 +86,4 @@
 .list-unstyled {
     display: flex;
     flex-direction: column;
-}
-
-#rightSideContent {
-    position: relative;
-    background: rgba(0, 0, 0, 0.64);
-    width: auto;
-    height: 100vh;
-    min-width: 300px;
-    max-width: 400px;
-    font-family: "Lucida Console", "Courier New", monospace;
-    background: rgba(0, 0, 0, 0.64);
-    top: 0;
-    bottom: 0;
-    left: 85%
 }
