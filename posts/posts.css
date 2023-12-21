@@ -1,1 +1,80 @@
-/* Posts Page CSS */
+/* Styling for custom navigation bar */
+#side-nav {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.64);
+    height: 100vh;
+    min-width: 300px;
+    max-width: 400px;
+    transition: all 0.5s;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+.top-nav-icons {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 20px;
+    width: auto
+    
+}
+.nav-profile {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 8px;
+    width: auto;
+}
+.nav-profile p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.nav-profile img {
+    border-radius: 50px;
+    margin: 10px;
+    align-self: center;
+    width: 90px;
+}
+
+.nav-profile span {
+    font-size: 0.7rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.profileInfo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+}
+
+.menu-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.list-unstyled {
+    display: flex;
+    flex-direction: column;
+}
+
+#rightSideContent {
+    position: relative;
+    background: rgba(0, 0, 0, 0.64);
+    width: auto;
+    height: 100vh;
+    min-width: 300px;
+    max-width: 400px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    background: rgba(0, 0, 0, 0.64);
+    top: 0;
+    bottom: 0;
+    left: 85%
+}
