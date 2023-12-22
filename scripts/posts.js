@@ -3,6 +3,10 @@ window.onload = () => {
     getLoginData();
     displayPosts()
     displayUserProfileInfo();
+    const submitPost = document.getElementById('submitPost');
+    submitPost.onclick = () => {
+        createPostOnClick();
+    }
 }
 function getLoginData() {
     const loginDataString = window.localStorage.getItem('login-data');
@@ -60,6 +64,36 @@ async function getUserData() {
     }
 }
 
+async function createPostOnClick() {
+    const loginData = getLoginData(); 
+    const newPost = document.getElementById('createAPost');
+
+    const inputData = {
+        text: newPost.value
+    }
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${loginData.token}`
+        },
+        body: JSON.stringify(inputData)
+    }
+
+    try {
+        const response = await fetch(apiBaseURL + "/api/posts/", options)
+        const result = await response.json()
+        // alert('Post Successful')
+
+    } catch (error) {
+        console.log('Error', error);
+    }
+
+
+}
+
 async function displayUserProfileInfo() {
     const userInfo = await getUserData();
     console.log(userInfo);
@@ -76,23 +110,29 @@ async function displayUserProfileInfo() {
 
 async function displayPosts() {
     const postData = await fetchPosts();
-    // console.log(postData);
-
+    console.log(postData);
     const postsContainer = document.getElementById('posts-content');
 
     if (postData.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';
         return;
     }
-
+    
+    
     postData.forEach(item => {
+
+        let postDate = new Date(item.createdAt);
+        let formattedDate = { month: 'short', day: 'numeric' };
+        let newPostDate = postDate.toLocaleDateString('en-US', formattedDate)
+
         const createPostDiv = document.createElement('div');
         createPostDiv.className = 'posts-container w-75 my-2'
         createPostDiv.style.color = "#7E7F9C"
         createPostDiv.innerHTML = `
         <div class="post-profile">
             <img src="https://placehold.co/50" alt="" />
-            <h3>${item.username}</h3>
+            <h3 class=post-username">${item.username}</h3>
+            <p class="post-date">${newPostDate}</p>
         </div>
         <div class="post-text">
         <p>${item.text}</p>
