@@ -132,6 +132,7 @@ a {
     border-radius: 20px;
     background-color: #393B70;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .createPost-container img {
@@ -150,6 +151,7 @@ a {
 
 #rightside-content {
     background-color: #393B70;
+    height: 100vh;
 }
 
 /* CSS for displayed POSTS || CONTAINER */

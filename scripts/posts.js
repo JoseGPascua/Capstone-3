@@ -132,10 +132,12 @@ async function displayPosts() {
         <div class="post-profile">
             <img src="https://placehold.co/50" alt="" />
             <h3 class=post-username">${item.username}</h3>
+            </div>
+            <div class="post-text">
+            <p>${item.text}</p>
+            </div>
+            <div class="post-icons">
             <p class="post-date">${newPostDate}</p>
-        </div>
-        <div class="post-text">
-        <p>${item.text}</p>
         </div>
         `
         postsContainer.appendChild(createPostDiv)
