@@ -1,16 +1,25 @@
 "use strict";
-
-function fetchPostsOnClick() {
-    const fetchButton = document.querySelector('.btn-primary');
-    fetchButton.addEventListener('click', fetchPosts);
+window.onload = () => {
+    getLoginData();
+    displayPosts()
+    displayUserProfileInfo();
+    const submitPost = document.getElementById('submitPost');
+    submitPost.onclick = () => {
+        createPostOnClick();
+    }
+}
+function getLoginData() {
+    const loginDataString = window.localStorage.getItem('login-data');
+    // console.log(loginDataString);
+    return loginDataString ? JSON.parse(loginDataString) : null;
 }
 
-function fetchPosts() {
+async function fetchPosts() {
     const loginData = getLoginData();
 
     if (!loginData || !loginData.token) {
         console.error('User not logged in.');
-        return;
+        return
     }
 
     const options = {
@@ -19,38 +28,121 @@ function fetchPosts() {
             Authorization: `Bearer ${loginData.token}`,
         },
     };
-
-    fetch(apiBaseURL + "/api/posts", options)
-        .then(response => response.json())
-        .then(posts => displayPosts(posts))
-        .catch(error => console.error('Error fetching posts:', error));
+    try {
+        const response = await fetch(apiBaseURL + "/api/posts", options);
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }
+    } catch (error) {
+        console.log('Fetch Failed', error);
+    }
 }
 
-function displayPosts(posts) {
-    const postsContainer = document.getElementById('posts-container');
-    postsContainer.innerHTML = ''; // Clear previous posts
+async function getUserData() {
+    const loginData = getLoginData();
+    console.log(loginData);
+    if (!loginData || !loginData.token) {
+        console.error('User not logged in.');
+        return
+    }
+    const userData = loginData.username;
+    const options = {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${loginData.token}`,
+        },
+    };
+    try {
+        const response = await fetch(apiBaseURL + "/api/users/" + userData, options);
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }
+    } catch (error) {
+        console.log('Fetch Failed', error);
+    }
+}
 
-    if (posts.length === 0) {
+async function createPostOnClick() {
+    const loginData = getLoginData(); 
+    const newPost = document.getElementById('createAPost');
+
+    const inputData = {
+        text: newPost.value
+    }
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${loginData.token}`
+        },
+        body: JSON.stringify(inputData)
+    }
+
+    try {
+        const response = await fetch(apiBaseURL + "/api/posts/", options)
+        const result = await response.json()
+        // alert('Post Successful')
+
+    } catch (error) {
+        console.log('Error', error);
+    }
+
+
+}
+
+async function displayUserProfileInfo() {
+    const userInfo = await getUserData();
+    console.log(userInfo);
+     const profileInfo = document.getElementById('profileInfo');
+     const welcomeUser = document.getElementById('welcome-container');
+    welcomeUser.style.color = "#7E7F9C"
+    profileInfo.innerHTML = `
+        <p>${userInfo.fullName}</p>
+        <span>${userInfo.username}</span>
+        `
+    welcomeUser.innerHTML = `
+        <h1> Welcome ${userInfo.fullName}</h1>`
+}
+
+async function displayPosts() {
+    const postData = await fetchPosts();
+    console.log(postData);
+    const postsContainer = document.getElementById('posts-content');
+
+    if (postData.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';
         return;
     }
+    
+    
+    postData.forEach(item => {
 
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post');
-        postElement.innerHTML = `
-            <h3>${post.username}</h3>
-            <p>${post.text}</p>
-            <hr>
-        `;
-        postsContainer.appendChild(postElement);
-    });
+        let postDate = new Date(item.createdAt);
+        let formattedDate = { month: 'short', day: 'numeric' };
+        let newPostDate = postDate.toLocaleDateString('en-US', formattedDate)
+
+        const createPostDiv = document.createElement('div');
+        createPostDiv.className = 'posts-container w-75 my-2'
+        createPostDiv.style.color = "#7E7F9C"
+        createPostDiv.innerHTML = `
+        <div class="post-profile">
+            <img src="https://placehold.co/50" alt="" />
+            <h3 class=post-username">${item.username}</h3>
+            <p class="post-date">${newPostDate}</p>
+        </div>
+        <div class="post-text">
+        <p>${item.text}</p>
+        </div>
+        `
+        postsContainer.appendChild(createPostDiv)
+    })
 }
 
-function getLoginData() {
-    const loginDataString = window.localStorage.getItem('login-data');
-    return loginDataString ? JSON.parse(loginDataString) : null;
-}
+
 
 function logout() {
     const loginData = getLoginData();
@@ -71,6 +163,4 @@ function logout() {
         });
 }
 
-// Call function to attach click event to fetch posts button
-fetchPostsOnClick();
 

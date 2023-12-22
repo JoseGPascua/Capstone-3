@@ -1,24 +1,48 @@
+/* Posts Page CSS */
+body {
+    background-color: #28274D;
+}
+a {
+    color: #7E7F9C;
+}
 /* Styling for custom navigation bar */
 #side-nav {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.64);
+    background: #393B70;
+    position: fixed;
     height: 100vh;
-    min-width: 300px;
-    max-width: 400px;
-    transition: all 0.5s;
+    width: 25vw;
+    transition: all 0.5s;    
     font-family: "Lucida Console", "Courier New", monospace;
 }
+
+/* Makes title disappear from home screen on smaller devices */
+@media screen and (max-width: 575px) {
+    .main-title.py-4 {
+        display: none;
+    }
+}
+
+/* Make the side-bar disappear on smaller devices */
+@media(max-width: 875px){
+    #side-nav{
+        margin-left: -300px;
+        position:fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+    #side-nav .active{
+        margin-left: 0;
+    }
+}
+
 .top-nav-icons {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     position: relative;
     color: white;
     font-size: 1.5rem;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-right: 20px;
-    width: auto
-    
+    width: auto;
+    padding: 10px;
 }
 .nav-profile {
     display: flex;
@@ -29,6 +53,7 @@
     padding: 8px;
     width: auto;
 }
+
 .nav-profile p {
     margin: 0;
     font-size: 0.9rem;
@@ -46,7 +71,9 @@
     text-align: center;
     font-style: italic;
 }
-
+.header-box {
+    margin-right: 50px;
+}
 .profileInfo-container {
     display: flex;
     flex-direction: column;
@@ -57,7 +84,8 @@
 .menu-container {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    margin-right: 30px;
 }
 
 .list-unstyled {
@@ -65,16 +93,87 @@
     flex-direction: column;
 }
 
-#rightSideContent {
-    position: relative;
-    background: rgba(0, 0, 0, 0.64);
+.list-unstyled li a {
+    color: #7E7F9C;
+}
+
+.nav-bottom-section {
+    display: flex;
+    justify-content: flex-end;
+}
+.nav-logoutbtn {
+    margin-right: 20px;
+}
+
+/* middle content CSS */
+.notificationIcons {
+    font-size: 1.5rem;
+    border-radius: 10px;
+    color: white;
     width: auto;
-    height: 100vh;
-    min-width: 300px;
-    max-width: 400px;
-    font-family: "Lucida Console", "Courier New", monospace;
-    background: rgba(0, 0, 0, 0.64);
-    top: 0;
-    bottom: 0;
-    left: 85%
+    height: auto;
+}
+
+.notificationContainer {
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 10px 15px 0px 15px;
+    /* padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px; */
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-color: #393B70;
+}
+
+.createPost-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: #393B70;
+    padding: 10px;
+}
+
+.createPost-container img {
+    margin: 5px;
+    width: 50px;
+    border-radius: 50px;
+}
+#createAPost {
+    width: 40vw;
+    padding: 10px;
+    border-radius: 20px;
+    border-color:#7E7F9C;
+    background-color: #28274D;
+    color: white;
+}
+
+#rightside-content {
+    background-color: #393B70;
+}
+
+/* CSS for displayed POSTS || CONTAINER */
+
+#posts-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.posts-container {
+    background-color:#393B70;
+    border-radius: 20px;
+}
+
+.post-profile {
+    display: flex;
+    align-items: center;
+}
+
+.post-profile img {
+    margin: 10px 10px 10px 20px;
+    border-radius: 20px;
+}
+
+.post-text {
+    margin-left: 10px;
 }
