@@ -1,13 +1,13 @@
 /* Posts Page CSS */
 body {
-    background-color: grey;
+    background-color: #28274D;
 }
 
 /* Styling for custom navigation bar */
 #side-nav {
-    background: rgba(0, 0, 0, 0.64);
+    background: #393B70;
     position: fixed;
-    width: 20vw;
+    width: 25vw;
     height: 100vh;
     transition: all 0.5s;
     font-family: "Lucida Console", "Courier New", monospace;
@@ -86,4 +86,44 @@ body {
 .list-unstyled {
     display: flex;
     flex-direction: column;
+}
+
+.list-unstyled li a {
+    color: #7E7F9C;
+}
+
+.notificationIcons {
+    font-size: 1.5rem;
+    border-radius: 10px;
+    color: white;
+    width: auto;
+    height: auto;
+}
+
+.notificationContainer {
+    margin-top: 20px;
+    margin-right: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 30px;
+    background-color: #393B70;
+}
+
+.createPost-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    background-color: #393B70;
+    padding: 10px;
+}
+#createAPost {
+    width: 40vw;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+#rightside-content {
+    background-color: #393B70;
 }

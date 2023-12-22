@@ -37,9 +37,8 @@
                     <div class="header-box d-flex justify-content-center mt-2">
                         <div class="nav-profile">
                             <img src="https://placehold.co/50" alt="">
-                            <div class="profileInfo-container">
-                                <p>Username PlaceHolder</p>
-                                <span>Random placeholder</span>
+                            <div class="profileInfo-container" id="profileInfo">
+
                             </div>
                         </div>
                     </div>
@@ -52,23 +51,36 @@
                             <li class=""><a href="" class="text-decoration-none d-block px-2 py-2"><i class="fa-solid fa-circle-info"></i> Contributors</a></li>
                         </ul>
                     </div>
+                    <button class="btn btn-danger mt-3" onclick="logout()">Logout</button>
                 </div>
             </div>
             <!-- Navigation in the form of a sidebar -->
             <!-- middle content -->
             <main class="col-md-6" id="middleContent">
-                <div id="welcome-container">
+                <div class="notificationIcons d-flex justify-content-end">
+                    <div class="notificationContainer">
+                        <i class="fa-regular fa-message"></i>
+                    </div>
+                    <div class="notificationContainer">
+                        <i class="fa-regular fa-bell"></i>
+                    </div>
+                </div>
+
+                <div id="welcome-container" class="d-flex justify-content-center">
 
                 </div>
-                
+
+                <div class="createPost-container">
+                    <input type="text" id="createAPost">
+                </div>
+
                 <div id="posts-container" class="mt-4">
                     <!-- Posts will be displayed here -->
                 </div>
-                
-                <button class="btn btn-danger mt-3" onclick="logout()">Logout</button>
             </main>
             
-            <section class="col-md-3"></section>
+            <section class="col-md-3" id="rightside-content">
+            </section>
         </div>
     </div>
     <!-- Page-specific code -->
