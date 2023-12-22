@@ -78,7 +78,7 @@ async function displayPosts() {
     const postData = await fetchPosts();
     // console.log(postData);
 
-    const postsContainer = document.getElementById('posts-container');
+    const postsContainer = document.getElementById('posts-content');
 
     if (postData.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';
@@ -87,13 +87,18 @@ async function displayPosts() {
 
     postData.forEach(item => {
         const createPostDiv = document.createElement('div');
+        createPostDiv.className = 'posts-container w-75 my-2'
         createPostDiv.style.color = "#7E7F9C"
         createPostDiv.innerHTML = `
+        <div class="post-profile">
+            <img src="https://placehold.co/50" alt="" />
             <h3>${item.username}</h3>
-            <p>${item.text}</p>
-            <hr>
-            `
-            postsContainer.appendChild(createPostDiv)
+        </div>
+        <div class="post-text">
+        <p>${item.text}</p>
+        </div>
+        `
+        postsContainer.appendChild(createPostDiv)
     })
 }
 
