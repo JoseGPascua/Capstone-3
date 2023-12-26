@@ -21,7 +21,7 @@
 <body>
     <!--background video/ video placeholder-->
     <video autoplay muted loop>
-        <source src="../videos/meeting_chatter.mp4" type="video/mp4">
+        <source src="assets/blue.mp4" type="video/mp4">
     </video>
 
     <header>
@@ -29,32 +29,33 @@
     </header>
 
     <main>
+        <div id="largeText">welcome</div>
         <div class="container" id="login-content">
             <div class="row">
 
-                <div class="col-6">
+                <div class="col-6"></div>
                     <form class="container" id="login">
-                        <div class="input-box">
-                            <label for="username">Username</label> <br>
-                            <input type="text" id="username" minlength="3">
-                        </div>
+                    <div class="form__group">
+                        <input type="text" class="form__input" id="username" placeholder="username" minlength="6" /><br>
+                        <label for="name" class="form__label"></label>
+                      </div>
+                      
                         <br>
             
-                        <div class="input-box">
-                            <label for="password">Password</label> <br>
-                            <input type="password" id="password" minlength="6">
+                        
+                            <div class="form__group">
+                                <input type="text" class="form__input" id="password" placeholder="password" minlength="6" />
+                                <label for="name" class="form__label">password</label>
+                            </div>
+                            <br>
+                            <button id="loginButton" type="submit">Login</button>
+                            <br>
+                            <button id="signupButton" type="submit">Join</button>
                         </div>
-                        <br>
-            
-                        <button id="loginButton" type="submit">Login</button>
-                        <button id="signupButton" onclick="window.location.href='/signup'">Sign Up</button>
-                    </form>
+                    </div>
                 </div>
-                
-            </div>
-
-            </div>
-    </main>
+            </main>
+        
 
     <footer></footer>
 
