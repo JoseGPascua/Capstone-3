@@ -2,7 +2,8 @@
 :root {
     --main-bgColor: #28274D;
     --secondary-bgColor: #393B70;
-    --font-color: #7E7F9C;
+    --font-color: #E7E9EA;
+    --hover-color: #7E7F9C;
 } 
 
 * {
@@ -15,7 +16,7 @@
     outline: none;
 }
 html {
-    font-size: 90.5%;
+    font-size: 95%;
     overflow-x: hidden;
 }
 body {
@@ -33,6 +34,7 @@ a {
     width: 25vw;
     transition: all 0.5s;    
     font-family: "Lucida Console", "Courier New", monospace;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 /* Makes title disappear from home screen on smaller devices */
@@ -55,14 +57,16 @@ a {
     }
 }
 
-.top-nav-icons {
+.logo-container {
+    position: relative;
     display: flex;
     justify-content: flex-end;
-    position: relative;
-    color: white;
-    font-size: 1.5rem;
-    width: auto;
-    padding: 10px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.logo-container img {
+    width: 60%;
 }
 .nav-profile {
     position: relative;
@@ -107,6 +111,7 @@ a {
     text-align: center;
     font-style: italic;
 }
+
 .header-box {
     margin-right: 50px;
 }
@@ -121,16 +126,35 @@ a {
     position: relative;
     display: flex;
     justify-content: flex-end;
-    margin-right: 30px;
+    margin-right: 60px;
 }
 
-.list-unstyled {
+.menu-box .nav-btn {
+    position: relative;
     display: flex;
-    flex-direction: column;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: .8rem;
+    width: 10rem;
+}
+.nav-btn {
+    font-size: 120%;
+    margin-bottom: 20px;
+}
+.menu-box .nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--main-bgColor);
+    z-index: -1;
+    transition: .5s;
 }
 
-.list-unstyled li a {
-    color: var(--font-color)
+.menu-box .nav-btn:hover::before {
+    width: 100%;
 }
 
 .nav-bottom-section {
@@ -139,9 +163,39 @@ a {
 }
 .nav-logoutbtn {
     margin-right: 20px;
+
+}
+.nav-logoutbtn .btn {
+    font-size: 1.2rem;
+    border-color: var(--main-bgColor);
+    color: var(--font-color);
+    font-weight: 600;
+    background-color: var(--main-bgColor);
+    width: 10rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: .8rem;
 }
 
+.nav-logoutbtn .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgb(247, 57, 57);
+    z-index: -1;
+    transition: .5s;
+}
+
+.nav-logoutbtn .btn:hover::before {
+    width: 100%;
+}
 /* middle content CSS */
+
 .notificationIcons {
     font-size: 1.5rem;
     border-radius: 10px;
@@ -158,8 +212,26 @@ a {
     padding-left: 20px;
     padding-top: 10px; */
     padding-bottom: 10px;
-    border-radius: 10px;
-    background-color: var(--secondary-bgColor)
+    border-radius: 50%;
+    background-color: var(--secondary-bgColor);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.notificationContainer .noti-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--hover-color);
+    z-index: -1;
+}
+
+.notificationContainer .noti-icon:hover::before {
+    width: 100%;
 }
 
 .createPost-container {
@@ -173,8 +245,10 @@ a {
 
 .createPost-container img {
     margin: 5px;
+    margin-right: 10px;
     width: 50px;
     border-radius: 50px;
+    border: .2rem solid var(--main-bgColor)
 }
 #createAPost {
     width: 40vw;
@@ -185,10 +259,6 @@ a {
     color: white;
 }
 
-#rightside-content {
-    background-color: var(--secondary-bgColor);
-    height: 100vh;
-}
 
 /* CSS for displayed POSTS || CONTAINER */
 
@@ -197,6 +267,7 @@ a {
     flex-direction: column;
     align-items: center;
 }
+
 .posts-container {
     background-color:var(--secondary-bgColor);
     border-radius: 20px;
@@ -214,6 +285,62 @@ a {
 
 .post-text {
     margin-left: 10px;
+}
+
+.submitpost-icon {
+    position: relative;
+    border-radius: .8rem;
+    margin-left: 10px;
+    padding-right: 10px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.submitpost-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--hover-color);
+    z-index: -1;
+}
+
+.submitpost-icon:hover::before{
+    width: 100%;
+}
+
+/* RIGHTSIDE CONTENT */
+#rightside-container {
+    background-color: var(--secondary-bgColor);
+    position: relative;
+    height: 100vh;
+    border-radius: 10px 0 0 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.rightside-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.suggest-container {
+    position: relative;
+    width: 100%;
+    height: 40%;
+    border-radius: 10%;
+    background-color: var(--main-bgColor);
+    margin: 10% 0% 10% 0
+}
+
+.friends-container {
+    position: relative;
+    width: 100%;
+    height: 40%;
+    border-radius: 10%;
+    background-color: var(--main-bgColor);
 }
 
 /* Keyframes for CSS */
