@@ -14,9 +14,25 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
+    flex-grow: 0;
+    flex-direction: column;
     position: relative; 
 }
+
+
+#logo-login img{
+    justify-content: center;
+    align-items: top;
+    text-align: center;
+    margin: top;
+    width: 100%;
+    max-width: 400px;
+    min-width: 350px;
+    margin-bottom: 20px;
+    padding-top: 200px;
+   
+  }
+
 
 #login-content {
     
@@ -28,7 +44,6 @@ main {
     border-radius: 60px;
     position: relative; 
     z-index: 1; 
-
     backdrop-filter: blur(6px);
     
 }
@@ -68,7 +83,7 @@ video {
     height: 45px;
     line-height: 45px;
     border-radius: 7px;
-    background-color: #0070f3;
+    background-color: #1cac3b;
     color: white;
     font-weight: 400;
     font-size: 16px;
@@ -76,10 +91,11 @@ video {
     transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
 }
 
-#signupButton hover{
-    background: rgba(0,118,255,0.9);
-    box-shadow: 0 6px 20px rgb(0 118 255 / 23%);
+#signupButton:hover {
+    background: rgba(122, 95, 244, 0.9);
+    box-shadow: 0 6px 20px rgb(0 118 255 / 23%), 0 0 20px rgba(0, 118, 255, 0.5); /* Add a glow effect */
 }
+
 
 #loginButton {
     align-items: center;
@@ -99,15 +115,15 @@ video {
     transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
       
 }
-#loginButton hover{
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 6px 20px rgb(93 93 93 / 23%);
+#loginButton:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 20px rgb(93 93 93 / 23%), 0 0 20px rgba(255, 255, 255, 0.5); /* Add a glow effect */
 }
 
 #largeText {
     font-family: 'MoonBold';
-    position: absolute;
-    top: 10%;
+    position: center;
+    top: 60%;
     left: 50%; 
     transform: translate(-50%, -50%);
     font-size: 5em;
@@ -119,11 +135,16 @@ video {
     font-size: 1.0rem;
     margin-left: 2rem;
     margin-top: 0.3rem;
+   
     display: block;
     transition: all 0.3s;
     transform: translateY(0rem);
   }
-  
+
+  .form__label{
+    padding-bottom: 5px;
+  }
+
   .form__input {
     color: #333;
     font-size: 1.2rem;
@@ -144,14 +165,18 @@ video {
     transform: translateY(-4rem);
   }
 
+
+  .form__group{
+    margin-bottom:-50px !important;
+  }
+
+  #loginButton{
+    margin-top:20px;
+  }
+
   @font-face {
     font-family: 'MoonBold';
     src: url('/Users/kaylasmbp22/Downloads/moontypeface-free-font/Moon Light.otf') format('opentype');
   }
 
 
-  #logo-login{
-    text-align: center;
-    margin: auto;
-   
-  }
