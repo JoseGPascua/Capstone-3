@@ -63,10 +63,11 @@ a {
     justify-content: flex-end;
     margin-top: 5%;
     margin-bottom: 10%;
+    margin-right: 10%;
 }
 
 .logo-container img {
-    width: 60%;
+    width: 40%;
 }
 .nav-profile {
     position: relative;
