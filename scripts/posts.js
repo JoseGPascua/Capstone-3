@@ -99,10 +99,11 @@ async function displayUserProfileInfo() {
     console.log(userInfo);
      const profileInfo = document.getElementById('profileInfo');
      const welcomeUser = document.getElementById('welcome-container');
-    welcomeUser.style.color = "#7E7F9C"
+    welcomeUser.style.color = "#E7E9EA"
+    profileInfo.style.color = "#E7E9EA"
     profileInfo.innerHTML = `
-        <p>${userInfo.fullName}</p>
-        <span>${userInfo.username}</span>
+    <span>${userInfo.username}</span>
+    <span>${userInfo.fullName}</span>
         `
     welcomeUser.innerHTML = `
         <h1> Welcome ${userInfo.fullName}</h1>`
@@ -127,7 +128,7 @@ async function displayPosts() {
 
         const createPostDiv = document.createElement('div');
         createPostDiv.className = 'posts-container w-75 my-2'
-        createPostDiv.style.color = "#7E7F9C"
+        createPostDiv.style.color = "#E7E9EA"
         createPostDiv.innerHTML = `
         <div class="post-profile">
             <img src="https://placehold.co/50" alt="" />
