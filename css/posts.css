@@ -15,6 +15,7 @@
     border: none;
     outline: none;
     font-family: "Lucida Console", "Courier New", monospace;
+    float: none;
 }
 html {
     font-size: 95%;
@@ -198,6 +199,7 @@ a {
 .nav-logoutbtn .btn:hover::before {
     width: 100%;
 }
+
 /* middle content CSS */
 
 .notificationIcons {
@@ -294,11 +296,13 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .posts-container {
     background-color:var(--secondary-bgColor);
     border-radius: 20px;
+    position: relative;
 }
 
 .post-top-info {
@@ -317,8 +321,6 @@ a {
     margin: 10px 10px 10px 20px;
     border-radius: .8rem;
 }
-
-
 .post-text {
     position: relative;
     background-color: var(--main-bgColor);
@@ -326,6 +328,9 @@ a {
     margin-right: 10px;
     padding: 10px;
     border-radius: .8rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 .post-icons {

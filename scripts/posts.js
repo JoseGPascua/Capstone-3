@@ -127,7 +127,7 @@ async function displayPosts() {
         let newPostDate = postDate.toLocaleDateString('en-US', formattedDate)
 
         const createPostDiv = document.createElement('div');
-        createPostDiv.className = 'posts-container w-75 my-2'
+        createPostDiv.className = 'posts-container w-100 my-2'
         createPostDiv.style.color = "#E7E9EA"
         createPostDiv.innerHTML = `
         <div class="container">
@@ -140,15 +140,23 @@ async function displayPosts() {
                 <p class="post-date">${newPostDate}</p>
             </div>
         </div>
-    </div>
-        <div class="post-text">
-            <p>${item.text}</p>
-        </div>
-        <div class="post-icons">
-            <div class="post-liked">
-                <img src="/assets/liked-heart.png" alt="" />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="post-mid-section">
+                    <div class="post-text">
+                        <p>${item.text}</p>
+                    </div>
+                </div>
+                <div class="post-bot-section">
+                    <div class="post-icons">
+                        <div class="post-liked">
+                            <img src="/assets/liked-heart.png" alt="" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
             `
             postsContainer.appendChild(createPostDiv)
         })
