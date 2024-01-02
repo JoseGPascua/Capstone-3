@@ -8,6 +8,7 @@ window.onload = () => {
         createPostOnClick();
     }
 }
+
 function getLoginData() {
     const loginDataString = window.localStorage.getItem('login-data');
     // console.log(loginDataString);
@@ -16,6 +17,7 @@ function getLoginData() {
 
 async function fetchPosts() {
     const loginData = getLoginData();
+    let postsLimit = 15;
 
     if (!loginData || !loginData.token) {
         console.error('User not logged in.');
@@ -29,7 +31,7 @@ async function fetchPosts() {
         },
     };
     try {
-        const response = await fetch(apiBaseURL + "/api/posts", options);
+        const response = await fetch(apiBaseURL + "/api/posts?limit=" + postsLimit, options);
         if (response.ok) {
             const data = await response.json();
             return data;
@@ -95,9 +97,9 @@ async function createPostOnClick() {
 
 }
 
+
 async function displayUserProfileInfo() {
     const userInfo = await getUserData();
-    console.log(userInfo);
      const profileInfo = document.getElementById('profileInfo');
      const welcomeUser = document.getElementById('welcome-container');
     welcomeUser.style.color = "#E7E9EA"
@@ -150,7 +152,7 @@ async function displayPosts() {
                 </div>
                 <div class="post-bot-section">
                     <div class="post-icons">
-                        <div class="post-liked">
+                        <div id="post-liked" value="${item._id}">
                             <img src="/assets/liked-heart.png" alt="" />
                         </div>
                     </div>
@@ -162,27 +164,6 @@ async function displayPosts() {
             postsContainer.appendChild(createPostDiv)
         })
     }
-    // <div class="post-top-info">
-    // <div class="post-info">
-    // <img src="https://placehold.co/50" alt="" />
-    // </div>
-    // <div class="post-info">
-    // <p class="post-username">${item.username}</p>
-    // </div>
-    // <div class="post-info">
-    // <p class="post-date">${newPostDate}</p>
-    // </div>
-    // </div>
-    // <div class="post-text">
-    // <p>${item.text}</p>
-    // </div>
-    // <div class="post-icons">
-    // <div class="post-liked">
-    // <img src="/assets/liked-heart.png" alt="" />
-    // </div>
-    // </div>
-    
-
 
 function logout() {
     const loginData = getLoginData();
