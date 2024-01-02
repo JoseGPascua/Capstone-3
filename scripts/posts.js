@@ -85,6 +85,7 @@ async function createPostOnClick() {
     try {
         const response = await fetch(apiBaseURL + "/api/posts/", options)
         const result = await response.json()
+        window.location.reload();
         // alert('Post Successful')
 
     } catch (error) {

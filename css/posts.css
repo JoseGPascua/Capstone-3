@@ -253,6 +253,7 @@ a {
     border-radius: 50px;
     border: .2rem solid var(--main-bgColor)
 }
+
 #createAPost {
     width: 40vw;
     padding: 10px;
