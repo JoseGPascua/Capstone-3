@@ -148,9 +148,51 @@
     justify-content: flex-start;
 }
 
-.profile-container hr {
-    border: none; /* Remove default browser styling */
-    height: 1px; /* Ensure the line has a visible height */
-    background-color: #ccc; /* Set a color for the line */
-    width: 100%; /* Adjust the width as needed */
+
+#posts-content {
+    background-color: #393B70;
+    border-radius: 8px;
+}
+
+#profile-posts-nav {
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+#profile-posts-nav li {
+    margin-right: 10px;
+}
+
+.nav-tabs .nav-item .nav-link {
+    border: none;
+}
+
+/* Change background color of active list item */
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #28274D;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Change background color when hovered */
+.nav-tabs .nav-item .nav-link:hover {
+    background-color: #28274D;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Remove default blue color for visited links */
+.nav-tabs .nav-item .nav-link:visited {
+    color: white;
+    
+}
+
+.tab-content img {
+    max-width: 100%; /* Adjust this percentage as needed */
+    height: auto; /* Maintain aspect ratio */
 }
