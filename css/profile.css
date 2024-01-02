@@ -1,0 +1,198 @@
+/* Styling for custom navigation bar */
+
+.container-fluid, .row, body {
+    height: 100%; /* Ensure all parent containers have full height */
+}
+
+#side-nav {
+    background: #393B70;
+    position: fixed;
+    width: 16vw;
+    height: 100vh;
+    transition: all 0.5s;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    > [class^='col-'], > [class*=' col-'] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.top-nav-icons {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 20px;
+    width: auto
+    
+}
+.nav-profile {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 8px;
+    width: auto;
+}
+.nav-profile p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.nav-profile img {
+    border-radius: 50px;
+    margin: 10px;
+    align-self: center;
+    width: 90px;
+}
+
+.nav-profile span {
+    font-size: 0.7rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.profileInfo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+}
+
+.menu-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.list-unstyled {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Makes title disappear from home screen on smaller devices */
+@media screen and (max-width: 575px) {
+    .main-title.py-4 {
+        display: none;
+    }
+}
+
+/* Make the side-bar disappear on smaller devices */
+@media(max-width: 575px){
+    #side-nav{
+        margin-left: -300px;
+        position:fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+    #side-nav .active{
+        margin-left: 0;
+    }
+}
+
+.container-fluid.contents {
+    background-color: #28274D;
+    width: 100%;
+    
+}
+
+.col-md-2 {
+    background-color: #393B70;
+    width: 16vw;
+    height: 100vh;
+}
+
+.col-md-8.col-sm-8.mx-0 {
+    background-color: #28274D;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 700px; 
+    margin: 0 auto;
+    height: 350px;
+}
+
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.bio {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+#posts-content {
+    background-color: #393B70;
+    border-radius: 8px;
+}
+
+#profile-posts-nav {
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+#profile-posts-nav li {
+    margin-right: 10px;
+}
+
+.nav-tabs .nav-item .nav-link {
+    border: none;
+}
+
+/* Change background color of active list item */
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #28274D;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Change background color when hovered */
+.nav-tabs .nav-item .nav-link:hover {
+    background-color: #28274D;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Remove default blue color for visited links */
+.nav-tabs .nav-item .nav-link:visited {
+    color: white;
+    
+}
+
+.tab-content img {
+    max-width: 100%; /* Adjust this percentage as needed */
+    height: auto; /* Maintain aspect ratio */
+}
