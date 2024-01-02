@@ -26,6 +26,9 @@ async function signUpUser() {
             Password does not match!
         </div>`
         message.appendChild(confirm_password_alert);
+        setTimeout(() => {
+            window.location.reload()
+        }, "2000")
         return
     }
 
