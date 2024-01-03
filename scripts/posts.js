@@ -1,4 +1,5 @@
 "use strict";
+
 window.onload = () => {
     getLoginData();
     displayPosts()
@@ -93,10 +94,13 @@ async function createPostOnClick() {
     } catch (error) {
         console.log('Error', error);
     }
-
-
 }
+// function likePostHandler() {
+//     const likePost = document.getElementById('post-liked').getAttribute('data-postId');
+//     console.log(likePost);
+// }
 
+// likePostHandler();
 
 async function displayUserProfileInfo() {
     const userInfo = await getUserData();
@@ -121,49 +125,140 @@ async function displayPosts() {
         postsContainer.innerHTML = '<p>No posts available.</p>';
         return;
     }
-    
-    
+
     postData.forEach(item => {
 
-        let postDate = new Date(item.createdAt);
+        //TODO converting date to minutes, hours, days
+        const postDate = new Date(item.createdAt);
+        const currentDate = new Date();
+        const time = currentDate - postDate;
+
+        const time_createdAt = document.createElement('div');
+        time_createdAt.className = 'post-date';
+        
         let formattedDate = { month: 'short', day: 'numeric' };
-        let newPostDate = postDate.toLocaleDateString('en-US', formattedDate)
+        let newPostDate = postDate.toLocaleDateString('en-US', formattedDate);
+
+        if (time < 60000) {
+            time_createdAt.innerHTML = 'Just now';
+        } else if (time < 3600000) {
+            const minutes = Math.floor(time / 60000);
+            time_createdAt.innerHTML = `${minutes}m ago`;
+        } else if (time < 86400000) {
+            const hours = Math.floor(time / 3600000);
+            time_createdAt.innerHTML = `${hours}h ago`;
+        } else if (time < 172800000) {
+            time_createdAt.innerHTML = 'Yesterday';
+        } else {
+            time_createdAt.innerHTML = newPostDate;
+        }
 
         const createPostDiv = document.createElement('div');
-        createPostDiv.className = 'posts-container w-100 my-2'
-        createPostDiv.style.color = "#E7E9EA"
+        createPostDiv.className = 'posts-container w-100 my-2';
+        createPostDiv.style.color = '#E7E9EA';
         createPostDiv.innerHTML = `
-        <div class="container">
-        <div class="row">
-            <div class="col-md-10 post-top-info">
-                <img src="https://placehold.co/50" alt="" />
-                <p class="post-username">${item.username}</p>
-            </div>
-            <div class="col-md-2 d-flex justify-content-end">
-                <p class="post-date">${newPostDate}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="post-mid-section">
-                    <div class="post-text">
-                        <p>${item.text}</p>
+                <div class="container">
+                <div class="row">
+                    <div class="col-md-10 post-top-info">
+                        <img src="https://placehold.co/50" alt="" />
+                        <p class="post-username">${item.username}</p>
                     </div>
-                </div>
-                <div class="post-bot-section">
-                    <div class="post-icons">
-                        <div id="post-liked" value="${item._id}">
-                            <img src="/assets/liked-heart.png" alt="" />
+                    <div class="col-md-2 d-flex justify-content-end">
+                        <div class="post-date">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-            `
-            postsContainer.appendChild(createPostDiv)
-        })
-    }
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="post-mid-section">
+                            <div class="post-text">
+                                <p>${item.text}</p>
+                            </div>
+                        </div>
+                        <div class="post-bot-section">
+                            <div class="post-icons">
+                                <div id="post-liked" data-postId=${item._id}>
+                                    <img src="/assets/liked-heart.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+        createPostDiv.querySelector('.post-date').appendChild(time_createdAt);
+        postsContainer.appendChild(createPostDiv);
+    });
+}
+
+// async function displayPosts() {
+//     const postData = await fetchPosts();
+//     console.log(postData);
+//     const postsContainer = document.getElementById('posts-content');
+
+//     if (postData.length === 0) {
+//         postsContainer.innerHTML = '<p>No posts available.</p>';
+//         return;
+//     }
+    
+//     postData.forEach(item => {
+//         //TODO converting date to minutes, hours, days
+//         const time_createdAt = document.getElementById('post-date');
+//         time_createdAt.innerHTML = ''
+//         let postDate = new Date(item.createdAt);
+//         let currentDate = new Date();
+//         let time = currentDate - postDate
+//         let formattedDate = { month: 'short', day: 'numeric' };
+//         let newPostDate = postDate.toLocaleDateString('en-US', formattedDate)
+//         console.log(time);
+        
+//         if (time < 60000) {
+//             time_createdAt.innerHTML = 'Just now';
+//         } else if (time < 3600000) {
+//             const minutes = Math.floor(time / 60000);
+//             time_createdAt.innerHTML = `${minutes}m ago`;
+//         } else if (time < 86400000) {
+//             const hours = Math.floor(time / 3600000);
+//             time_createdAt.innerHTML = `${hours}h ago`;
+//         } else if (time < 172800000) {
+//             time_createdAt.innerHTML = 'Yesterday';
+//         } else {
+//             time_createdAt.innerHTML = '';
+//         }
+//         const createPostDiv = document.createElement('div');
+//         createPostDiv.className = 'posts-container w-100 my-2'
+//         createPostDiv.style.color = "#E7E9EA"
+//         createPostDiv.innerHTML = `
+//         <div class="container">
+//         <div class="row">
+//             <div class="col-md-10 post-top-info">
+//                 <img src="https://placehold.co/50" alt="" />
+//                 <p class="post-username">${item.username}</p>
+//             </div>
+//             <div class="col-md-2 d-flex justify-content-end">
+//                 <div id="post-date">
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="row">
+//             <div class="col-md-12">
+//                 <div class="post-mid-section">
+//                     <div class="post-text">
+//                         <p>${item.text}</p>
+//                     </div>
+//                 </div>
+//                 <div class="post-bot-section">
+//                     <div class="post-icons">
+//                         <div id="post-liked" data-postId=${item._id}>
+//                             <img src="/assets/liked-heart.png" alt="" />
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>`
+//     postsContainer.appendChild(createPostDiv)
+//     })
+// }
 
 function logout() {
     const loginData = getLoginData();
