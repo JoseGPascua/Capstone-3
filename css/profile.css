@@ -326,7 +326,7 @@ a {
 
 
 #user-posts {
-    background-color: red;
+    background-color: #28274D;
     border-radius: 8px;
 }
 
@@ -344,7 +344,7 @@ a {
 
 /* Change background color of active list item */
 .nav-tabs .nav-item .nav-link.active {
-    background-color: #28274D;
+    background-color: #393B70;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -352,7 +352,7 @@ a {
 
 /* Change background color when hovered */
 .nav-tabs .nav-item .nav-link:hover {
-    background-color: #28274D;
+    background-color: #393B70;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -415,4 +415,12 @@ a {
 .post-icons {
     margin: 1.5%;
     padding-left: 1.5%;
+}
+
+/* Keyframes for CSS */
+
+@keyframes profileSpinner {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }

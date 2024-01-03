@@ -2,8 +2,13 @@
 
 window.onload = () => {
     getLoginData();
-    displayPosts()
+    showTab('posts');
+    displayPosts();
     fetchUserProfile();
+    const submitPost = document.getElementById('submitPost');
+    submitPost.onclick = () => {
+        createPostOnClick();
+    }
 };
 
 function getLoginData() {
@@ -14,6 +19,26 @@ function getLoginData() {
 function isLoggedIn() {
     const loginData = getLoginData();
     return Boolean(loginData.token);
+}
+
+function showTab(tabName) {
+    var tabs = document.querySelectorAll('.tab-pane');
+    tabs.forEach(function(tab) {
+        if (tab.id === tabName) {
+            tab.classList.add('show', 'active');
+        } else {
+            tab.classList.remove('show', 'active');
+        }
+    });
+
+    var navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function(link) {
+        if (link.getAttribute('href') === '#' + tabName) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
 }
 
 async function fetchUserProfile() {
@@ -140,4 +165,35 @@ async function displayPosts() {
             `
             postsContainer.appendChild(createPostDiv)
         })
+    }
+
+    async function createPostOnClick() {
+        const loginData = getLoginData(); 
+        const newPost = document.getElementById('createAPost');
+    
+        const inputData = {
+            text: newPost.value
+        }
+    
+        const options = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${loginData.token}`
+            },
+            body: JSON.stringify(inputData)
+        }
+    
+        try {
+            const response = await fetch(apiBaseURL + "/api/posts/", options)
+            const result = await response.json()
+            window.location.reload();
+            // alert('Post Successful')
+    
+        } catch (error) {
+            console.log('Error', error);
+        }
+    
+    
     }
