@@ -60,13 +60,14 @@
                     <div class="profile-container">
                         <div class="profile-photo">
                             <img src="https://placehold.co/50" alt="">
+                            <br><br><br><br>
                         </div>
                         <div class="bio">
-                            <div class="row">
-                                <div class="col-12">
+                            <div class="row xd">
+                                <div class="col-6">
                                     <p><strong>Username:</strong> <span id="username"></span></p>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6">
                                     <p><strong>Full Name:</strong> <span id="fullName"></span></p>
                                 </div>
                             </div>
@@ -74,10 +75,19 @@
                                 <div class="col-12">
                                     <p><strong>About:</strong> <span id="about"></span></p>
                                 </div>
-                                <div class="col-12">
-                                    <p><strong>Joined:</strong> <span id="joinedAt"></span></p>
+                            </div>
+                            <div class="row">
+                                <small><a href="#" id="editProfileLink">Edit your profile</a></small>
+                                <div id="profileEditForm" style="display: none;">
+                                    <input type="password" id="newPassword" placeholder="New Password">
+                                    <input type="password" id="confirmPassword" placeholder="Confirm Password"> <br> <br>
+                                    <input type="text" id="newBio" placeholder="New Bio">
+                                    <button id="saveChanges">Save Changes</button>
+                                    <p id="passwordMismatch">Passwords do not match</p>
                                 </div>
                             </div>
+                            
+                            
                         </div>
                     </div>
                     <!-- Show the user's own posts and add feature to make post from here -->
