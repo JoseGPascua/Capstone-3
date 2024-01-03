@@ -255,6 +255,27 @@ async function likeAPost(_postData) {
 
 }
 
+// Right side content functions
+async function sortByMostLikes() {
+    const loginData = getLoginData();
+    let postLimit = 50
+    const allPostResponse = await fetch(`${apiBaseURL}/api/posts?limit=${postLimit}&offset=0`, {
+        method: "GET",
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${loginData.token}`,
+            "Content-Type": "application/json",
+        },
+    })
+
+    const allPostData = await allPostResponse.json();
+    const postLikes = allPostData.likes;
+    
+    console.log(allPostData);
+}
+
+sortByMostLikes();
+
 function logout() {
     const loginData = getLoginData();
 
