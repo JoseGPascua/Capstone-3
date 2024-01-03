@@ -258,6 +258,7 @@ async function likeAPost(_postData) {
 // Right side content functions
 async function sortByMostLikes() {
     const loginData = getLoginData();
+    const mostLikedSection = document.getElementById('mostlikedpost-container');
     let postLimit = 50
     const allPostResponse = await fetch(`${apiBaseURL}/api/posts?limit=${postLimit}&offset=0`, {
         method: "GET",
@@ -269,9 +270,12 @@ async function sortByMostLikes() {
     })
 
     const allPostData = await allPostResponse.json();
-    const postLikes = allPostData.likes;
+    const sortByMostLikes = allPostData.sort((a, b) => b.likes.length - a.likes.length)
+    console.log(sortByMostLikes);
+
+    const createDivElement = document.createElement('div');
     
-    console.log(allPostData);
+
 }
 
 sortByMostLikes();
