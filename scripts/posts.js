@@ -1,5 +1,6 @@
 "use strict";
 
+
 window.onload = () => {
     getLoginData();
     displayPosts()
@@ -19,12 +20,12 @@ function getLoginData() {
 async function fetchPosts() {
     const loginData = getLoginData();
     let postsLimit = 15;
-
+    
     if (!loginData || !loginData.token) {
         console.error('User not logged in.');
         return
     }
-
+    
     const options = {
         method: "GET",
         headers: {
@@ -68,13 +69,15 @@ async function getUserData() {
 }
 
 async function createPostOnClick() {
+    const post_container = document.getElementById('posts-content');
+    const loading = document.querySelector('.loading-container')
     const loginData = getLoginData(); 
     const newPost = document.getElementById('createAPost');
-
+    
     const inputData = {
         text: newPost.value
     }
-
+    
     const options = {
         method: "POST",
         headers: {
@@ -84,13 +87,16 @@ async function createPostOnClick() {
         },
         body: JSON.stringify(inputData)
     }
-
+    
     try {
         const response = await fetch(apiBaseURL + "/api/posts/", options)
-        const result = await response.json()
-        window.location.reload();
-        // alert('Post Successful')
-
+        if (response.ok) {
+            console.log("POST HAS BEEN CREATED");
+            post_container.innerHTML = '';
+            post_container.insertAdjacentHTML('afterbegin', loading.outerHTML);
+            await displayPosts();
+        }
+        
     } catch (error) {
         console.log('Error', error);
     }
@@ -113,13 +119,13 @@ async function displayUserProfileInfo() {
     <span>${userInfo.fullName}</span>
         `
     welcomeUser.innerHTML = `
-        <h1> Welcome ${userInfo.fullName}</h1>`
+        <h1> Welcome, ${userInfo.fullName}</h1>`
 }
 
 async function displayPosts() {
+    const postsContainer = document.getElementById('posts-content');
     const postData = await fetchPosts();
     console.log(postData);
-    const postsContainer = document.getElementById('posts-content');
 
     if (postData.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';
