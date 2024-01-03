@@ -294,13 +294,15 @@ a {
 .profile-container {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    align-items: stretch;
+    background-color: #393B70;
     padding: 20px;
     border-radius: 8px;
     width: 80%;
     max-width: 700px; 
     margin: 0 auto;
-    height: 350px;
+    min-height: 350px;
+    color: #E7E9EA
 }
 
 
@@ -319,15 +321,11 @@ a {
     border-radius: 50%;
 }
 
-.bio {
-    display: flex;
-    justify-content: flex-start;
-}
-
-
 #user-posts {
-    background-color: red;
+    background-color: #28274D;
     border-radius: 8px;
+    height: auto;
+    position: relative;
 }
 
 #user-posts-nav {
@@ -340,11 +338,32 @@ a {
 
 .nav-tabs .nav-item .nav-link {
     border: none;
+    position: relative;
+    overflow: hidden; 
 }
+
+/* Style the ::before pseudo-element */
+.nav-tabs .nav-item .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 0;
+    height: 100%;
+    background-color: #393B70;
+    z-index: -1;
+    transition:  0.5s;
+}
+
+/* Adjust ::before width on hover */
+.nav-tabs .nav-item .nav-link:hover::before {
+    width: 100%;
+}
+
 
 /* Change background color of active list item */
 .nav-tabs .nav-item .nav-link.active {
-    background-color: #28274D;
+    background-color: #393B70;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -352,7 +371,7 @@ a {
 
 /* Change background color when hovered */
 .nav-tabs .nav-item .nav-link:hover {
-    background-color: #28274D;
+    background-color: #393B70;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -415,4 +434,17 @@ a {
 .post-icons {
     margin: 1.5%;
     padding-left: 1.5%;
+}
+
+/* Keyframes for CSS */
+
+@keyframes profileSpinner {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+#passwordMismatch {
+    color: red;
+    display: none;
 }
