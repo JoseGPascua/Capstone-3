@@ -1,16 +1,27 @@
 "use strict";
-
-function fetchPostsOnClick() {
-    const fetchButton = document.querySelector('.btn-primary');
-    fetchButton.addEventListener('click', fetchPosts);
+window.onload = () => {
+    getLoginData();
+    displayPosts()
+    displayUserProfileInfo();
+    const submitPost = document.getElementById('submitPost');
+    submitPost.onclick = () => {
+        createPostOnClick();
+    }
 }
 
-function fetchPosts() {
+function getLoginData() {
+    const loginDataString = window.localStorage.getItem('login-data');
+    // console.log(loginDataString);
+    return loginDataString ? JSON.parse(loginDataString) : null;
+}
+
+async function fetchPosts() {
     const loginData = getLoginData();
+    let postsLimit = 15;
 
     if (!loginData || !loginData.token) {
         console.error('User not logged in.');
-        return;
+        return
     }
 
     const options = {
@@ -19,38 +30,140 @@ function fetchPosts() {
             Authorization: `Bearer ${loginData.token}`,
         },
     };
-
-    fetch(apiBaseURL + "/api/posts", options)
-        .then(response => response.json())
-        .then(posts => displayPosts(posts))
-        .catch(error => console.error('Error fetching posts:', error));
+    try {
+        const response = await fetch(apiBaseURL + "/api/posts?limit=" + postsLimit, options);
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }
+    } catch (error) {
+        console.log('Fetch Failed', error);
+    }
 }
 
-function displayPosts(posts) {
-    const postsContainer = document.getElementById('posts-container');
-    postsContainer.innerHTML = ''; // Clear previous posts
+async function getUserData() {
+    const loginData = getLoginData();
+    console.log(loginData);
+    if (!loginData || !loginData.token) {
+        console.error('User not logged in.');
+        return
+    }
+    const userData = loginData.username;
+    const options = {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${loginData.token}`,
+        },
+    };
+    try {
+        const response = await fetch(apiBaseURL + "/api/users/" + userData, options);
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        }
+    } catch (error) {
+        console.log('Fetch Failed', error);
+    }
+}
 
-    if (posts.length === 0) {
+async function createPostOnClick() {
+    const loginData = getLoginData(); 
+    const newPost = document.getElementById('createAPost');
+
+    const inputData = {
+        text: newPost.value
+    }
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${loginData.token}`
+        },
+        body: JSON.stringify(inputData)
+    }
+
+    try {
+        const response = await fetch(apiBaseURL + "/api/posts/", options)
+        const result = await response.json()
+        window.location.reload();
+        // alert('Post Successful')
+
+    } catch (error) {
+        console.log('Error', error);
+    }
+
+
+}
+
+
+async function displayUserProfileInfo() {
+    const userInfo = await getUserData();
+     const profileInfo = document.getElementById('profileInfo');
+     const welcomeUser = document.getElementById('welcome-container');
+    welcomeUser.style.color = "#E7E9EA"
+    profileInfo.style.color = "#E7E9EA"
+    profileInfo.innerHTML = `
+    <span>${userInfo.username}</span>
+    <span>${userInfo.fullName}</span>
+        `
+    welcomeUser.innerHTML = `
+        <h1> Welcome ${userInfo.fullName}</h1>`
+}
+
+async function displayPosts() {
+    const postData = await fetchPosts();
+    console.log(postData);
+    const postsContainer = document.getElementById('posts-content');
+
+    if (postData.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';
         return;
     }
+    
+    
+    postData.forEach(item => {
 
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post');
-        postElement.innerHTML = `
-            <h3>${post.username}</h3>
-            <p>${post.text}</p>
-            <hr>
-        `;
-        postsContainer.appendChild(postElement);
-    });
-}
+        let postDate = new Date(item.createdAt);
+        let formattedDate = { month: 'short', day: 'numeric' };
+        let newPostDate = postDate.toLocaleDateString('en-US', formattedDate)
 
-function getLoginData() {
-    const loginDataString = window.localStorage.getItem('login-data');
-    return loginDataString ? JSON.parse(loginDataString) : null;
-}
+        const createPostDiv = document.createElement('div');
+        createPostDiv.className = 'posts-container w-100 my-2'
+        createPostDiv.style.color = "#E7E9EA"
+        createPostDiv.innerHTML = `
+        <div class="container">
+        <div class="row">
+            <div class="col-md-10 post-top-info">
+                <img src="https://placehold.co/50" alt="" />
+                <p class="post-username">${item.username}</p>
+            </div>
+            <div class="col-md-2 d-flex justify-content-end">
+                <p class="post-date">${newPostDate}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="post-mid-section">
+                    <div class="post-text">
+                        <p>${item.text}</p>
+                    </div>
+                </div>
+                <div class="post-bot-section">
+                    <div class="post-icons">
+                        <div id="post-liked" value="${item._id}">
+                            <img src="/assets/liked-heart.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            `
+            postsContainer.appendChild(createPostDiv)
+        })
+    }
 
 function logout() {
     const loginData = getLoginData();
@@ -71,6 +184,4 @@ function logout() {
         });
 }
 
-// Call function to attach click event to fetch posts button
-fetchPostsOnClick();
 
