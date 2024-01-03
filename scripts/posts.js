@@ -5,6 +5,7 @@ window.onload = () => {
     getLoginData();
     displayPosts()
     displayUserProfileInfo();
+    likeAPost();
     const submitPost = document.getElementById('submitPost');
     submitPost.onclick = () => {
         createPostOnClick();
@@ -101,12 +102,6 @@ async function createPostOnClick() {
         console.log('Error', error);
     }
 }
-// function likePostHandler() {
-//     const likePost = document.getElementById('post-liked').getAttribute('data-postId');
-//     console.log(likePost);
-// }
-
-// likePostHandler();
 
 async function displayUserProfileInfo() {
     const userInfo = await getUserData();
@@ -123,6 +118,7 @@ async function displayUserProfileInfo() {
 }
 
 async function displayPosts() {
+    const loginData = getLoginData();
     const postsContainer = document.getElementById('posts-content');
     const postData = await fetchPosts();
     console.log(postData);
@@ -158,8 +154,14 @@ async function displayPosts() {
         } else {
             time_createdAt.innerHTML = newPostDate;
         }
+        
+        // checking if post is liked or not;
+        const postLikes = item.likes;
+        //returns true if likes.username === logindata.username
+        const isLikedByUser = postLikes.find(object => object.username.includes(loginData.username))
 
         const createPostDiv = document.createElement('div');
+        // console.log(createPostDiv);
         createPostDiv.className = 'posts-container w-100 my-2';
         createPostDiv.style.color = '#E7E9EA';
         createPostDiv.innerHTML = `
@@ -183,8 +185,9 @@ async function displayPosts() {
                         </div>
                         <div class="post-bot-section">
                             <div class="post-icons">
-                                <div id="post-liked" data-postId=${item._id}>
-                                    <img src="/assets/liked-heart.png" alt="" />
+                                <div class="liked-post" onclick="fetchPostID(this)" data-value="${item._id}">
+                                <img src="${isLikedByUser ? '/assets/liked-heart-fill.png' : '/assets/liked-heart.png'}" alt="" />
+                                <span>${item.likes.length}</span>
                                 </div>
                             </div>
                         </div>
@@ -196,6 +199,61 @@ async function displayPosts() {
     });
 }
 
+async function fetchPostID(_postId) {
+    const usersLoginData = getLoginData();
+    const postID = _postId.getAttribute('data-value');
+    // console.log(postID);
+    //fetch post with GET request
+    try {
+        const post = await fetch(`${apiBaseURL}/api/posts/${postID}`, {
+            method: "GET",
+            headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${usersLoginData.token}`,
+                "Content-Type": "application/json",
+            },
+        })
+    
+        if (!post.ok) {
+            throw new Error('Cannot find post')
+        }
+        const postData = await post.json();
+        likeAPost(postData)
+
+    } catch (error) {
+        console.log('Fetch request failed', error);
+    }
+}
+
+async function likeAPost(_postData) {
+    const loginData = getLoginData();
+    const postData = _postData
+    const postLike_ID = postData._id
+    console.log(postData);
+
+    const inputBody = {
+        postId: postLike_ID
+    }
+    try {
+        // Post request to like a post
+        const response = await fetch(`${apiBaseURL}/api/likes`, {
+            method: "POST",
+            headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${loginData.token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(inputBody)
+        })
+        if (!response.ok) {
+            throw new Error('POST request failed')
+        }
+        console.log('Post Liked');
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 
 function logout() {
     const loginData = getLoginData();
