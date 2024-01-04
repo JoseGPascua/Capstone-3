@@ -6,7 +6,7 @@ window.onload = () => {
     showTab('posts');
     displayMyPosts();
     displayLikedPosts();
-
+    displayUserProfileInfo();
     const editProfileLink = document.getElementById('editProfileLink');
     const profileEditForm = document.getElementById('profileEditForm');
     const saveChangesBtn = document.getElementById('saveChanges');
@@ -25,16 +25,6 @@ window.onload = () => {
         createPostOnClick();
     }
 };
-
-// function getLoginData() {
-//     const loginJSON = window.localStorage.getItem("login-data");
-//     return JSON.parse(loginJSON) || {};
-// }
-
-// function isLoggedIn() {
-//     const loginData = getLoginData();
-//     return Boolean(loginData.token);
-// }
 
 function showTab(tabName) {
     document.querySelectorAll('.tab-pane').forEach(tab => {
@@ -84,32 +74,6 @@ function displayProfileData (data) {
     document.getElementById("username").textContent = data.username;
     document.getElementById("fullName").textContent = data.fullName;
     document.getElementById("about").textContent = data.bio;
-}
-
-async function fetchPosts() {
-    const loginData = getLoginData();
-    let postsLimit = 15;
-
-    if (!loginData || !loginData.token) {
-        console.error('User not logged in.');
-        return
-    }
-
-    const options = {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${loginData.token}`,
-        },
-    };
-    try {
-        const response = await fetch(apiBaseURL + "/api/posts?limit=" + postsLimit, options);
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        }
-    } catch (error) {
-        console.log('Fetch Failed', error);
-    }
 }
 
 async function saveChanges() {
