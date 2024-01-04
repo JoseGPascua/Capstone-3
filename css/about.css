@@ -26,17 +26,9 @@ html {
 
 body{
 overflow: hidden;
- background-color:linear-gradient(to bottom, var(--main-bgColor) 0%, var(--secondary-bgColor) 100%);
- color: var(--font-color);
+ background-color:#28274D;
  display: grid;
  place-items: center;
-}
-a {
-  color: var(--font-color);
-}
-
-a:hover {
-  color: var(--hover-color);
 }
 
 h1, p{
