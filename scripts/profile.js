@@ -154,17 +154,14 @@ async function saveChanges() {
         }
 
         const data = await response.json();
-        // Handle successful response
         console.log('Data successfully updated:', data);
-        // You can perform any additional actions here after successful update
         document.getElementById('newPassword').value = '';
         document.getElementById('confirmPassword').value = '';
         document.getElementById('newBio').value = '';
         profileEditForm.style.display = 'none';
     } catch (error) {
-        // Handle error
         console.error('Error updating data:', error);
-        // You can display an error message or take other actions
+
     }
 };
 
