@@ -2,8 +2,8 @@
 
 window.onload = () => {
 
-    getUserData();
     showTab('posts');
+    displayProfileData();
     displayMyPosts();
     displayLikedPosts();
     displayUserProfileInfo();
@@ -40,42 +40,15 @@ function showTab(tabName) {
     });
 }
 
-// Function to grab user profile information
-// async function fetchUserProfile() {
-//     if (!isLoggedIn()) {
-//         console.error("User is not logged in.");
-//         return;
-//     }
-
-//     const loginData = getLoginData();
-//     const username = loginData.username;
-//     const userProfileEndpoint = `/api/users/${username}`
-
-//     const options = {
-//         method: "GET",
-//         headers: {
-//             Authorization: `Bearer ${loginData.token}`,
-//         },
-//     };
-
-//     try {
-//         const response = await fetch(apiBaseURL + userProfileEndpoint, options);
-//         if (!response.ok) {
-//             throw new Error('Request failed')
-//         }
-//         const data = await response.json();
-//         displayProfileData(data);
-
-//     }
-//     catch (error) {
-//         console.error("Error fetching profile data:", error);
-//     }
-// }
-
-function displayProfileData (data) {
-    document.getElementById("username").textContent = data.username;
-    document.getElementById("fullName").textContent = data.fullName;
-    document.getElementById("about").textContent = data.bio;
+async function displayProfileData() {
+    try {
+        const userInfo = await getUserData();
+        document.getElementById("username").textContent = userInfo.username;
+        document.getElementById("fullName").textContent = userInfo.fullName;
+        document.getElementById("about").textContent = userInfo.bio;
+    } catch (error) {
+        console.error('Error displaying profile data:', error);
+    }
 }
 
 async function saveChanges() {
