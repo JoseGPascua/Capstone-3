@@ -1,5 +1,5 @@
 
-/* CSS for displayed POSTS || CONTAINER */
+/* CSS for displayed POSTS || CONTAINER
 
 #posts-content {
     display: flex;
@@ -61,7 +61,7 @@
 .liked-post img {
     cursor: pointer;
 }
-
+ */
 
 /* RIGHTSIDE CONTENT */
 #rightside-container { 

@@ -307,6 +307,68 @@ a {
 
 /** ==== END OF MIDDLE CONTENT CSS ==== */
 
+/** ==== CSS for displayed POSTS ==== */
+#posts-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.posts-container {
+    background-color:var(--secondary-bgColor);
+    border-radius: 20px;
+    position: relative;
+}
+
+.post-top-info {
+    display: flex;
+    align-items: center;
+}
+
+
+.post-top-info p {
+    font-weight: 600;
+    padding-top: 5%;
+    font-size: 1.2rem;
+}
+
+.post-top-info img {
+    margin: 10px 10px 10px 20px;
+    border-radius: 3rem;
+    width: 10%;
+    height: 70%;
+    border-color: var(--main-bgColor);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+
+.post-text {
+    position: relative;
+    background-color: var(--main-bgColor);
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px 10px 5px 20px;
+    border-radius: .8rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.post-icons {
+    position: relative;
+    margin: 1.5%;
+    padding-left: 1.5%;
+}
+.heart-icon {
+    position: relative;
+}
+.liked-post {
+    width: 5%;
+}
+.liked-post img {
+    cursor: pointer;
+}
+
 /** Keyframes for CSS */
 
 @keyframes profileSpinner {
