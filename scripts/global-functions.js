@@ -49,3 +49,13 @@ async function getUserData() {
         console.log('Fetch Failed', error);
     }
 }
+
+async function displayUserProfileInfo() {
+    const userInfo = await getUserData();
+    const profileInfo = document.getElementById('profileInfo');
+    profileInfo.style.color = "#E7E9EA"
+    profileInfo.innerHTML = `
+    <span>${userInfo.username}</span>
+    <span>${userInfo.fullName}</span>
+    `
+}
