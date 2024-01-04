@@ -5,6 +5,7 @@ window.onload = () => {
     fetchUserProfile();
     showTab('posts');
     displayPosts();
+    displayLikedPosts();
     const editProfileLink = document.getElementById('editProfileLink');
     const profileEditForm = document.getElementById('profileEditForm');
     editProfileLink.addEventListener('click', (event) => {
@@ -199,9 +200,9 @@ async function displayPosts() {
         <div class="container">
         <div class="row">
             <div class="col-md-10 post-top-info">
-                <img src="https://placehold.co/50" alt="" />
-                <p class="post-username">${item.username}</p>
-            </div>
+                        <img src="${getRandomImage(imagesArray)}" alt="" />
+                        <p class="post-username">${item.username}</p>
+                    </div>
             <div class="col-md-2 d-flex justify-content-end">
                 <p class="post-date">${newPostDate}</p>
             </div>
@@ -250,11 +251,74 @@ async function displayPosts() {
             const response = await fetch(apiBaseURL + "/api/posts/", options)
             const result = await response.json()
             window.location.reload();
-            // alert('Post Successful')
     
         } catch (error) {
             console.log('Error', error);
         }
     
     
+    }
+
+    async function displayLikedPosts() {
+        const allPosts = await fetchPosts();
+        const loggedInUserData = getLoginData();
+        const loggedInUsername = loggedInUserData.username;
+        
+        const likedPostsContainer = document.getElementById('liked-posts-content');
+        likedPostsContainer.innerHTML = '';
+    
+        if (allPosts.length === 0) {
+            likedPostsContainer.innerHTML = '<p>No posts available.</p>';
+            return;
+        }
+    
+        const likedPosts = allPosts.filter(post => {
+            return post.likes.some(like => like.username === loggedInUsername);
+        });
+    
+        if (likedPosts.length === 0) {
+            likedPostsContainer.innerHTML = '<p>No liked posts available for the logged-in user.</p>';
+            return;
+        }
+        
+        likedPosts.forEach(post => {
+    
+            let postDate = new Date(post.createdAt);
+            let formattedDate = { month: 'short', day: 'numeric' };
+            let newPostDate = postDate.toLocaleDateString('en-US', formattedDate);
+    
+            const createPostDiv = document.createElement('div');
+            createPostDiv.className = 'liked-posts-container w-100 my-2';
+            createPostDiv.style.color = "#E7E9EA";
+            createPostDiv.innerHTML = `
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 post-top-info">
+                        <img src="${getRandomImage(imagesArray)}" alt="" />
+                        <p class="post-username">${post.username}</p>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-end">
+                        <p class="post-date">${newPostDate}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="post-mid-section">
+                            <div class="post-text">
+                                <p>${post.text}</p>
+                            </div>
+                        </div>
+                        <div class="post-bot-section">
+                            <div class="post-icons">
+                                <div id="post-liked" value="${post._id}">
+                                    <img src="/assets/liked-heart.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            likedPostsContainer.appendChild(createPostDiv);
+        });
     }
