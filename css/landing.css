@@ -1,4 +1,9 @@
 /* Landing Page CSS */
+@font-face {
+  font-family: 'MoonBold';
+  src: url('/Users/kaylasmbp22/Downloads/moontypeface-free-font/Moon Light.otf') format('opentype');
+}
+
 body {
     background-color: darkslategrey;
     display: flex;
@@ -44,8 +49,10 @@ main {
     display: flex;
     justify-content: space-between;
     background: rgb(136, 40, 163);
-    background: linear-gradient(3deg, rgba(0,212,255,0.4) 0%, rgba(215,250,255,0.7) 74%, rgba(191,191,255,0.3) 81%);
+    background: linear-gradient(3deg, rgba(0,212,255,0.4) 12%, rgba(215,250,255,0.7) 62%, rgba(191,191,255,0.3) 79%);
     padding: 100px;
+    padding-top: 45px;
+    padding-bottom: 40px;
     padding-left: 70px;
     padding-right: 70px;
     border-radius: 70px;
@@ -80,7 +87,7 @@ video {
     z-index: -1;
 }
 /* Sign Up button CSS */
-#signupButton {
+/*#signupButton {
   width: 300px;
     align-items: center;
     display: inline-block;
@@ -102,22 +109,23 @@ video {
 #signupButton:hover {
     background: rgba(122, 95, 244, 0.9);
     box-shadow: 0 6px 20px rgb(0 118 255 / 23%), 0 0 20px rgba(0, 118, 255, 0.5); /* Add a glow effect */
-}
+
 
 
 #loginButton {
-    width: 300px;
-    align-items: center;
-    display: inline-block;
+  overflow: hidden;
+  margin-left: 265px;
+    width: 160px;
+    display: block;
     outline: 0;
     cursor: pointer;
     border: none;
-    padding: 0 56px;
-    height: 45px;
-    line-height: 45px;
-    border-radius: 7px;
-    font-weight: 400;
-    font-size: 16px;
+    padding: 0 6px;
+    height: 55px;
+    line-height: 55px;
+    border-radius: 70px;
+    font-weight: 300;
+    font-size: 21px;
     background: #fff;
     color: #696969;
     box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
@@ -158,11 +166,13 @@ input:hover,
 
 /* add appropriate colors to fb, twitter and google buttons */
 .fb {
+  padding-right: 25px;
   background-color: #3B5998;
   color: white;
 }
 
 .twitter {
+  padding-right: 25px;
   background-color: #55ACEE;
   color: white;
 }
@@ -172,7 +182,7 @@ input:hover,
   color: white;
 }
 
-#largeText {
+/*#largeText {
     font-family: 'MoonBold';
     position: center;
     top: 60%;
@@ -180,10 +190,8 @@ input:hover,
     transform: translate(-50%, -50%);
     font-size: 5em;
     color: white; 
-    z-index: 2; /* Set a higher z-index than the container FR*/
-}
-
-
+    z-index: 2;
+ /* Set a higher z-index than the container FR*/
 .form__label {
     font-size: 1.0rem;
     margin-left: 2rem;
@@ -194,11 +202,11 @@ input:hover,
   }
 
   .form__label{
-    padding-bottom: 5px;
+  justify-content: center;
   }
 
   .form__input {
-    width: 500px;
+    width: 650px;
     color: #333;
     font-size: 1.2rem;
     margin: 0.2em 0.5rem;
@@ -212,7 +220,7 @@ input:hover,
     transition: all 0.3s;
   }
   
-  .form__input:placeholder-shown + .form__label {
+.form__input:placeholder-shown + .form__label {
     opacity: 0;
     visibility: hidden;
     -webkit-transform: translateY(-4rem);
@@ -221,14 +229,29 @@ input:hover,
 
 
   .form__group{
-    margin-bottom:-50px !important;
+    margin-bottom:-5px !important;
   }
 
-  #loginButton{
-    margin-top:20px;
+  .form__group  h5{
+    color:#090518;
+    align-items: center;
+    padding-bottom: 22px;
+    margin-bottom:-5px !important;
   }
 
-  @font-face {
-    font-family: 'MoonBold';
-    src: url('/Users/kaylasmbp22/Downloads/moontypeface-free-font/Moon Light.otf') format('opentype');
+  .form__group  h1{
+    color:#090518;
+    font-weight: 0px;
+    margin-top: 0;
+    padding-bottom: 35px;
+    text-align: center;
   }
+
+  #login-linksz {
+    text-align: center; /* Center the checkbox and registration link */
+    padding-bottom: 25px;
+  }
+#facebookLink{
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
