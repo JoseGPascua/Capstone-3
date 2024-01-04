@@ -1,9 +1,9 @@
 "use strict";
 
 window.onload = () => {
-    // getLoginData();
-    fetchUserProfile();
+
     showTab('posts');
+    displayProfileData();
     displayMyPosts();
     displayLikedPosts();
     displayUserProfileInfo();
@@ -26,6 +26,7 @@ window.onload = () => {
     }
 };
 
+// Function to show and switch between tabs on profile page
 function showTab(tabName) {
     document.querySelectorAll('.tab-pane').forEach(tab => {
         const isSelectedTab = tab.id === tabName;
@@ -39,45 +40,20 @@ function showTab(tabName) {
     });
 }
 
-async function fetchUserProfile() {
-    if (!isLoggedIn()) {
-        console.error("User is not logged in.");
-        return;
-    }
-
-    const loginData = getLoginData();
-    const username = loginData.username;
-    const userProfileEndpoint = `/api/users/${username}`
-
-    const options = {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${loginData.token}`,
-        },
-    };
-
+async function displayProfileData() {
     try {
-        const response = await fetch(apiBaseURL + userProfileEndpoint, options);
-        if (!response.ok) {
-            throw new Error('Request failed')
-        }
-        const data = await response.json();
-        displayProfileData(data);
-
+        const userInfo = await getUserData();
+        document.getElementById("username").textContent = userInfo.username;
+        document.getElementById("fullName").textContent = userInfo.fullName;
+        document.getElementById("about").textContent = userInfo.bio;
+    } catch (error) {
+        console.error('Error displaying profile data:', error);
     }
-    catch (error) {
-        console.error("Error fetching profile data:", error);
-    }
-}
-
-function displayProfileData (data) {
-    document.getElementById("username").textContent = data.username;
-    document.getElementById("fullName").textContent = data.fullName;
-    document.getElementById("about").textContent = data.bio;
 }
 
 async function saveChanges() {
 
+    const newFullName = document.getElementById('newFullName').value;
     const newPassword = document.getElementById('newPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
     const newBio = document.getElementById('newBio').value;
@@ -102,6 +78,10 @@ async function saveChanges() {
         userData.bio = newBio;
     }
 
+    if (newFullName.trim() !== '') {
+        userData.fullName = newFullName;
+    }
+
     const apiUrl = `${apiBaseURL}/api/users/${username}`;
     const options = {
         method: "PUT",
@@ -121,7 +101,8 @@ async function saveChanges() {
         }
 
         const data = await response.json();
-        console.log('Data successfully updated:', data);
+        alert('Data successfully updated:', data);
+        document.getElementById('newFullName').value = '';
         document.getElementById('newPassword').value = '';
         document.getElementById('confirmPassword').value = '';
         document.getElementById('newBio').value = '';
