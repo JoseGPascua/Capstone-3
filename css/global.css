@@ -24,7 +24,9 @@ html {
     overflow-x: hidden;
 }
 body {
-    background-color: var(--main-bgColor);
+    background: rgb(40,39,77);
+background: radial-gradient(circle, rgba(40,39,77,1) 56%, rgba(26,27,54,1) 90%);
+
 }
 a {
     color: var(--font-color);
@@ -32,7 +34,8 @@ a {
 
 /** Styling for custom navigation bar */
 #side-nav {
-    background: var(--secondary-bgColor);
+    background: rgb(57,59,112);
+    background: linear-gradient(255deg, rgba(57,59,112,1) 20%, rgba(40,39,77,1) 80%);
     position: fixed;
     height: 100vh;
     width: 25vw;
@@ -42,17 +45,13 @@ a {
 }
 
 /** Make the side-bar disappear on smaller devices */
-@media(max-width: 875px){
+@media(max-width: 992px){
     #side-nav{
         margin-left: -300px;
         position:fixed;
         min-height: 100vh;
         z-index: 1;
     }
-    #side-nav .active{
-        margin-left: 0;
-    }
-
 }
 
 .logo-container {
@@ -319,6 +318,7 @@ a {
     background-color:var(--secondary-bgColor);
     border-radius: 20px;
     position: relative;
+    width: 75%;
 }
 
 .post-top-info {
@@ -354,6 +354,12 @@ a {
     hyphens: auto;
 }
 
+.post-text p{
+    position: relative;
+    height: auto;
+    overflow: hidden;
+}
+
 .post-icons {
     position: relative;
     margin: 1.5%;
@@ -363,7 +369,7 @@ a {
     position: relative;
 }
 .liked-post {
-    width: 5%;
+    width: 20%;
 }
 .liked-post img {
     cursor: pointer;
