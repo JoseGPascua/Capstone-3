@@ -44,31 +44,6 @@ async function fetchPosts() {
     }
 }
 
-async function getUserData() {
-    const loginData = getLoginData();
-    console.log(loginData);
-    if (!loginData || !loginData.token) {
-        console.error('User not logged in.');
-        return
-    }
-    const userData = loginData.username;
-    const options = {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${loginData.token}`,
-        },
-    };
-    try {
-        const response = await fetch(apiBaseURL + "/api/users/" + userData, options);
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        }
-    } catch (error) {
-        console.log('Fetch Failed', error);
-    }
-}
-
 async function createPostOnClick() {
     const post_container = document.getElementById('posts-content');
     // const loading = document.querySelector('.loading-container')
