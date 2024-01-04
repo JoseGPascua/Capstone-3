@@ -7,12 +7,15 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Global CSS (CSS rules you want applied to all pages) -->
-    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="/css/global.css">
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="/css/about.css">
     <title>Login to the Microblog Network!</title>
 </head>
-
+    <script src="/scripts/auth.js"></script>
+    <script>
+      if (isLoggedIn() === false) window.location.replace("/");
+    </script>
 <body>
         <!-- LEFTS SIDE NAV -->
         <div class="container-fluid">
@@ -33,10 +36,10 @@
                     </div>
                         <div class="menu-container">
                             <div class="menu-box">
-                                <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-house px-3"></i> Home</a>
-                                <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-regular fa-user px-3"></i> Profile</a>
+                                <a href="/posts/index.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-house px-3"></i> Home</a>
+                                <a href="/profile/index.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-regular fa-user px-3"></i> Profile</a>
                                 <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-message px-3"></i> Messages</a>
-                                <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-question px-3"></i> About Us</a>
+                                <a href="/about.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-question px-3"></i> About Us</a>
                                 <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-circle-info px-3"></i> Team</a>
                             </div>
                         </div>
@@ -47,6 +50,8 @@
                         </div>
                     </div>
                 </div>
+              </div>
+            </div>
                 <!--END LEFT NAV-->
 
       <!--About Desc. START-->
@@ -120,27 +125,9 @@
     </div>
     </div>
   </div>
-
-  
 </div>
 
-</div> 
   <!-- CARDS END-->
-
-<!--RIGHTSIDE NAV-->
-<div class="col-md-3" id="rightside-container">
-<div class="rightside-content">
-    <div class="suggest-container">
-
-    </div>
-    <div class="friends-container">
-
-    </div>
-</div>
-</div>
-</div>
-</div>
-<!--END RIGHTSIDE NAV-->
 
 
 <!--PROJECTS MENU 1-->
@@ -190,9 +177,10 @@
 </div>
 <!-- Footer End -->
  <!-- end of footer section -->
-
- 
   <script src="about.js"></script>
+  <script src="/scripts/global-functions.js"></script>
+  <script src="https://kit.fontawesome.com/9281e8684f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
 
