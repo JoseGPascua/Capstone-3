@@ -1,23 +1,26 @@
-'use strict'
+'use strict';
 
 window.onload = () => {
-    const submitBtn = document.getElementById('signupForm');
-    submitBtn.onsubmit = (event) => {
+    const signUpForm = document.getElementById('signupForm');
+    signUpForm.addEventListener('submit', (event) => {
         event.preventDefault();
         signUpUser();
-    }
-
+    });
 }
 
 const apiBaseURL = "http://microbloglite.us-east-2.elasticbeanstalk.com";
 const endPoint = "/api/users"
 
 async function signUpUser() {
-    const fullName = document.getElementById('fname').value;
+    const fullName = document.getElementById('fullname').value;
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
+    const confirmPassword = document.getElementById('cpassword').value;
     const message = document.getElementById('messageAlert');
+
+    // ... (rest of the code remains unchanged)
+}
+
     
     if (password !== confirmPassword) {
         const confirm_password_alert = document.createElement('div');
