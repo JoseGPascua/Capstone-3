@@ -4,6 +4,7 @@
     --secondary-bgColor: #393B70;
     --font-color: #E7E9EA;
     --hover-color: #7E7F9C;
+    --content-color: #383a72;
 } 
 
 * {
@@ -353,29 +354,86 @@ a {
     height: 100vh;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-
 .rightside-content {
+    display: flex;
+    flex-direction: column;
+    margin: 10% 0 10% 0
+}
+
+#mostlikedpost-section {
+    background-color: var(--main-bgColor);
+    border-radius: .8rem;
+    overflow-y: scroll;
+    max-height: 50vh
+}
+#mostlikedpost-section .likedpost-container{
     position: relative;
-    width: 100%;
+    height: 50%;
+    background-color: var(--main-bgColor);
+    border-radius: .8rem;
+    z-index: 1;
+    overflow: hidden;
+}
+#mostlikedpost-section .likedpost-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
     height: 100%;
+    background-color: var(--hover-color);
+    z-index: -1;
 }
 
-.suggest-container {
+#mostlikedpost-section .likedpost-container:hover::before {
+    width: 100%;
+}
+.rightside-content h3 {
+    font-weight: 600;
+    color: var(--font-color)
+}
+.likedpost-container{
+    margin: 2%;
+    padding: 2%;
+}
+
+.right-content-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.right-content-mid {
+    color: var(--font-color);
+    display: flex;
+    align-items: center;
+}
+.right-content-mid img {
+    border-radius: .8rem;
+}
+.right-content-mid h3 {
+    font-size: 1.2rem;
+    padding-left: 2%;
+}
+
+.right-content-bot {
+    color: var(--font-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .bottom-section {
+    position: relative;
+    display: flex;
+} */
+/* .friends-container {
     position: relative;
     width: 100%;
     height: 40%;
     border-radius: 10%;
     background-color: var(--main-bgColor);
-    margin: 10% 0% 10% 0
-}
-
-.friends-container {
-    position: relative;
-    width: 100%;
-    height: 40%;
-    border-radius: 10%;
-    background-color: var(--main-bgColor);
-}
+} */
 
 /* Keyframes for CSS */
 

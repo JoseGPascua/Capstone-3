@@ -127,8 +127,8 @@ async function displayPosts() {
         postsContainer.innerHTML = '<p>No posts available.</p>';
         return;
     }
-
-    postData.forEach(item => {
+    const filterUsername = postData.filter(obj => obj.username !== "string")
+    filterUsername.forEach(item => {
 
         //TODO converting date to minutes, hours, days
         const postDate = new Date(item.createdAt);
@@ -258,7 +258,7 @@ async function likeAPost(_postData) {
 // Right side content functions
 async function sortByMostLikes() {
     const loginData = getLoginData();
-    const mostLikedSection = document.getElementById('mostlikedpost-container');
+    const mostLikedSection = document.getElementById('mostlikedpost-section');
     let postLimit = 50
     const allPostResponse = await fetch(`${apiBaseURL}/api/posts?limit=${postLimit}&offset=0`, {
         method: "GET",
@@ -272,9 +272,28 @@ async function sortByMostLikes() {
     const allPostData = await allPostResponse.json();
     const sortByMostLikes = allPostData.sort((a, b) => b.likes.length - a.likes.length)
     console.log(sortByMostLikes);
-
-    const createDivElement = document.createElement('div');
-    
+    const filterUsername = sortByMostLikes.filter(item => item.username !== "string")
+    filterUsername.forEach(user => {
+        const createDivElement = document.createElement('div');
+        createDivElement.className = "likedpost-container"
+        createDivElement.innerHTML = `
+        <div class="container">
+            <div class="row">
+            <div class="col-10 right-content-mid">
+                <img src="https://placehold.co/50" alt="" />
+                <h3>${user.username}<h3>
+            </div>
+            <div class="col-2 right-content-bot">
+                <div class="bottom-section">
+                    <img src='/assets/liked-heart.png' alt="" />
+                    <span>${user.likes.length}</span>
+                </div>
+            </div>
+            </div>
+        </div>`
+            
+        mostLikedSection.appendChild(createDivElement)
+    })
 
 }
 
