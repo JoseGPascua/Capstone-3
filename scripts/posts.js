@@ -138,7 +138,7 @@ async function displayPosts() {
 
         const createPostDiv = document.createElement('div');
         // console.log(createPostDiv);
-        createPostDiv.className = 'posts-container w-100 my-2';
+        createPostDiv.className = 'posts-container my-2';
         createPostDiv.style.color = '#E7E9EA';
         createPostDiv.innerHTML = `
                 <div class="container">
@@ -258,11 +258,11 @@ async function sortByMostLikes() {
         createDivElement.innerHTML = `
         <div class="container">
             <div class="row">
-            <div class="col-lg-9 col-sm-12 col-md-12 right-content-mid">
+            <div class="col-lg-9 col-sm-12 col-md-9 w-75 right-content-mid">
                 <img src="${getRandomImage(imagesArray)}" alt="" />
                 <h3>${user.username}<h3>
             </div>
-            <div class="col-lg-3 col-sm-12 col-md-12 right-content-bot">
+            <div class="col-lg-3 col-sm-12 col-md-9 right-content-bot">
                 <div class="bottom-section">
                     <img src='/assets/liked-heart.png' alt="" />
                     <span>${user.likes.length}</span>
