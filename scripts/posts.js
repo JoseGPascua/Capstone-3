@@ -186,8 +186,8 @@ async function displayPosts() {
                         <div class="post-bot-section">
                             <div class="post-icons">
                                 <div class="liked-post" onclick="fetchPostID(this)" data-value="${item._id}">
-                                <img src="${isLikedByUser ? '/assets/liked-heart-fill.png' : '/assets/liked-heart.png'}" alt="" />
-                                <span>${item.likes.length}</span>
+                                <img class="heart-icon" src="${isLikedByUser ? '/assets/liked-heart-fill.png' : '/assets/liked-heart.png'}" alt="" />
+                                <span>${item.likes.length <= 0? "" : "1" }</span>
                                 </div>
                             </div>
                         </div>

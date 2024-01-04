@@ -335,12 +335,18 @@ a {
 }
 
 .post-icons {
+    position: relative;
     margin: 1.5%;
     padding-left: 1.5%;
 }
+.heart-icon {
+    position: relative;
+}
+
 .liked-post img {
     cursor: pointer;
 }
+
 
 /* RIGHTSIDE CONTENT */
 #rightside-container { 
