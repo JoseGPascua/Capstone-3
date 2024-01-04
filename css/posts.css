@@ -347,7 +347,9 @@ a {
 .heart-icon {
     position: relative;
 }
-
+.liked-post {
+    width: 5%;
+}
 .liked-post img {
     cursor: pointer;
 }
@@ -368,14 +370,29 @@ a {
 .rightside-content {
     display: flex;
     flex-direction: column;
-    margin: 10% 0 10% 0
+    margin: 10% 0 10% 0;
+    width: auto;
+    height: auto;
 }
+.rightside-content h3{
+    margin-left: 5%;
 
+}
 #mostlikedpost-section {
     background-color: var(--main-bgColor);
     border-radius: .8rem;
     overflow-y: scroll;
-    max-height: 50vh
+    max-height: 50vh;
+    width: 70%;
+}
+#mostlikedpost-section::-webkit-scrollbar {
+    width: 5px;
+    background-color: var(--main-bgColor);
+    border-radius: .8rem;
+}
+#mostlikedpost-section::-webkit-scrollbar-thumb {
+    border-radius: .8rem;
+    background: var(--font-color);
 }
 #mostlikedpost-section .likedpost-container{
     position: relative;
@@ -427,6 +444,7 @@ a {
 .right-content-mid h3 {
     font-size: 1.2rem;
     padding-left: 2%;
+    overflow: hidden;
 }
 
 .right-content-bot {

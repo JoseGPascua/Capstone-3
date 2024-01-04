@@ -34,7 +34,7 @@ async function fetchPosts() {
         },
     };
     try {
-        const response = await fetch(apiBaseURL + "/api/posts?limit=" + postsLimit, options);
+        const response = await fetch(apiBaseURL + "/api/posts?limit=" + postsLimit + "&offset=0", options);
         if (response.ok) {
             const data = await response.json();
             return data;
@@ -157,6 +157,7 @@ async function displayPosts() {
         
         // checking if post is liked or not;
         const postLikes = item.likes;
+        const postlikes_length = postLikes.length;
         //returns true if likes.username === logindata.username
         const isLikedByUser = postLikes.find(object => object.username.includes(loginData.username))
 
@@ -187,7 +188,7 @@ async function displayPosts() {
                             <div class="post-icons">
                                 <div class="liked-post" onclick="fetchPostID(this)" data-value="${item._id}">
                                 <img class="heart-icon" src="${isLikedByUser ? '/assets/liked-heart-fill.png' : '/assets/liked-heart.png'}" alt="" />
-                                <span>${item.likes.length <= 0 ? "" : "1" }</span>
+                                <span>${item.likes.length > 0 ? postlikes_length : ""}</span>
                                 </div>
                             </div>
                         </div>
@@ -275,18 +276,18 @@ async function sortByMostLikes() {
     const allPostData = await allPostResponse.json();
     const sortByMostLikes = allPostData.sort((a, b) => b.likes.length - a.likes.length)
     console.log(sortByMostLikes);
-    const filterUsername = sortByMostLikes.filter(item => item.username !== "string")
+    const filterUsername = sortByMostLikes.filter(item => item.username !== "string" && item.likes.length > 0)
     filterUsername.forEach(user => {
         const createDivElement = document.createElement('div');
         createDivElement.className = "likedpost-container"
         createDivElement.innerHTML = `
         <div class="container">
             <div class="row">
-            <div class="col-10 right-content-mid">
+            <div class="col-lg-9 col-sm-12 col-md-12 right-content-mid">
                 <img src="${getRandomImage(imagesArray)}" alt="" />
                 <h3>${user.username}<h3>
             </div>
-            <div class="col-2 right-content-bot">
+            <div class="col-lg-3 col-sm-12 col-md-12 right-content-bot">
                 <div class="bottom-section">
                     <img src='/assets/liked-heart.png' alt="" />
                     <span>${user.likes.length}</span>
