@@ -45,7 +45,7 @@
                     <div class="menu-container">
                         <div class="menu-box">
                             <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-house px-3"></i> Home</a>
-                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-regular fa-user px-3"></i> Profile</a>
+                            <a href="/profile/index.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-user px-3"></i> Profile</a>
                             <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-message px-3"></i> Messages</a>
                             <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-question px-3"></i> About Us</a>
                             <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-circle-info px-3"></i> Team</a>
@@ -62,11 +62,6 @@
             <!-- middle content -->
             <main class="col-md-6 col-sm-6" id="middleContent" >
                 <div class="notificationIcons d-flex justify-content-end">
-                    <div class="notificationContainer">
-                        <a href="" class="noti-icon text-decoration-none">
-                            <i class="fa-regular fa-message"></i>
-                        </a>
-                    </div>
                     <div class="notificationContainer">
                         <a href="" class="noti-icon text-decoration-none">
                             <i class="fa-regular fa-bell"></i>
@@ -90,7 +85,6 @@
                           </svg>
                     </div>
                 </div>
-
                 <div id="posts-content" class="m-4">
                     <!-- Posts will be displayed here -->
                 </div>
@@ -98,7 +92,8 @@
             
             <div class="col-md-3" id="rightside-container">
                 <div class="rightside-content">
-                    <div class="suggest-container">
+                    <h3 style="text-align:center">Most Likes</h3>
+                    <div id="mostlikedpost-section">
     
                     </div>
                     <div class="friends-container">
@@ -109,7 +104,8 @@
         </div>
     </div>
     <!-- Page-specific code -->
-    <script src="../scripts/posts.js"></script>
+    <script src="/scripts/posts.js"></script>
+    <script src="/scripts/random-image-function.js"></script>
     <script src="https://kit.fontawesome.com/9281e8684f.js" crossorigin="anonymous"></script>
 </body>
 </html>
