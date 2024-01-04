@@ -5,40 +5,23 @@
   --font-color: #E7E9EA;
   --hover-color: #7E7F9C;
 }
-/* Your custom styles for the moving background */
-.background-container::before {
-  content: "";
+.background-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  animation: moveBackground 20s linear infinite;
-  background: linear-gradient(to right, #1a237e, #00bcd4);
+  z-index: -1; /* Send it to the back */
 }
 
-@keyframes moveBackground {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Container to hold your content */
-.content-container {
+.card-body,
+.row,
+.col-md-10,
+{
   position: relative;
-  z-index: 1;
+  z-index: 1; /* Make sure it's higher than background-container */
 }
 
-/* Your existing styles for the card and form */
-.card {
-  border-radius: 25px;
-}
-
-/* Add other styles as needed */
 
 
 /* Your existing styles for the card and form */
@@ -46,19 +29,7 @@
   border-radius: 25px;
 }
 
-/* Add other styles as needed */
-
-
-  /* Additional styles for your existing content */
-  /* ... your existing styles ... */
-}
-
-
-/* Additional styles for your existing content */
-/* ... your existing styles ... */
-
-
-
+/*! --------------------------------------------------------------------- */
 
 /* :root {
   font-size: 100%;
@@ -242,3 +213,24 @@ label {
     height: auto;
   }
 } */
+
+/* Add this CSS to your existing or a new CSS file */
+#loadingSpinner {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
