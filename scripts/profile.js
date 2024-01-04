@@ -1,37 +1,40 @@
 "use strict";
 
 window.onload = () => {
-    getLoginData();
+    // getLoginData();
     fetchUserProfile();
     showTab('posts');
-    displayPosts();
+    displayMyPosts();
     displayLikedPosts();
+
     const editProfileLink = document.getElementById('editProfileLink');
     const profileEditForm = document.getElementById('profileEditForm');
+    const saveChangesBtn = document.getElementById('saveChanges');
+    const submitPost = document.getElementById('submitPost');
+
     editProfileLink.addEventListener('click', (event) => {
     event.preventDefault();
     profileEditForm.style.display = (profileEditForm.style.display === 'none') ? 'block' : 'none';
     });
 
-    const saveChangesBtn = document.getElementById('saveChanges');
     saveChangesBtn.onclick = () => {
         saveChanges();
     }
-    const submitPost = document.getElementById('submitPost');
+    
     submitPost.onclick = () => {
         createPostOnClick();
     }
 };
 
-function getLoginData() {
-    const loginJSON = window.localStorage.getItem("login-data");
-    return JSON.parse(loginJSON) || {};
-}
+// function getLoginData() {
+//     const loginJSON = window.localStorage.getItem("login-data");
+//     return JSON.parse(loginJSON) || {};
+// }
 
-function isLoggedIn() {
-    const loginData = getLoginData();
-    return Boolean(loginData.token);
-}
+// function isLoggedIn() {
+//     const loginData = getLoginData();
+//     return Boolean(loginData.token);
+// }
 
 function showTab(tabName) {
     document.querySelectorAll('.tab-pane').forEach(tab => {
@@ -45,7 +48,6 @@ function showTab(tabName) {
         link.classList.toggle('active', isSelectedLink);
     });
 }
-
 
 async function fetchUserProfile() {
     if (!isLoggedIn()) {
@@ -166,7 +168,7 @@ async function saveChanges() {
     }
 };
 
-async function displayPosts() {
+async function displayMyPosts() {
     const postData = await fetchPosts();
     const loggedInUserData = getLoginData();
     const loggedInUsername = loggedInUserData.username;
@@ -229,7 +231,7 @@ async function displayPosts() {
         })
     }
 
-    async function createPostOnClick() {
+async function createPostOnClick() {
         const loginData = getLoginData(); 
         const newPost = document.getElementById('createAPost');
     
@@ -249,9 +251,13 @@ async function displayPosts() {
     
         try {
             const response = await fetch(apiBaseURL + "/api/posts/", options)
-            const result = await response.json()
-            window.location.reload();
-    
+            if (response.ok) {
+                console.log("POST HAS BEEN CREATED");
+                post_container.innerHTML = '';
+                post_container.insertAdjacentHTML('afterbegin', loading.outerHTML);
+                await displayMyPosts();
+            }
+            
         } catch (error) {
             console.log('Error', error);
         }
@@ -259,7 +265,7 @@ async function displayPosts() {
     
     }
 
-    async function displayLikedPosts() {
+async function displayLikedPosts() {
         const allPosts = await fetchPosts();
         const loggedInUserData = getLoginData();
         const loggedInUsername = loggedInUserData.username;

@@ -71,7 +71,7 @@ async function getUserData() {
 
 async function createPostOnClick() {
     const post_container = document.getElementById('posts-content');
-    const loading = document.querySelector('.loading-container')
+    // const loading = document.querySelector('.loading-container')
     const loginData = getLoginData(); 
     const newPost = document.getElementById('createAPost');
     
