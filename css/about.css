@@ -25,10 +25,18 @@ html {
 }
 
 body{
-  overflow: hidden;
- background-color: #28274D;
+overflow: hidden;
+ background-color:linear-gradient(to bottom, var(--main-bgColor) 0%, var(--secondary-bgColor) 100%);
+ color: var(--font-color);
  display: grid;
  place-items: center;
+}
+a {
+  color: var(--font-color);
+}
+
+a:hover {
+  color: var(--hover-color);
 }
 
 h1, p{
@@ -287,168 +295,7 @@ ul {
   color: #eceff1;
 }
 
-
-
-/* CSS FOR PROJECTS */
-
-.product {
-  position: relative;
-  margin: 15px 0px;
-  -webkit-box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
-  box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
-}
-
-.product:hover {
-  -webkit-box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
-  box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
-}
-
-.product .product-img {
-  position: relative;
-}
-
-.product .product-img>img {
-  width: 100%;
-}
-
-.product .product-img .product-label {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
-
-.product .product-img .product-label>span {
-  border: 2px solid;
-  padding: 2px 10px;
-  font-size: 12px;
-}
-
-.product .product-img .product-label>span.sale {
-  background-color: #FFF;
-  border-color: #000000;
-  color: #000000;
-}
-
-.product .product-img .product-label>span.new {
-  background-color: #293a4f;
-  border-color: #ffffff;
-  color: #FFF;
-}
-
-.product .product-body {
-  position: relative;
-  padding: 15px;
-  background-color: #FFF;
-  text-align: center;
-  z-index: 20;
-}
-
-.product .product-body .product-category {
-  text-transform: uppercase;
-  font-size: 12px;
-  color: #8D99AE;
-}
-
-.product .product-body .product-name {
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-.product .product-body .product-name>a {
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.product .product-body .product-name>a:hover, .product .product-body .product-name>a:focus {
-  color: #D10024;
-}
-
-.product .product-body .product-price {
-  color: #3169af;
-  font-size: 18px;
-}
-
-.product .product-body .product-price .product-old-price {
-  font-size: 70%;
-  font-weight: 400;
-  color: #8D99AE;
-}
-
-.product .product-body .product-rating {
-  position: relative;
-  margin: 15px 0px 10px;
-  height: 20px;
-}
-
-.product .product-body .product-rating>i {
-  position: relative;
-  width: 14px;
-  margin-right: -4px;
-  background: #FFF;
-  color: #E4E7ED;
-  z-index: 10;
-}
-
-.product .product-body .product-rating>i.fa-star {
-  color: #e58b19;
-}
-
-.product .product-body .product-rating:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  height: 1px;
-  background-color: #E4E7ED;
-}
-
-/*CSS for Slick Container*/
-.chunky mainn-raised {
-  justify-content: space-evenly;
-  margin: -7px 30px 0px;
-  border-radius: 6px;
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-
-}
-.product-img {
-
-  background: #fff;
-  position: relative;
-  z-index: 3;
-
-}
-.chunky main-raised {
-
-  margin: px 0px 0px;
-  border-radius: 6px;
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-
-}
-.product-body {
-  justify-content: space-evenly;
-background: #C9D6FF;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #426a79, #3e2c75); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-position: relative;
-z-index: 3;
-
-}
-
-
-
-
-/* ==========================CHUNKY CARD CSS======================================= */
-
-
-
-
+/* =========CHUNKY CARD CSS======= */
 
 .main__heading {
   font-weight: 600;
@@ -501,6 +348,18 @@ z-index: 3;
   --lightness: 48.04%;
 }
 
+.card:nth-child(4) {
+  --hue: 338.69;
+  --saturation: 100%;
+  --lightness: 48.04%;
+}
+
+.card:nth-child(5) {
+  --hue: 338.69;
+  --saturation: 100%;
+  --lightness: 48.04%;
+}
+
 .card__bullets {
   line-height: 1.4;
 }
@@ -518,6 +377,14 @@ z-index: 3;
   text-align: center;
   padding-top: 10px;
 }
+
+.Productcard__heading {
+  font-size: 1.75em;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 10px;
+}
+
 
 .card__price {
   font-size: 1.75em;
@@ -586,6 +453,17 @@ z-index: 3;
   background: hsla(var(--hsl), 0.1);
 }
 
+/*project container*/
+.project-container> .card:hover{
+  background: linear-gradient(to right, #4CAF50, #2196F3); /* Adjust gradient colors as needed */
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.card__cta cta:hover{
+background: linear-gradient(to right, #2196F3, #4CAF50); /* Adjust gradient colors for hover effect */
+
+}
 
 /* =======================CARD CSS========================================== */
 
@@ -612,9 +490,7 @@ border-radius: 100px;
   max-width: 70%;
 }
 
-
-
-
+/*image CSS*/
 .profile-img-3{
   margin:auto;
 width: 100%;
@@ -635,3 +511,34 @@ border-radius: 100px;
 width: 100%;
 }
 
+/*footer css*/
+.footer {
+  position: fixed;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-top: 45px;
+  padding-top: 90px;
+  padding-right: 100px;
+  background: rgba(0, 0, 0, .04);
+}
+
+.footer .copyright {
+    padding: 30px;
+    text-align: center;
+    background: #11102f;
+}
+
+.footer .copyright p {
+  margin: 0;
+  display: inline-block;
+  color: #E7E9EA;
+}
+
+.footer .copyright p a {
+  color: #d799c6;
+}
+
+.footer .copyright p a:hover {
+  color: #E7E9EA;;
+}
