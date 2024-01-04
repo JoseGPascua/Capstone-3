@@ -2,10 +2,161 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Global CSS (CSS rules you want applied to all pages) -->
+    <link rel="stylesheet" href="../css/global.css">
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="../css/about.css">
+    <title>Login to the Microblog Network!</title>
 </head>
+
 <body>
-    
+        <!-- LEFTS SIDE NAV -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 px-0">
+                    <div id="side-nav">
+                        <div class="logo-container">
+                            <img src="/assets/nexuswhite-1.webp">
+                        </div>
+                        <div class="header-box d-flex justify-content-end mt-2">
+                            <div class="nav-profile">
+                                <img src="https://64.media.tumblr.com/df64d19ab298f9947005609bde5d9312/5f8a57cbf4d0c6d5-a2/s1280x1920/e4f728c54fdc9143a6c0d6ab9222a5d26639831e.jpg" alt="">
+                                <span class="circle-spin"></span>
+                            </div>
+                        </div>
+                        <div class="profileInfo-container" id="profileInfo">
+                            <!-- displays fullname | username -->
+                    </div>
+                        <div class="menu-container">
+                            <div class="menu-box">
+                                <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-house px-3"></i> Home</a>
+                                <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-regular fa-user px-3"></i> Profile</a>
+                                <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-message px-3"></i> Messages</a>
+                                <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-question px-3"></i> About Us</a>
+                                <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-circle-info px-3"></i> Team</a>
+                            </div>
+                        </div>
+                        <div class="nav-bottom-section">
+                            <div class="nav-logoutbtn">
+                                <button class="btn mt-3" onclick="logout()">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--END LEFT NAV-->
+
+      <!--About Desc. START-->
+      <main class="main flow">
+        <h1 class="main__heading" h1 id="gradient-text"> About Us</h1>
+      
+        <p id="gradient-text">Unveiling the Future with Innovative Minds</p>
+        <p> Welcome to our digital realm, where creativity meets cutting-edge technology. 
+            <p>At Nexus, we are a dynamic team of software interns passionately dedicated to shaping the future of social networking. 
+            Our journey began with a vision - a vision to create a platform that transcends boundaries, connects people, and redefines the way we interact in the digital age.</p>
+        <br>
+        <p id="gradient-text">Our Mission: Redefining Social Connectivity</p>
+        <p>At the heart of our mission is the commitment to redefine social connectivity. We believe in the power of technology to bring people closer, fostering meaningful connections that transcend geographical distances. 
+            <p>Our software interns, a diverse and talented group, embody this mission, pouring their enthusiasm and skills into every line of code.</p>
+        
+      <!-- CARDS Containter BEGIN-->
+<div id="card-container">
+  <div id="card-wrap">
+  <div class="main flow">
+    <h1 class="main__heading">Team Members</h1>
+    <div class="main__cards cards">
+      <div class="cards__inner">
+        <div class="cards__card card">
+          
+          <h2 class="card__heading">Kayla Mchenry</h2>
+          <div class="profile-img-2"> <img src="https://media.licdn.com/dms/image/D5603AQG9MBFTl-Cmkg/profile-displayphoto-shrink_400_400/0/1703700914760?e=1709769600&v=beta&t=bXM6NVq1ZNbDW3UaZhw7VmSAm4U9AbZX_mxQYaJHvvM"> </div>
+          <ul role="list" class="card__bullets flow" >
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+          <a href="#basic" class="card__cta cta">Get Started</a>
+        </div>
+        
+         <div class="cards__card card">
+          <h2 class="card__heading">Michael Nguyen</h2>
+          <div class="profile-img-2"> <img src="https://media.licdn.com/dms/image/D5603AQE3UY1-yRFONA/profile-displayphoto-shrink_400_400/0/1703704190714?e=1709769600&v=beta&t=Hy1f2cKZ3SkA_Jo3gIu1QBYbJOpZg6uU7FNR0LgjMak"> </div>
+          <ul role="list" class="card__bullets flow">
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+          <a href="#basic" class="card__cta cta">Get Started</a>
+        </div>
+  
+        <div class="cards__card card">
+          <h2 class="card__heading">Michael Nguyen</h2>
+          <div class="profile-img-2"> <img src="https://media.licdn.com/dms/image/D5603AQE3UY1-yRFONA/profile-displayphoto-shrink_400_400/0/1703704190714?e=1709769600&v=beta&t=Hy1f2cKZ3SkA_Jo3gIu1QBYbJOpZg6uU7FNR0LgjMak"> </div>
+          <ul role="list" class="card__bullets flow">
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+          <a href="#pro" class="card__cta cta">Upgrade to Pro</a>
+        </div>
+  
+        <div class="cards__card card">
+          <h2 class="card__heading">Michael Nguyen</h2>
+          <div class="profile-img-2"> <img src="https://media.licdn.com/dms/image/D5603AQE3UY1-yRFONA/profile-displayphoto-shrink_400_400/0/1703704190714?e=1709769600&v=beta&t=Hy1f2cKZ3SkA_Jo3gIu1QBYbJOpZg6uU7FNR0LgjMak"> </div>
+          <ul role="list" class="card__bullets flow">
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+          <a href="#ultimate" class="card__cta cta">Go Ultimate</a>
+        </div>
+      </div>
+      
+      <div class="overlay cards__inner"></div>
+    </div>
+  </div>
+  </div>
+
+  
+</div>
+
+</div> 
+  <!-- CARDS END-->
+
+<!--RIGHTSIDE NAV-->
+<div class="col-md-3" id="rightside-container">
+<div class="rightside-content">
+    <div class="suggest-container">
+
+    </div>
+    <div class="friends-container">
+
+    </div>
+</div>
+</div>
+</div>
+</div>
+<!--END RIGHTSIDE NAV-->
+
+
+<!--PROJECTS MENU-->
+<div id="project-container">
+  <div class="cards__card card">
+  <h2 class="card__heading">Project 1</h2>
+  <div class="project-img-1"><img src="assets/Burgers&Brew.png"> </div>
+  <ul role="list" class="card__bullets flow">
+    <li><a href="#">Email</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+  <a href="#basic" class="card__cta cta">Get Started</a>
+  </div>
+</div>
+<!--END PROJECTS MENU-->
+
+
+  <!-- footer section -->
+ <!-- end of footer section -->
+
+ 
+  <script src="about.js"></script>
 </body>
 </html>
