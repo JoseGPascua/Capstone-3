@@ -119,7 +119,7 @@ async function displayMyPosts() {
     const loggedInUsername = loggedInUserData.username;
     
     const postsContainer = document.getElementById('posts-content');
-    postsContainer.innerHTML = ''; // Clear previous content
+    postsContainer.innerHTML = '';
 
     if (postData.length === 0) {
         postsContainer.innerHTML = '<p>No posts available.</p>';

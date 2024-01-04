@@ -155,3 +155,14 @@
     color: red;
     display: none;
 }
+
+/* Centered placeholder text */
+#profileEditForm input[type="text"],
+#profileEditForm input[type="password"] {
+    padding-left: 5px;
+    border-radius: 8px;
+}
+
+#saveChanges {
+    border-radius: 8px;
+}
