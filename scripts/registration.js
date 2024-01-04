@@ -18,9 +18,8 @@ async function signUpUser() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('cpassword').value;
-    const message = document.getElementById('messageAlert');
     const loadingSpinner = document.getElementById('loadingSpinner');
-
+    const messageAlert = document.getElementById('messageAlert');
 // Front-end Validation
     if (!validateInputs(username, password, confirmPassword)){
         return;
@@ -28,7 +27,6 @@ async function signUpUser() {
 // Display Loading Spinner
     loadingSpinner.style.display='block';
 
-// Check if passwords match confirmed password
     if (password !== confirmPassword) {
         // Display alert for password mismatch
         const confirm_password_alert = document.createElement('div');
@@ -36,13 +34,12 @@ async function signUpUser() {
         <div class="alert alert-danger" role="alert">
             Password does not match!
         </div>`
-        message.appendChild(confirm_password_alert);
-
         // Reload page after delay
+        messageAlert.appendChild(confirm_password_alert);
         setTimeout(() => {
             loadingSpinner.style.display = 'none';
             window.location.reload()
-        }, 2000);
+        }, "1000")
         return;
     }
 
@@ -73,13 +70,12 @@ async function signUpUser() {
             <div class="alert alert-danger" role="alert">
                 Username is already taken!
             </div>`
-            message.appendChild(username_taken_alert)
-
-            //Reload page after delay
+            messageAlert.appendChild(username_taken_alert)
             setTimeout(() => {
                 loadingSpinner.style.display = 'none';
                 window.location.reload()
-            }, 2000);
+            }, "1000")
+
         } else {
             // Display Success Message for User Registration
             const username_success_alert = document.createElement('div');
@@ -87,7 +83,7 @@ async function signUpUser() {
             <div class="alert alert-success" role="alert">
                 User registration created successfully!
             </div>`
-            message.appendChild(username_success_alert);
+            messageAlert.appendChild(username_success_alert);
 
              // Clear form fields after successful registration
             signUpForm.reset();
@@ -96,7 +92,7 @@ async function signUpUser() {
             setTimeout(() => {
                 loadingSpinner.style.display='none';
                 window.location.href = '/index.html'
-            }, 2000);
+            }, "1000")
         }
 
     } catch (error) {
@@ -117,7 +113,6 @@ async function signUpUser() {
         }, 2000);
     }
 }
-
 function validateInputs(username, password, confirmPassword) {
     // Check if the username and password meet the minimum length requirement
     const minUsernameLength = 6;
@@ -142,3 +137,4 @@ function validateInputs(username, password, confirmPassword) {
         return false;
     }
 }
+

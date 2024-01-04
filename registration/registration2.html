@@ -28,11 +28,10 @@
                   <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-1">
                     <img src="/assets/nexuslogo_black.webp" class="img-fluid" alt="Sample image">
                   </div>
-
+                  
                   <!-- Information and Form on the right -->
                   <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-2">
                     <div class="card text-black" style="border-radius: 25px;">
-
                         <form class="mx-1 mx-md-4" id="signupForm">
                           <div id="loadingSpinner" style="display: none;"></div>
                           <section class="copy">
@@ -41,35 +40,38 @@
                               <p>Already have an account? <a href="#"> <strong> Log In</strong></a></p>
                             </div>
                           </section>
+                          <!-- Alerts after form submitted -->
+                          <div id="messageAlert">
 
+                          </div>
                           <!-- User Name Input -->
                           <div class="input-container username mb-4">
                             <label for="username"> Username</label>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="username" />
+                            <input type="text" id="username" name="username" class="form-control" placeholder="username" required/>
                           </div>
 
                           <!-- Full Name Input -->
                           <div class="input-container name mb-4">
                             <label for="fullname"> Full Name</label>
-                            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name" />
+                            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name" required/>
                           </div>
 
                           <!-- Email Input -->
                           <div class="input-container email mb-4">
                             <label for="email"> Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
                           </div>
 
                           <!-- Password Input -->
                           <div class="input-container password mb-4">
                             <label for="password"> Password</label>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Must be at least 6 characters" />
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Must be at least 6 characters" required/>
                           </div>
 
                           <!-- Confirm Password Input -->
                           <div class="input-container password mb-4">
                             <label for="cpassword"> Confirm Password</label>
-                            <input type="password" id="cpassword" name="cpassword" class="form-control" placeholder="Confirm Password" />
+                            <input type="password" id="cpassword" name="cpassword" class="form-control" placeholder="Confirm Password" required/>
                           </div>
 
                           <!-- Checkbox for Email Updates -->
@@ -80,7 +82,10 @@
                               Sign up for email updates.
                             </label>
                           </div>
+                          <!-- Alerts after form submitted -->
+                          <div id="messageAlert">
 
+                          </div>
                           <!-- Sign Up Button -->
                           <button class="signup-btn" type="submit">Sign Up</button>
 

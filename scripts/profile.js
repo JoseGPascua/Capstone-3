@@ -1,19 +1,52 @@
 "use strict";
 
 window.onload = () => {
-    getLoginData();
-    displayPosts()
+    // getLoginData();
     fetchUserProfile();
+    showTab('posts');
+    displayMyPosts();
+    displayLikedPosts();
+
+    const editProfileLink = document.getElementById('editProfileLink');
+    const profileEditForm = document.getElementById('profileEditForm');
+    const saveChangesBtn = document.getElementById('saveChanges');
+    const submitPost = document.getElementById('submitPost');
+
+    editProfileLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    profileEditForm.style.display = (profileEditForm.style.display === 'none') ? 'block' : 'none';
+    });
+
+    saveChangesBtn.onclick = () => {
+        saveChanges();
+    }
+    
+    submitPost.onclick = () => {
+        createPostOnClick();
+    }
 };
 
-function getLoginData() {
-    const loginJSON = window.localStorage.getItem("login-data");
-    return JSON.parse(loginJSON) || {};
-}
+// function getLoginData() {
+//     const loginJSON = window.localStorage.getItem("login-data");
+//     return JSON.parse(loginJSON) || {};
+// }
 
-function isLoggedIn() {
-    const loginData = getLoginData();
-    return Boolean(loginData.token);
+// function isLoggedIn() {
+//     const loginData = getLoginData();
+//     return Boolean(loginData.token);
+// }
+
+function showTab(tabName) {
+    document.querySelectorAll('.tab-pane').forEach(tab => {
+        const isSelectedTab = tab.id === tabName;
+        tab.classList.toggle('show', isSelectedTab);
+        tab.classList.toggle('active', isSelectedTab);
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const isSelectedLink = link.getAttribute('href') === '#' + tabName;
+        link.classList.toggle('active', isSelectedLink);
+    });
 }
 
 async function fetchUserProfile() {
@@ -79,7 +112,63 @@ async function fetchPosts() {
     }
 }
 
-async function displayPosts() {
+async function saveChanges() {
+
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const newBio = document.getElementById('newBio').value;
+    const passwordMismatchError = document.getElementById('passwordMismatch');
+    const loginData = getLoginData();
+    const username = loginData.username;
+
+    passwordMismatchError.style.display = 'none';
+
+        
+    if ((newPassword || confirmPassword) && newPassword !== confirmPassword) {
+        passwordMismatchError.style.display = 'block';
+        return;
+    }
+
+    const userData = {
+        password: newPassword || undefined,
+    };
+
+
+    if (newBio.trim() !== '') {
+        userData.bio = newBio;
+    }
+
+    const apiUrl = `${apiBaseURL}/api/users/${username}`;
+    const options = {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${loginData.token}`,
+        },
+        body: JSON.stringify(userData)
+    };
+
+    try {
+        
+        const response = await fetch(apiUrl, options);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        console.log('Data successfully updated:', data);
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+        document.getElementById('newBio').value = '';
+        profileEditForm.style.display = 'none';
+    } catch (error) {
+        console.error('Error updating data:', error);
+
+    }
+};
+
+async function displayMyPosts() {
     const postData = await fetchPosts();
     const loggedInUserData = getLoginData();
     const loggedInUsername = loggedInUserData.username;
@@ -113,9 +202,9 @@ async function displayPosts() {
         <div class="container">
         <div class="row">
             <div class="col-md-10 post-top-info">
-                <img src="https://placehold.co/50" alt="" />
-                <p class="post-username">${item.username}</p>
-            </div>
+                        <img src="${getRandomImage(imagesArray)}" alt="" />
+                        <p class="post-username">${item.username}</p>
+                    </div>
             <div class="col-md-2 d-flex justify-content-end">
                 <p class="post-date">${newPostDate}</p>
             </div>
@@ -140,4 +229,102 @@ async function displayPosts() {
             `
             postsContainer.appendChild(createPostDiv)
         })
+    }
+
+async function createPostOnClick() {
+        const loginData = getLoginData(); 
+        const newPost = document.getElementById('createAPost');
+    
+        const inputData = {
+            text: newPost.value
+        }
+    
+        const options = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${loginData.token}`
+            },
+            body: JSON.stringify(inputData)
+        }
+    
+        try {
+            const response = await fetch(apiBaseURL + "/api/posts/", options)
+            if (response.ok) {
+                console.log("POST HAS BEEN CREATED");
+                post_container.innerHTML = '';
+                post_container.insertAdjacentHTML('afterbegin', loading.outerHTML);
+                await displayMyPosts();
+            }
+            
+        } catch (error) {
+            console.log('Error', error);
+        }
+    
+    
+    }
+
+async function displayLikedPosts() {
+        const allPosts = await fetchPosts();
+        const loggedInUserData = getLoginData();
+        const loggedInUsername = loggedInUserData.username;
+        
+        const likedPostsContainer = document.getElementById('liked-posts-content');
+        likedPostsContainer.innerHTML = '';
+    
+        if (allPosts.length === 0) {
+            likedPostsContainer.innerHTML = '<p>No posts available.</p>';
+            return;
+        }
+    
+        const likedPosts = allPosts.filter(post => {
+            return post.likes.some(like => like.username === loggedInUsername);
+        });
+    
+        if (likedPosts.length === 0) {
+            likedPostsContainer.innerHTML = '<p>No liked posts available for the logged-in user.</p>';
+            return;
+        }
+        
+        likedPosts.forEach(post => {
+    
+            let postDate = new Date(post.createdAt);
+            let formattedDate = { month: 'short', day: 'numeric' };
+            let newPostDate = postDate.toLocaleDateString('en-US', formattedDate);
+    
+            const createPostDiv = document.createElement('div');
+            createPostDiv.className = 'liked-posts-container w-100 my-2';
+            createPostDiv.style.color = "#E7E9EA";
+            createPostDiv.innerHTML = `
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 post-top-info">
+                        <img src="${getRandomImage(imagesArray)}" alt="" />
+                        <p class="post-username">${post.username}</p>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-end">
+                        <p class="post-date">${newPostDate}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="post-mid-section">
+                            <div class="post-text">
+                                <p>${post.text}</p>
+                            </div>
+                        </div>
+                        <div class="post-bot-section">
+                            <div class="post-icons">
+                                <div id="post-liked" value="${post._id}">
+                                    <img src="/assets/liked-heart.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            likedPostsContainer.appendChild(createPostDiv);
+        });
     }
