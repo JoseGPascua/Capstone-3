@@ -78,6 +78,7 @@ function displayProfileData (data) {
 
 async function saveChanges() {
 
+    const newFullName = document.getElementById('newFullName').value;
     const newPassword = document.getElementById('newPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
     const newBio = document.getElementById('newBio').value;
@@ -102,6 +103,10 @@ async function saveChanges() {
         userData.bio = newBio;
     }
 
+    if (newFullName.trim() !== '') {
+        userData.fullname = newFullName;
+    }
+
     const apiUrl = `${apiBaseURL}/api/users/${username}`;
     const options = {
         method: "PUT",
@@ -122,6 +127,7 @@ async function saveChanges() {
 
         const data = await response.json();
         console.log('Data successfully updated:', data);
+        document.getElementById('newFullName').value = '';
         document.getElementById('newPassword').value = '';
         document.getElementById('confirmPassword').value = '';
         document.getElementById('newBio').value = '';
