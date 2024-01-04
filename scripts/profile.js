@@ -1,8 +1,8 @@
 "use strict";
 
 window.onload = () => {
-    // getLoginData();
-    fetchUserProfile();
+
+    getUserData();
     showTab('posts');
     displayMyPosts();
     displayLikedPosts();
@@ -26,6 +26,7 @@ window.onload = () => {
     }
 };
 
+// Function to show and switch between tabs on profile page
 function showTab(tabName) {
     document.querySelectorAll('.tab-pane').forEach(tab => {
         const isSelectedTab = tab.id === tabName;
@@ -39,36 +40,37 @@ function showTab(tabName) {
     });
 }
 
-async function fetchUserProfile() {
-    if (!isLoggedIn()) {
-        console.error("User is not logged in.");
-        return;
-    }
+// Function to grab user profile information
+// async function fetchUserProfile() {
+//     if (!isLoggedIn()) {
+//         console.error("User is not logged in.");
+//         return;
+//     }
 
-    const loginData = getLoginData();
-    const username = loginData.username;
-    const userProfileEndpoint = `/api/users/${username}`
+//     const loginData = getLoginData();
+//     const username = loginData.username;
+//     const userProfileEndpoint = `/api/users/${username}`
 
-    const options = {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${loginData.token}`,
-        },
-    };
+//     const options = {
+//         method: "GET",
+//         headers: {
+//             Authorization: `Bearer ${loginData.token}`,
+//         },
+//     };
 
-    try {
-        const response = await fetch(apiBaseURL + userProfileEndpoint, options);
-        if (!response.ok) {
-            throw new Error('Request failed')
-        }
-        const data = await response.json();
-        displayProfileData(data);
+//     try {
+//         const response = await fetch(apiBaseURL + userProfileEndpoint, options);
+//         if (!response.ok) {
+//             throw new Error('Request failed')
+//         }
+//         const data = await response.json();
+//         displayProfileData(data);
 
-    }
-    catch (error) {
-        console.error("Error fetching profile data:", error);
-    }
-}
+//     }
+//     catch (error) {
+//         console.error("Error fetching profile data:", error);
+//     }
+// }
 
 function displayProfileData (data) {
     document.getElementById("username").textContent = data.username;
@@ -104,7 +106,7 @@ async function saveChanges() {
     }
 
     if (newFullName.trim() !== '') {
-        userData.fullname = newFullName;
+        userData.fullName = newFullName;
     }
 
     const apiUrl = `${apiBaseURL}/api/users/${username}`;
@@ -126,7 +128,7 @@ async function saveChanges() {
         }
 
         const data = await response.json();
-        console.log('Data successfully updated:', data);
+        alert('Data successfully updated:', data);
         document.getElementById('newFullName').value = '';
         document.getElementById('newPassword').value = '';
         document.getElementById('confirmPassword').value = '';
