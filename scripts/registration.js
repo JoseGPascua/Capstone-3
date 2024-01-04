@@ -16,23 +16,32 @@ async function signUpUser() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('cpassword').value;
-    const message = document.getElementById('messageAlert');
+    const messageAlert = document.getElementById('messageAlert');
 
-    // ... (rest of the code remains unchanged)
-}
-
-    
+    //Adding validation to password character check
+    if (password.length < 6) {
+        const password_character_check = document.createElement('div');
+        password_character_check.innerHTML = `
+        <div class="alert alert-danger" role="alert">
+            Password needs to be at least 6 characters!
+        </div>`
+        messageAlert.appendChild(password_character_check)
+        setTimeout(() => {
+            window.location.reload()
+        }, "2000")
+        return;
+    }
     if (password !== confirmPassword) {
         const confirm_password_alert = document.createElement('div');
         confirm_password_alert.innerHTML = `
         <div class="alert alert-danger" role="alert">
             Password does not match!
         </div>`
-        message.appendChild(confirm_password_alert);
+        messageAlert.appendChild(confirm_password_alert);
         setTimeout(() => {
             window.location.reload()
-        }, "2000")
-        return
+        }, "1000")
+        return;
     }
 
     const inputBody = {
@@ -57,25 +66,24 @@ async function signUpUser() {
             <div class="alert alert-danger" role="alert">
                 Username is already taken!
             </div>`
-            message.appendChild(username_taken_alert)
+            messageAlert.appendChild(username_taken_alert)
             setTimeout(() => {
                 window.location.reload()
-            }, "2000")
+            }, "1000")
         } else {
             const username_success_alert = document.createElement('div');
             username_success_alert.innerHTML = `
             <div class="alert alert-success" role="alert">
                 User registration created successfully!
             </div>`
-            message.appendChild(username_success_alert);
+            messageAlert.appendChild(username_success_alert);
 
             setTimeout(() => {
                 window.location.href = '/index.html'
-            }, "3000")
+            }, "1000")
         }
 
     } catch (error) {
         console.log(error);
     }
-
 }
