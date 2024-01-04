@@ -2,8 +2,24 @@
 
 window.onload = () => {
     getLoginData();
-    displayPosts()
     fetchUserProfile();
+    showTab('posts');
+    displayPosts();
+    const editProfileLink = document.getElementById('editProfileLink');
+    const profileEditForm = document.getElementById('profileEditForm');
+    editProfileLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    profileEditForm.style.display = (profileEditForm.style.display === 'none') ? 'block' : 'none';
+    });
+
+    const saveChangesBtn = document.getElementById('saveChanges');
+    saveChangesBtn.onclick = () => {
+        saveChanges();
+    }
+    const submitPost = document.getElementById('submitPost');
+    submitPost.onclick = () => {
+        createPostOnClick();
+    }
 };
 
 function getLoginData() {
@@ -15,6 +31,20 @@ function isLoggedIn() {
     const loginData = getLoginData();
     return Boolean(loginData.token);
 }
+
+function showTab(tabName) {
+    document.querySelectorAll('.tab-pane').forEach(tab => {
+        const isSelectedTab = tab.id === tabName;
+        tab.classList.toggle('show', isSelectedTab);
+        tab.classList.toggle('active', isSelectedTab);
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const isSelectedLink = link.getAttribute('href') === '#' + tabName;
+        link.classList.toggle('active', isSelectedLink);
+    });
+}
+
 
 async function fetchUserProfile() {
     if (!isLoggedIn()) {
@@ -79,6 +109,65 @@ async function fetchPosts() {
     }
 }
 
+async function saveChanges() {
+
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const newBio = document.getElementById('newBio').value;
+    const passwordMismatchError = document.getElementById('passwordMismatch');
+    const loginData = getLoginData();
+    const username = loginData.username;
+
+    passwordMismatchError.style.display = 'none';
+
+        
+    if ((newPassword || confirmPassword) && newPassword !== confirmPassword) {
+        passwordMismatchError.style.display = 'block';
+        return;
+    }
+
+    const userData = {
+        password: newPassword || undefined,
+    };
+
+
+    if (newBio.trim() !== '') {
+        userData.bio = newBio;
+    }
+
+    const apiUrl = `${apiBaseURL}/api/users/${username}`;
+    const options = {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${loginData.token}`,
+        },
+        body: JSON.stringify(userData)
+    };
+
+    try {
+        
+        const response = await fetch(apiUrl, options);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        // Handle successful response
+        console.log('Data successfully updated:', data);
+        // You can perform any additional actions here after successful update
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+        document.getElementById('newBio').value = '';
+        profileEditForm.style.display = 'none';
+    } catch (error) {
+        // Handle error
+        console.error('Error updating data:', error);
+        // You can display an error message or take other actions
+    }
+};
+
 async function displayPosts() {
     const postData = await fetchPosts();
     const loggedInUserData = getLoginData();
@@ -140,4 +229,35 @@ async function displayPosts() {
             `
             postsContainer.appendChild(createPostDiv)
         })
+    }
+
+    async function createPostOnClick() {
+        const loginData = getLoginData(); 
+        const newPost = document.getElementById('createAPost');
+    
+        const inputData = {
+            text: newPost.value
+        }
+    
+        const options = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${loginData.token}`
+            },
+            body: JSON.stringify(inputData)
+        }
+    
+        try {
+            const response = await fetch(apiBaseURL + "/api/posts/", options)
+            const result = await response.json()
+            window.location.reload();
+            // alert('Post Successful')
+    
+        } catch (error) {
+            console.log('Error', error);
+        }
+    
+    
     }
