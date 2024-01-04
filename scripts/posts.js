@@ -226,6 +226,7 @@ async function fetchPostID(_postId) {
 }
 
 async function likeAPost(_postData) {
+    const postContainer = document.getElementById('posts-content');
     const loginData = getLoginData();
     const postData = _postData
     const postLike_ID = postData._id
@@ -248,7 +249,9 @@ async function likeAPost(_postData) {
         if (!response.ok) {
             throw new Error('POST request failed')
         }
-        console.log('Post Liked');
+        postContainer.innerHTML = ''
+        await displayPosts()
+        // console.log('Post Liked');
     } catch (error) {
         console.log(error);
     }
