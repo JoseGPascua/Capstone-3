@@ -1,34 +1,3 @@
-/* Posts Page CSS */
-:root {
-    --main-bgColor: #28274D;
-    --secondary-bgColor: #393B70;
-    --font-color: #E7E9EA;
-    --hover-color: #7E7F9C;
-    --content-color: #383a72;
-} 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    scroll-behavior: smooth;
-    border: none;
-    outline: none;
-    font-family: "Lucida Console", "Courier New", monospace;
-    float: none;
-}
-
-html {
-    font-size: 95%;
-    overflow-x: hidden;
-}
-body {
-    background-color: var(--main-bgColor);
-}
-a {
-    color: var(--font-color);
-}
 
 /* CSS for displayed POSTS || CONTAINER */
 
