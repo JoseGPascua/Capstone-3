@@ -320,8 +320,13 @@ a {
 
 .post-top-info img {
     margin: 10px 10px 10px 20px;
-    border-radius: .8rem;
+    border-radius: 3rem;
+    width: 10%;
+    height: 70%;
+    border-color: var(--main-bgColor);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
+
 .post-text {
     position: relative;
     background-color: var(--main-bgColor);
@@ -416,6 +421,8 @@ a {
 }
 .right-content-mid img {
     border-radius: .8rem;
+    width: 2.5vw;
+    height: auto;
 }
 .right-content-mid h3 {
     font-size: 1.2rem;

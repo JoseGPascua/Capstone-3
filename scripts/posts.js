@@ -168,7 +168,7 @@ async function displayPosts() {
                 <div class="container">
                 <div class="row">
                     <div class="col-md-10 post-top-info">
-                        <img src="https://placehold.co/50" alt="" />
+                        <img src="${getRandomImage(imagesArray)}" alt="" />
                         <p class="post-username">${item.username}</p>
                     </div>
                     <div class="col-md-2 d-flex justify-content-end">
@@ -187,7 +187,7 @@ async function displayPosts() {
                             <div class="post-icons">
                                 <div class="liked-post" onclick="fetchPostID(this)" data-value="${item._id}">
                                 <img class="heart-icon" src="${isLikedByUser ? '/assets/liked-heart-fill.png' : '/assets/liked-heart.png'}" alt="" />
-                                <span>${item.likes.length <= 0? "" : "1" }</span>
+                                <span>${item.likes.length <= 0 ? "" : "1" }</span>
                                 </div>
                             </div>
                         </div>
@@ -280,7 +280,7 @@ async function sortByMostLikes() {
         <div class="container">
             <div class="row">
             <div class="col-10 right-content-mid">
-                <img src="https://placehold.co/50" alt="" />
+                <img src="${getRandomImage(imagesArray)}" alt="" />
                 <h3>${user.username}<h3>
             </div>
             <div class="col-2 right-content-bot">
