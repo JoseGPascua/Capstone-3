@@ -1,10 +1,11 @@
+/* Styling for custom navigation bar */
+
 /* Posts Page CSS */
 :root {
     --main-bgColor: #28274D;
     --secondary-bgColor: #393B70;
     --font-color: #E7E9EA;
     --hover-color: #7E7F9C;
-    --content-color: #383a72;
 } 
 
 * {
@@ -290,6 +291,102 @@ a {
     width: 100%;
 }
 
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #393B70;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 700px; 
+    margin: 0 auto;
+    min-height: 350px;
+    color: #E7E9EA
+}
+
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+#user-posts {
+    background-color: #28274D;
+    border-radius: 8px;
+    height: auto;
+    position: relative;
+}
+
+#user-posts-nav {
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.nav-tabs .nav-item .nav-link {
+    border: none;
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Style the ::before pseudo-element */
+.nav-tabs .nav-item .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 0;
+    height: 100%;
+    background-color: #393B70;
+    z-index: -1;
+    transition:  0.5s;
+}
+
+/* Adjust ::before width on hover */
+.nav-tabs .nav-item .nav-link:hover::before {
+    width: 100%;
+}
+
+
+/* Change background color of active list item */
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #393B70;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Change background color when hovered */
+.nav-tabs .nav-item .nav-link:hover {
+    background-color: #393B70;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Remove default blue color for visited links */
+.nav-tabs .nav-item .nav-link:visited {
+    color: white;
+    
+}
+
+.tab-content img {
+    max-width: 100%; /* Adjust this percentage as needed */
+    height: auto; /* Maintain aspect ratio */
+}
 
 /* CSS for displayed POSTS || CONTAINER */
 
@@ -320,13 +417,8 @@ a {
 
 .post-top-info img {
     margin: 10px 10px 10px 20px;
-    border-radius: 3rem;
-    width: 10%;
-    height: 70%;
-    border-color: var(--main-bgColor);
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    border-radius: .8rem;
 }
-
 .post-text {
     position: relative;
     background-color: var(--main-bgColor);
@@ -340,113 +432,9 @@ a {
 }
 
 .post-icons {
-    position: relative;
     margin: 1.5%;
     padding-left: 1.5%;
 }
-.heart-icon {
-    position: relative;
-}
-
-.liked-post img {
-    cursor: pointer;
-}
-
-
-/* RIGHTSIDE CONTENT */
-#rightside-container { 
-    background-color: var(--secondary-bgColor);
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    left: 75%;
-    width: auto;
-    height: 100vh;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-.rightside-content {
-    display: flex;
-    flex-direction: column;
-    margin: 10% 0 10% 0
-}
-
-#mostlikedpost-section {
-    background-color: var(--main-bgColor);
-    border-radius: .8rem;
-    overflow-y: scroll;
-    max-height: 50vh
-}
-#mostlikedpost-section .likedpost-container{
-    position: relative;
-    height: 50%;
-    background-color: var(--main-bgColor);
-    border-radius: .8rem;
-    z-index: 1;
-    overflow: hidden;
-}
-#mostlikedpost-section .likedpost-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--hover-color);
-    z-index: -1;
-}
-
-#mostlikedpost-section .likedpost-container:hover::before {
-    width: 100%;
-}
-.rightside-content h3 {
-    font-weight: 600;
-    color: var(--font-color)
-}
-.likedpost-container{
-    margin: 2%;
-    padding: 2%;
-}
-
-.right-content-top {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.right-content-mid {
-    color: var(--font-color);
-    display: flex;
-    align-items: center;
-}
-.right-content-mid img {
-    border-radius: .8rem;
-    width: 2.5vw;
-    height: auto;
-}
-.right-content-mid h3 {
-    font-size: 1.2rem;
-    padding-left: 2%;
-}
-
-.right-content-bot {
-    color: var(--font-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* .bottom-section {
-    position: relative;
-    display: flex;
-} */
-/* .friends-container {
-    position: relative;
-    width: 100%;
-    height: 40%;
-    border-radius: 10%;
-    background-color: var(--main-bgColor);
-} */
 
 /* Keyframes for CSS */
 
@@ -454,4 +442,9 @@ a {
     100% {
         transform: translate(-50%, -50%) rotate(360deg);
     }
+}
+
+#passwordMismatch {
+    color: red;
+    display: none;
 }

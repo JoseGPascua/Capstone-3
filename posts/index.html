@@ -7,17 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <!-- Global CSS (CSS rules you want applied to all pages) -->
     <link rel="stylesheet" href="../global.css">
 
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="./posts.css">
+    <link rel="stylesheet" href="../css/posts.css">
 
     <title>/POSTS</title>
 
@@ -27,32 +24,88 @@
         if (isLoggedIn() === false) window.location.replace("/");
     </script>
 </head>
-<body class="bg-light">
-
-    <header class="bg-primary text-light py-4 text-center">
-        <h1>POSTS PAGE</h1>
-    </header>
-
-    <main class="container my-4">
+<body>
+    <!-- left side navigation -->
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
-                <h1>Welcome to the Posts Page</h1>
-
-                <div id="posts-container" class="mt-4">
-                    <!-- Posts will be displayed here -->
+            <div class="col-md-3 col-sm-3 px-0">
+                <div id="side-nav">
+                    <div class="logo-container">
+                        <img src="/assets/nexuswhite-1.webp">
+                    </div>
+                    <div class="header-box d-flex justify-content-end mt-2">
+                        <div class="nav-profile">
+                            <img src="https://64.media.tumblr.com/df64d19ab298f9947005609bde5d9312/5f8a57cbf4d0c6d5-a2/s1280x1920/e4f728c54fdc9143a6c0d6ab9222a5d26639831e.jpg" alt="">
+                            <span class="circle-spin"></span>
+                        </div>
+                    </div>
+                    <div class="profileInfo-container" id="profileInfo">
+                        <!-- displays fullname | username -->
+                </div>
+                    <div class="menu-container">
+                        <div class="menu-box">
+                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-house px-3"></i> Home</a>
+                            <a href="/profile/index.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-user px-3"></i> Profile</a>
+                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-message px-3"></i> Messages</a>
+                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-question px-3"></i> About Us</a>
+                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-circle-info px-3"></i> Team</a>
+                        </div>
+                    </div>
+                    <div class="nav-bottom-section">
+                        <div class="nav-logoutbtn">
+                            <button class="btn mt-3" onclick="logout()">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation in the form of a sidebar -->
+            <!-- middle content -->
+            <main class="col-md-6 col-sm-6" id="middleContent" >
+                <div class="notificationIcons d-flex justify-content-end">
+                    <div class="notificationContainer">
+                        <a href="" class="noti-icon text-decoration-none">
+                            <i class="fa-regular fa-bell"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <button class="btn btn-primary mt-3" onclick="fetchPosts()">Fetch Posts</button>
-                <button class="btn btn-danger mt-3" onclick="logout()">Logout</button>
+                <div id="welcome-container" class="d-flex justify-content-center">
+                    <!-- display username with a welcome message -->
+                </div>
+
+                <div class="createPost-container">
+                    <img src="https://64.media.tumblr.com/df64d19ab298f9947005609bde5d9312/5f8a57cbf4d0c6d5-a2/s1280x1920/e4f728c54fdc9143a6c0d6ab9222a5d26639831e.jpg" alt="">
+                    <!-- Create a new post here -->
+                    <input type="text" id="createAPost" placeholder="What's on your mind?">
+                    <div class="submitpost-icon">
+                        <svg id="submitPost" xmlns="http://www.w3.org/2000/svg" width="50" height="52" viewBox="0 0 90 89" fill="none">
+                            <path d="M26.0342 22.8608C25.5242 22.1114 25.2678 21.218 25.3027 20.3118C25.3375 19.4056 25.6617 18.5341 26.2278 17.8253C26.7939 17.1164 27.572 16.6074 28.4481 16.3729C29.3242 16.1384 30.2522 16.1908 31.096 16.5223L86.9599 39.0065C87.3258 39.1539 87.6439 39.3994 87.879 39.7161C88.1141 40.0328 88.2572 40.4083 88.2925 40.8013C88.3278 41.1943 88.2539 41.5895 88.0789 41.9433C87.904 42.2971 87.6348 42.5958 87.301 42.8065L36.1657 74.7231C35.3921 75.1987 34.4865 75.4135 33.5822 75.336C32.6778 75.2584 31.8224 74.8926 31.1418 74.2923C30.4612 73.6921 29.9914 72.889 29.8015 72.0014C29.6116 71.1137 29.7116 70.1884 30.0868 69.3614L41.7534 45.9373C42.0885 45.2643 42.018 44.4603 41.5708 43.8559L26.0342 22.8608Z" fill="white" stroke="#8D8BA7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M88.2961 40.7979L42.2988 44.8396Z" fill="white"/>
+                            <path d="M88.2961 40.7979L42.2988 44.8396" stroke="#8D8BA7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                    </div>
+                </div>
+                <div id="posts-content" class="m-4">
+                    <!-- Posts will be displayed here -->
+                </div>
+            </main>
+            
+            <div class="col-md-3" id="rightside-container">
+                <div class="rightside-content">
+                    <h3 style="text-align:center">Most Likes</h3>
+                    <div id="mostlikedpost-section">
+    
+                    </div>
+                    <div class="friends-container">
+    
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
-
-    <footer class="bg-secondary text-light text-center py-3">
-        Footer Content
-    </footer>
-
+    </div>
     <!-- Page-specific code -->
-    <script src="../scripts/posts.js"></script>
+    <script src="/scripts/posts.js"></script>
+    <script src="/scripts/random-image-function.js"></script>
+    <script src="https://kit.fontawesome.com/9281e8684f.js" crossorigin="anonymous"></script>
 </body>
 </html>
