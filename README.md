@@ -71,10 +71,10 @@ async function likeAPost(_postData) {
 
 # Authors
 
-Michael Nguyen
-Jose Pascua
-Kayla McHenry
-Nicolas Foong
+* Michael Nguyen
+* Jose Pascua
+* Kayla McHenry
+* Nicolas Foong
 
 # Acknowledgements
 
