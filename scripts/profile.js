@@ -4,6 +4,7 @@ window.onload = () => {
 
     showTab('posts');
     displayProfileData();
+    likeAPost();
     displayMyPosts();
     displayLikedPosts();
     displayUserProfileInfo();
