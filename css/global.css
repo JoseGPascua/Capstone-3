@@ -133,7 +133,7 @@ a {
     padding-right: 5%;
 }
 #profileInfo span:nth-child(1) {
-    padding-right: 10%;
+    margin-right: 10%;
 }
 .menu-container {
     position: relative;
