@@ -29,7 +29,7 @@
 <body>
     <!--background video/ video placeholder-->
     <video autoplay muted loop>
-        <source src="assets/Tech_Board.mp4" type="video/mp4">
+        <source src="assets/world.mp4" type="video/mp4">
     </video>
     <!--end background video/ video placeholder-->
     <main>
@@ -41,7 +41,7 @@
                 <div class="col-6"></div>
                     <form class="container" id="login">
                     <div class="form__group">
-                      <h1>Member Login</h1>
+                      <h1 class="glow">Welcome Back!</h1>
                       <h5>Code, Connect, Collaborate: Login and be part of our tech community!</h5>       
      <!--Icons START-->
       <div class="col" id="facebookLink">
@@ -68,7 +68,12 @@
                   <label for="name" class="form__label">Password</label>
                      </div>
                       <!--Login Form ENDS-->
-                       <!--BUTTON begins-->
+                       <!--Remember me BUTTON begins-->
+                       <div class="remember-me">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <label for="rememberMe">Remember Me</label>
+                    </div>
+                       <!--Login BUTTON begins-->
                               <button id="loginButton"  class=loginButton type="submit">Login Now</button>
                               <br>
                               </div>
@@ -84,6 +89,5 @@
     <!-- Page-specific code -->
     <script src="scripts/landing.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
 </body>
 </html>

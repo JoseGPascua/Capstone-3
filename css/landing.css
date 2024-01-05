@@ -24,6 +24,30 @@ main {
     position: relative; 
 }
 
+/*media responsive*/
+@media(max-width: 875px){
+  #login-content{
+      margin-left: -300px;
+      position:fixed;
+      min-height: 100vh;
+      z-index: 1;
+  }
+
+  #logo-login img{
+    margin-top: 30px;
+    position:fixed;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+#login-content{
+  margin-left: -300px;
+  position:fixed;
+  min-height: 100vh;
+  z-index: 1;
+}
+}
+
 
 #logo-login img{
     justify-content: center;
@@ -37,14 +61,6 @@ main {
     padding-top: 200px;
    
   }
-
-  /* Media query for smaller screens */
-@media screen and (max-width: 768px) {
-  footer {
-      padding: 10px; /* Adjust padding for smaller screens */
-  }
-}
-
 #login-content {
     display: flex;
     justify-content: space-between;
@@ -166,20 +182,23 @@ input:hover,
 
 /* add appropriate colors to fb, twitter and google buttons */
 .fb {
-  padding-right: 25px;
+  padding-right: 5px;
   background-color: #3B5998;
   color: white;
+  border-radius: 700px;
 }
 
 .twitter {
   padding-right: 25px;
   background-color: #55ACEE;
   color: white;
+  border-radius: 700px;
 }
 
 .google {
   background-color: #dd4b39;
   color: white;
+  border-radius: 700px;
 }
 
 /*#largeText {
@@ -255,3 +274,43 @@ input:hover,
   padding-top: 10px;
   padding-bottom: 2px;
 }
+
+.remember-me {
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.remember-me label {
+  margin-left: 5px;
+  font-size: 1rem;
+}
+
+.glow {
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #28274D, 0 0 40px #28274D, 0 0 50px #28274D, 0 0 60px #28274D, 0 0 70px #28274D;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #393B70, 0 0 50px #393B70, 0 0 60px #393B70, 0 0 70px #393B70, 0 0 80px #393B70;
+  }
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #28274D, 0 0 40px #28274D, 0 0 50px #28274D, 0 0 60px #28274D, 0 0 70px #28274D;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #393B70, 0 0 50px #393B70, 0 0 60px #393B70, 0 0 70px #393B70, 0 0 80px #393B70;
+  }
+}
+
