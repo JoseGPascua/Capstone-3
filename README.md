@@ -1,8 +1,10 @@
-### Welcome to Nexus Social Blog
+# Welcome to Nexus Social Blog
+
+## A website built on HTML, CSS, Bootstrap, and Javascript, it contains a landing page where a user is able to login, and if they're already logged in they will be redirected to the posts page where they can see all posts. This website also contains a registration page, profile page, and lastly an about us page that features the contributors of the website!
 
 Welcome to Nexus, the social blog platform designed for IT students and interns to connect, collaborate, and be inspired. This README provides an overview of the features and structure of the Nexus website.
 
-
+This project is built on the idea of creating a space for individuals to connect and interact with one another. This website 
 
 # Table of Contents
 - [Introduction](#introduction)
