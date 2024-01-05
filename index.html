@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Global CSS (CSS rules you want applied to all pages) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Animate css stylesheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="../css/global.css">
-    <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="../css/landing.css">
-    <title>Login to the Microblog Network!</title>
-    <!-- Run BEFORE page is finished loading (before window.onload - don't add the `defer` attribute): -->
-    <script src="scripts/auth.js"></script>
-    <script>
-        if (isLoggedIn() === true) window.location.replace("/posts");
-    </script>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <!-- Global CSS (CSS rules you want applied to all pages) -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- Animate css stylesheet -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+      <link rel="stylesheet" href="../css/global.css">
+      <!-- Page-specific CSS -->
+      <link rel="stylesheet" href="../css/landing.css">
+      <title>Login to the Microblog Network!</title>
+      <!-- Run BEFORE page is finished loading (before window.onload - don't add the `defer` attribute): -->
+      <script src="scripts/auth.js"></script>
+      <script>
+          if (isLoggedIn() === true) window.location.replace("/posts");
+      </script>
 </head>
 
 <body>
@@ -29,61 +29,62 @@
     </video>
     <!--end background video/ video placeholder-->
     <main>
-    <!-- START Logo at Login -->
-        <div id="logo-login"><img src="assets/nexuswhite-1.webp"></div>
-    <!--Login Container -->
-        <div class="container" id="login-content">
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12" id="logo-login">
+          <img src="assets/nexuswhite-1.webp">
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12" id="form-contents">
+          <div class="container" id="login-content">
             <div class="row animate__animated animate__fadeIn">
-                <div class="col-6"></div>
-                    <div class="form__group">
+                  <div class="container col-sm-12 col-md-12 col-lg-12">
+                    <br>
                       <h1 class="glow">Welcome Back!</h1>
                       <h5>Code, Connect, Collaborate: Login and be part of our tech community!</h5>       
-     <!--Icons START-->
-      <div class="col" id="facebookLink">
-        <a href="#" class="fb btn">
-          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-         </a>
-        <a href="#" class="twitter btn">
-          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-        </a>
-        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-          </i> Login with Google+
-        </a>
-      </div>
-      <br>
-      <div id="login-linksz">
-      <p>Dont have an account? <a href="registration/registration2.html" >Register Now</a></p></div>
-      <!--Icons END-->
-      <!-- Alert message for validation -->
-      <div id="alertMessage"></div>
-       <!--Login Form Begins-->
-       <form id="login-form">
-         <input type="text" class="form__input" id="loginUsername" placeholder="username" minlength="6" /><br>
-         <label for="name" class="form__label"></label>
-
-         <div class="form__group">
-         <input type="password" class="form__input" id="loginPassword" placeholder="password" minlength="6" />
-         <label for="name" class="form__label">Password</label>
-            </div>
-         <!--Remember me BUTTON begins-->
-            <div class="remember-me">
-             <input type="checkbox" id="rememberMe" name="rememberMe">
-             <label for="rememberMe">Remember Me</label>
-         </div>
-            <!--Login BUTTON begins-->
-            <button id="loginButton"  class=loginButton type="submit">Login Now</button>
-        </form>
-                      <!--Login Form ENDS-->
-                        <!--Remember me BUTTON begins-->
-                              <br>
-                              </div>
-                            </div>
-                          </div>
-                          <br>
+                        <!--Icons START-->
+                        <div class="row" id="row-for-sns-btns">
+                          <div class="col-sm-12 col-md-12 col-lg-12" id="social-media-btns">
+                            <a href="#" id="fb-btn" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+                            <a href="#" id="twitter-btn" class="twitter btn"><i class="fa fa-twitter fa-fw"></i> Login with Twitter</a>
+                            <a href="#" id="google-btn" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+</a>
                           </div>
                         </div>
-                    </div>
+                        <br>
+                        <!--Icons END-->
+                        <!-- Alert message for validation -->
+                        <div id="alertMessage"></div>
+                        <!--Login Form Begins-->
+                        <div id="landing-form">
+                          <form id="login-form">
+                            <input type="text" class="form__input" id="loginUsername" placeholder="username" minlength="6" /><br>
+                            <input type="password" class="form__input" id="loginPassword" placeholder="password" minlength="6" />
+                            <label for="name" class="form__label">Password</label>
+                            <!--Remember me BUTTON begins-->
+                                <div class="remember-me">
+                                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                                    <label for="rememberMe">Remember Me</label>
+                                </div>
+                                <!--Login BUTTON begins-->
+                                <button id="loginButton"  class=loginButton type="submit">Login Now</button>
+                            </form>
+                        </div>
+                        <br>
+                                <div id="login-linksz">
+                                  <p>Dont have an account? <a href="registration/registration2.html" >Register Now</a></p>
+                                </div>
+                                              <!--Login Form ENDS-->
+                                                <!--Remember me BUTTON begins-->
+                                                      <br>
+                      </div>
                 </div>
+            </div>
+          </div>
+        </div>
+    <!-- START Logo at Login -->
+        
+    <!--Login Container -->
+      
+                          
             </main>
 
     <!-- Page-specific code -->

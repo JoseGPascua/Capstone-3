@@ -24,30 +24,12 @@ main {
     position: relative; 
 }
 
-/*media responsive*/
-@media(max-width: 875px){
-  #login-content{
-      margin-left: -300px;
-      position:fixed;
-      min-height: 100vh;
-      z-index: 1;
-  }
 
-  #logo-login img{
-    margin-top: 30px;
-    position:fixed;
-    min-height: 100vh;
-    z-index: 1;
-}
 
-#login-content{
-  margin-left: -300px;
-  position:fixed;
-  min-height: 100vh;
-  z-index: 1;
+#logo-login {
+  display: flex;
+  justify-content: center;
 }
-}
-
 
 #logo-login img{
     justify-content: center;
@@ -63,15 +45,10 @@ main {
   }
 #login-content {
     display: flex;
-    justify-content: space-between;
-    background: rgb(136, 40, 163);
+    justify-content: center;
+    background: red(136, 40, 163);
     background: linear-gradient(3deg, rgba(0,212,255,0.4) 12%, rgba(215,250,255,0.7) 62%, rgba(191,191,255,0.3) 79%);
-    padding: 100px;
-    padding-top: 45px;
-    padding-bottom: 40px;
-    padding-left: 70px;
-    padding-right: 70px;
-    border-radius: 70px;
+    border-radius: 8px;
     position: relative; 
     z-index: 1; 
     backdrop-filter: blur(6px);
@@ -247,7 +224,7 @@ input:hover,
   }
 
 
-  .form__group{
+  /* .form__group{
     margin-bottom:-5px !important;
   }
 
@@ -264,16 +241,12 @@ input:hover,
     margin-top: 0;
     padding-bottom: 35px;
     text-align: center;
-  }
+  } */
 
   #login-linksz {
     text-align: center; /* Center the checkbox and registration link */
     padding-bottom: 25px;
   }
-#facebookLink{
-  padding-top: 10px;
-  padding-bottom: 2px;
-}
 
 .remember-me {
   padding-left: 20px;
@@ -314,3 +287,28 @@ input:hover,
   }
 }
 
+#landing-form {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#social-media-btns {
+  display: flex;
+  justify-content: center;
+}
+
+#loginPassword, #loginUsername, #loginButton {
+  border-radius: 8px;
+}
+
+#fb-btn, #twitter-btn, #google-btn {
+  border-radius: 8px;
+  text-align: center;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+#row-for-sns-btns {
+  display: flex;
+  justify-content: center;
+}
