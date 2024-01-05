@@ -1,98 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Global CSS (CSS rules you want applied to all pages) -->
-     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!--animate css stylesheet -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="../css/global.css">
-    <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="../css/landing.css">
-    <title>Login to the Microblog Network!</title>
-    <!-- Run BEFORE page is finished loading (before window.onload - don't add the `defer` attribute): -->
-    <script src="scripts/auth.js"></script>
-    <script>
-        if (isLoggedIn() === true) window.location.replace("/posts");
-    </script>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <!-- Global CSS (CSS rules you want applied to all pages) -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- Animate css stylesheet -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+      <link rel="stylesheet" href="../css/global.css">
+      <!-- Page-specific CSS -->
+      <link rel="stylesheet" href="../css/landing.css">
+      <title>Login to the Microblog Network!</title>
+      <!-- Run BEFORE page is finished loading (before window.onload - don't add the `defer` attribute): -->
+      <script src="scripts/auth.js"></script>
+      <script>
+          if (isLoggedIn() === true) window.location.replace("/posts");
+      </script>
 </head>
 
 <body>
     <!--background video/ video placeholder-->
     <video autoplay muted loop>
-        <source src="assets/Tech_Board.mp4" type="video/mp4">
+        <source src="assets/world.mp4" type="video/mp4">
     </video>
-
-    <header>
-        <head>
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-            />
-          </head>
-    </header>
+    <!--end background video/ video placeholder-->
     <main>
-        <div id="logo-login"><img src="assets/nexuswhite-1.webp"></div>`
-        <div class="container" id="login-content">
-            <div class="row animate__animated animate__fadeIn">
-                <div class="col-6"></div>
-                    <form class="container" id="login">
-            <!--ICONS FOR LOGIN-->  
-    <div id="landing-login" >
-        <div class="col">
-          <a href="#" class="fb btn">
-            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-           </a>
-          <a href="#" class="twitter btn">
-            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-          </a>
-          <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-            </i> Login with Google+
-          </a>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12" id="logo-login">
+          <img src="assets/nexuswhite-1.webp">
         </div>
-      </div>
-      <br>
-        <!--END ICONS FOR LOGIN-->  
-                    <div class="form__group">
-                        <input type="text" class="form__input" id="username" placeholder="username" minlength="6" /><br>
-                        <label for="name" class="form__label"></label>
-                      </div>
-                        <br>
-                        
-                            <div class="form__group">
-                                <input type="password" class="form__input" id="password" placeholder="password" minlength="6" />
-                                <label for="name" class="form__label">password</label>
-                                <label>
-                                    <input type="checkbox" name="remember"> Remember me
-                                  </label>
-                                <p>Already Have an Account?<a href="#"> Sign In </a></p>
-                                <br>
-                            </div>
-
-                            <button id="loginButton"  class=loginButton type="submit">Login</button>
-                            <br>
-                            <button id="signupButton"  class=signupButton type="submit">Join</button>
-                           <br>
-                           <label>
-                          </label>
-                            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-
+        <div class="col-sm-12 col-md-12 col-lg-12" id="form-contents">
+          <div class="container" id="login-content">
+            <div class="row animate__animated animate__fadeIn">
+                  <div class="container col-sm-12 col-md-12 col-lg-12">
+                    <br>
+                      <h1 class="glow">Welcome Back!</h1>
+                      <h5>Code, Connect, Collaborate: Login and be part of our tech community!</h5>       
+                        <!--Icons START-->
+                        <div class="row" id="row-for-sns-btns">
+                          <div class="col-sm-12 col-md-12 col-lg-12" id="social-media-btns">
+                            <a href="#" id="fb-btn" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+                            <a href="#" id="twitter-btn" class="twitter btn"><i class="fa fa-twitter fa-fw"></i> Login with Twitter</a>
+                            <a href="#" id="google-btn" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+</a>
+                          </div>
                         </div>
-                    </div>
+                        <br>
+                        <!--Icons END-->
+                        <!-- Alert message for validation -->
+                        <div id="alertMessage"></div>
+                        <!--Login Form Begins-->
+                        <div id="landing-form">
+                          <form id="login-form">
+                            <input type="text" class="form__input" id="loginUsername" placeholder="username" minlength="6" /><br>
+                            <input type="password" class="form__input" id="loginPassword" placeholder="password" minlength="6" />
+                            <label for="name" class="form__label">Password</label>
+                            <!--Remember me BUTTON begins-->
+                                <div class="remember-me">
+                                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                                    <label for="rememberMe">Remember Me</label>
+                                </div>
+                                <!--Login BUTTON begins-->
+                                <button id="loginButton"  class=loginButton type="submit">Login Now</button>
+                            </form>
+                        </div>
+                        <br>
+                                <div id="login-linksz">
+                                  <p>Dont have an account? <a href="registration/registration2.html" >Register Now</a></p>
+                                </div>
+                                              <!--Login Form ENDS-->
+                                                <!--Remember me BUTTON begins-->
+                                                      <br>
+                      </div>
                 </div>
+            </div>
+          </div>
+        </div>
+    <!-- START Logo at Login -->
+        
+    <!--Login Container -->
+      
+                          
             </main>
 
     <!-- Page-specific code -->
     <script src="scripts/landing.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
 </body>
 </html>

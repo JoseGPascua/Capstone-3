@@ -25,7 +25,7 @@ async function signUpUser() {
         return;
     }
 // Display Loading Spinner
-    loadingSpinner.style.display='block';
+    // loadingSpinner.style.display='block';
 
     if (password !== confirmPassword) {
         // Display alert for password mismatch
@@ -36,8 +36,8 @@ async function signUpUser() {
         </div>`
         // Reload page after delay
         messageAlert.appendChild(confirm_password_alert);
+        loadingSpinner.style.display = 'block';
         setTimeout(() => {
-            loadingSpinner.style.display = 'none';
             window.location.reload()
         }, "1000")
         return;
@@ -71,8 +71,8 @@ async function signUpUser() {
                 Username is already taken!
             </div>`
             messageAlert.appendChild(username_taken_alert)
+            loadingSpinner.style.display = 'block';
             setTimeout(() => {
-                loadingSpinner.style.display = 'none';
                 window.location.reload()
             }, "1000")
 
@@ -85,13 +85,10 @@ async function signUpUser() {
             </div>`
             messageAlert.appendChild(username_success_alert);
 
-             // Clear form fields after successful registration
-            signUpForm.reset();
-
             // Redirect to the index page after a delay
+            loadingSpinner.style.display='block';
             setTimeout(() => {
-                loadingSpinner.style.display='none';
-                window.location.href = '/index.html'
+                window.location.assign('/index.html')
             }, "1000")
         }
 
@@ -107,13 +104,14 @@ async function signUpUser() {
         message.appendChild(generic_error_alert);
 
         // Hide loading spinner and reload page after delay
-        setTimeout(() => {
-            loadingSpinner.style.display = 'none';
-            window.location.reload();
-        }, 2000);
+        // setTimeout(() => {
+        //     loadingSpinner.style.display = 'none';
+        //     window.location.reload();
+        // }, 2000);
     }
 }
 function validateInputs(username, password, confirmPassword) {
+    const loadingSpinner = document.getElementById('loadingSpinner');
     // Check if the username and password meet the minimum length requirement
     const minUsernameLength = 6;
     const minPasswordLength = 6;
@@ -129,11 +127,14 @@ function validateInputs(username, password, confirmPassword) {
         const invalidInputAlert = document.createElement('div');
         invalidInputAlert.innerHTML = `
         <div class="alert alert-danger" role="alert">
-            Username and password must be at least ${minUsernameLength} characters long.
+            Password must be at least ${minUsernameLength} characters long.
         </div>`;
         const message = document.getElementById('messageAlert');
         message.appendChild(invalidInputAlert);
-
+        loadingSpinner.style.display = "block"
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
         return false;
     }
 }

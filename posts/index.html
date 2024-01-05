@@ -11,15 +11,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <!-- Global CSS (CSS rules you want applied to all pages) -->
-    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="/css/global.css">
 
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="../css/posts.css">
+    <link rel="stylesheet" href="/css/posts.css">
 
     <title>/POSTS</title>
 
     <!-- Run BEFORE page is finished loading (before window.onload): -->
-    <script src="../scripts/auth.js"></script>
+    <script src="/scripts/auth.js"></script>
     <script>
         if (isLoggedIn() === false) window.location.replace("/");
     </script>
@@ -44,11 +44,11 @@
                 </div>
                     <div class="menu-container">
                         <div class="menu-box">
-                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-house px-3"></i> Home</a>
+                            <a href="/posts/index.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-house px-3"></i> Home</a>
                             <a href="/profile/index.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-user px-3"></i> Profile</a>
                             <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-message px-3"></i> Messages</a>
-                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-question px-3"></i> About Us</a>
-                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-circle-info px-3"></i> Team</a>
+                            <a href="/about.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-circle-info px-3"></i> About Us</a>
+                            
                         </div>
                     </div>
                     <div class="nav-bottom-section">
@@ -60,7 +60,7 @@
             </div>
             <!-- Navigation in the form of a sidebar -->
             <!-- middle content -->
-            <main class="col-md-6 col-sm-6" id="middleContent" >
+            <main class="col-lg-6 col-md-12 col-sm-12" id="middleContent" >
                 <div class="notificationIcons d-flex justify-content-end">
                     <div class="notificationContainer">
                         <a href="" class="noti-icon text-decoration-none">
@@ -88,28 +88,19 @@
                 <div id="posts-content" class="m-4">
                     <!-- Posts will be displayed here -->
                 </div>
-                <!-- Loading  -->
-                <div class="d-flex justify-content-center">
-                    <div class="spinner-border" role="status" id="loading-spinner">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-                  </div>
             </main>
             
             <div class="col-md-3" id="rightside-container">
                 <div class="rightside-content">
                     <h3>Most Likes</h3>
                     <div id="mostlikedpost-section">
-    
-                    </div>
-                    <div class="friends-container">
-    
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Page-specific code -->
+    <script src="/scripts/global-functions.js"></script>
     <script src="/scripts/posts.js"></script>
     <script src="/scripts/random-image-function.js"></script>
     <script src="https://kit.fontawesome.com/9281e8684f.js" crossorigin="anonymous"></script>

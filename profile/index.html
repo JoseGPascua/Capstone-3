@@ -12,6 +12,7 @@
     <!-- Page-specific CSS -->
 
     <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/global.css">
 
     <title>/PROFILE</title>
 
@@ -21,8 +22,8 @@
         if (isLoggedIn() === false) window.location.replace("/");
     </script>
 </head>
-<body>
 
+<body>
     <main>
         <div class="row">
             <div class="col-md-3 col-sm-3 px-0">
@@ -44,8 +45,8 @@
                             <a href="http://127.0.0.1:5501/posts/index.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-house px-3"></i> Home</a>
                             <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-user px-3"></i> Profile</a>
                             <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-message px-3"></i> Messages</a>
-                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-question px-3"></i> About Us</a>
-                            <a href="" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-circle-info px-3"></i> Team</a>
+                            <a href="/about.html" class="nav-btn text-decoration-none px-2 py-2"><i class="fa-solid fa-circle-info px-3"></i> About Us</a>
+                            
                         </div>
                     </div>
                     <div class="nav-bottom-section">
@@ -55,30 +56,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-sm-8 mx-0 pt-5">
+            <div class="col-md-12 col-sm-12 col-lg-8 mx-0 pt-5">
                 <div class="content">
                     <div class="profile-container">
                         <div class="profile-photo">
-                            <img src="https://placehold.co/50" alt="">
+                            <img src="https://64.media.tumblr.com/df64d19ab298f9947005609bde5d9312/5f8a57cbf4d0c6d5-a2/s1280x1920/e4f728c54fdc9143a6c0d6ab9222a5d26639831e.jpg" alt="">
                             <br><br><br><br>
                         </div>
                         <div class="bio">
-                            <div class="row xd">
-                                <div class="col-6">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
                                     <p><strong>Username:</strong> <span id="username"></span></p>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
                                     <p><strong>Full Name:</strong> <span id="fullName"></span></p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
                                     <p><strong>About:</strong> <span id="about"></span></p>
                                 </div>
                             </div>
                             <div class="row">
                                 <small><a href="#" id="editProfileLink">Edit your profile</a></small>
                                 <div id="profileEditForm" style="display: none;">
+                                    <br>
+                                    <input type="text" id="newFullName" placeholder="New fullName"> <br> <br>
                                     <input type="password" id="newPassword" placeholder="New Password">
                                     <input type="password" id="confirmPassword" placeholder="Confirm Password"> <br> <br>
                                     <input type="text" id="newBio" placeholder="New Bio">
@@ -123,23 +126,25 @@
                             </div>
                             <div id="images" class="tab-pane fade">
                                 <!-- Display images here -->
+                                <br>
                                 <div class="row">
                                     <div class="d-flex justify-content-center col-md-4 col-lg-4">
                                         <img src="https://64.media.tumblr.com/e26ef4b99e4874ad57eca954c94d975a/00c3c6a937d55aa0-9d/s540x810/7659fa23ccdc9db2851253b197e23da10f02e928.jpg" height="250px" width="250px">
                                     </div>
                                     <div class="d-flex justify-content-center col-md-4 col-lg-4">
-                                        <img src="https://64.media.tumblr.com/e26ef4b99e4874ad57eca954c94d975a/00c3c6a937d55aa0-9d/s540x810/7659fa23ccdc9db2851253b197e23da10f02e928.jpg" height="250px" width="250px">
+                                        <img src="https://media.licdn.com/dms/image/D5603AQG9MBFTl-Cmkg/profile-displayphoto-shrink_400_400/0/1703700914760?e=1709769600&v=beta&t=bXM6NVq1ZNbDW3UaZhw7VmSAm4U9AbZX_mxQYaJHvvM" height="250px" width="250px">
                                     </div>
                                     <div class="d-flex justify-content-center col-md-4 col-lg-4">
-                                        <img src="https://64.media.tumblr.com/e26ef4b99e4874ad57eca954c94d975a/00c3c6a937d55aa0-9d/s540x810/7659fa23ccdc9db2851253b197e23da10f02e928.jpg" height="250px" width="250px">
+                                        <img src="https://media.licdn.com/dms/image/D5603AQE3UY1-yRFONA/profile-displayphoto-shrink_400_400/0/1703704190714?e=1709769600&v=beta&t=Hy1f2cKZ3SkA_Jo3gIu1QBYbJOpZg6uU7FNR0LgjMak" height="250px" width="250px">
                                     </div>
                                 </div>
+                                <br>
                                 <div class="row">
                                     <div class="d-flex justify-content-center col-md-4 col-lg-4">
-                                        <img src="https://64.media.tumblr.com/e26ef4b99e4874ad57eca954c94d975a/00c3c6a937d55aa0-9d/s540x810/7659fa23ccdc9db2851253b197e23da10f02e928.jpg" height="250px" width="250px">
+                                        <img src="https://media.licdn.com/dms/image/D4E03AQGynbMLQoY0DQ/profile-displayphoto-shrink_400_400/0/1675049692354?e=1709769600&v=beta&t=o3UV7KxvD_bS0tOiFpILJiqvl7DIUvVpoYCn1V78CGQ" height="250px" width="250px">
                                     </div>
                                     <div class="d-flex justify-content-center col-md-4 col-lg-4">
-                                        <img src="https://64.media.tumblr.com/e26ef4b99e4874ad57eca954c94d975a/00c3c6a937d55aa0-9d/s540x810/7659fa23ccdc9db2851253b197e23da10f02e928.jpg" height="250px" width="250px">
+                                        <img src="https://media.licdn.com/dms/image/D5603AQEAdnZFnmg3Mw/profile-displayphoto-shrink_400_400/0/1684304980658?e=1709769600&v=beta&t=4QHt5wYgUzSwpyHMKVmq6RODrCmjE5q0wQEQQwpyg44" height="250px" width="250px">
                                     </div>
                                     <div class="d-flex justify-content-center col-md-4 col-lg-4">
                                         <img src="https://64.media.tumblr.com/e26ef4b99e4874ad57eca954c94d975a/00c3c6a937d55aa0-9d/s540x810/7659fa23ccdc9db2851253b197e23da10f02e928.jpg" height="250px" width="250px">
@@ -162,6 +167,7 @@
     
 
     <!-- Page-specific code -->
+    <script src="/scripts/global-functions.js"></script>
     <script src="/scripts/random-image-function.js"></script>
     <script src="/scripts/profile.js"></script>
     <script src="https://kit.fontawesome.com/9281e8684f.js" crossorigin="anonymous"></script>
