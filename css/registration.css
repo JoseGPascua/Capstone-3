@@ -1,41 +1,45 @@
-/* Posts Page CSS */
 :root {
   --main-bgColor: #28274D;
   --secondary-bgColor: #393B70;
   --font-color: #E7E9EA;
   --hover-color: #7E7F9C;
+  --primary-blue: #233975;
 }
+
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
 .background-container {
   position: fixed;
-  top: 0;
-  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+#bgVideo {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Send it to the back */
+  position: absolute;
 }
 
-.card-body,
-.row,
-.col-md-10,
-{
+main {
   position: relative;
-  z-index: 1; /* Make sure it's higher than background-container */
+  z-index: 1;
 }
 
-
-
-/* Your existing styles for the card and form */
 .card {
-  border-radius: 25px;
+  background-color:transparent; /* Adjust the alpha channel for card background */
+  border: none;
 }
 
-/*! --------------------------------------------------------------------- */
-
-/* :root {
-  font-size: 100%;
-  font-size: 16px;
-  line-height: 1.5;
-  --primary-blue: #233975;
+.card-body {
+  background-color: transparent !important; /* Make the card body transparent */
+  border-radius: 25px;
+  margin: 20px;
 }
 
 body {
@@ -74,32 +78,33 @@ a:hover {
   flex-direction: column;
 }
 
-.left {
+.left, .right {
+  display: flex;
   height: 200px;
+  align-items: flex-start;
+}
+
+.left {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('/_DSF4943.jpg');
   background-size: cover;
-  display: flex;
   justify-content: center;
-  align-items: flex-start;
 }
 
 .left .copy {
   color: white;
   text-align: center;
-}
-
-.left p {
-  font-weight: 400;
+  p {
+    font-weight: 400;
+  }
 }
 
 .right .copy {
-  color: black;
+  color: white;
   text-align: center;
-}
-
-.right .copy p {
-  margin: 1.5em 0;
-  font-size: 0.875rem;
+  p {
+    margin: 1.5em 0;
+    font-size: 0.875rem;
+  }
 }
 
 .right form {
@@ -116,6 +121,7 @@ form input[type="password"] {
   padding: 1em;
   margin-bottom: 1.25rem;
   font-size: 0.875rem;
+  color: white !important;
 }
 
 label {
@@ -206,15 +212,12 @@ label {
     height: 100vh;
   }
 
-  .left,
-  .right {
-    display: flex;
+  .left, .right {
     width: 50%;
     height: auto;
   }
-} */
+}
 
-/* Add this CSS to your existing or a new CSS file */
 #loadingSpinner {
   display: none;
   position: fixed;
@@ -233,4 +236,3 @@ label {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
