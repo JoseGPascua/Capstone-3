@@ -140,7 +140,7 @@ async function displayLikedPosts() {
 async function createPostOnClick() {
         const loginData = getLoginData(); 
         const newPost = document.getElementById('createAPost');
-    
+        const myPostContainer = document.getElementById('posts-content')
         const inputData = {
             text: newPost.value
         }
@@ -159,8 +159,7 @@ async function createPostOnClick() {
             const response = await fetch(apiBaseURL + "/api/posts/", options)
             if (response.ok) {
                 console.log("POST HAS BEEN CREATED");
-                post_container.innerHTML = '';
-                post_container.insertAdjacentHTML('afterbegin', loading.outerHTML);
+                myPostContainer.innerHTML = ''
                 await displayMyPosts();
             }
             

@@ -107,7 +107,7 @@ async function displayPosts(posts, container, message) {
     const loggedInUsername = loggedInUserData.username;
 
     const postsContainer = document.getElementById(container);
-    postsContainer.innerHTML = '';
+    // postsContainer.innerHTML = '';
 
     if (posts.length === 0) {
         postsContainer.innerHTML = `<p>${message}</p>`;
@@ -195,7 +195,7 @@ async function likeAPost(_postData) {
             throw new Error('POST request failed')
         }
         postContainer.innerHTML = ''
-        await displayPosts()
+        await displayAllPosts()
         // console.log('Post Liked');
     } catch (error) {
         console.log(error);
