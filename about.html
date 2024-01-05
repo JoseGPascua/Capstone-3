@@ -13,9 +13,12 @@
     <title>Login to the Microblog Network!</title>
 </head>
     <script src="/scripts/auth.js"></script>
+    <script src="/scripts/about.js"></script>
     <script>
       if (isLoggedIn() === false) window.location.replace("/");
     </script>
+<header class="blur">
+<div class="header-content">
 <body>
         <!-- LEFTS SIDE NAV -->
         <div class="container-fluid">
@@ -55,23 +58,29 @@
 
       <!--About Desc. START-->
       <main class="main flow">
+      <div class="fade-in">
+      <div class="fluid-container" id="description">
         <h1 class="main__heading" h1 id="gradient-text"> About Us</h1>
-      
+      <br>
+      <br>
         <p id="gradient-text">Unveiling the Future with Innovative Minds</p>
-        <p id="about-par" Welcome to our digital realm, where creativity meets cutting-edge technology. 
+        <p> Welcome to our digital realm, where creativity meets cutting-edge technology. 
             <p id="about-par">At Nexus, we are a dynamic team of software interns passionately dedicated to shaping the future of social networking. 
             Our journey began with a vision - a vision to create a platform that transcends boundaries, connects people, and redefines the way we interact in the digital age.</p>
         <br>
         <p id="gradient-text">Our Mission: Redefining Social Connectivity</p>
         <p id="about-par">At the heart of our mission is the commitment to redefine social connectivity. We believe in the power of technology to bring people closer, fostering meaningful connections that transcend geographical distances. 
             <p>Our software interns, a diverse and talented group, embody this mission, pouring their enthusiasm and skills into every line of code.</p>
-          
+          </div>
+        <br>
+        <br>
+        <br>
       <!-- CARDS Containter BEGIN-->
 <div id="card-container">
   <div id="card-wrap"></div>
   <div class="main-flow">
     <h1 class="main__heading" h1 id="gradient-text" >Our Team</h1>
-   
+
     <div class="main__cards cards">
       <div class="cards__inner">
         
@@ -130,11 +139,14 @@
 
     </div>
     </div>
- 
+ <br>
+ <br>
+ <br>
 <!-- CARDS END-->
 
 <!--PROJECT CARDS MENU 1-->
 <br>
+
 <h1 class="Productcard__heading"h1 id="gradient-text"> Latest Projects and Achievements</h1>
 <br>
 <div id="project-container">
@@ -145,12 +157,13 @@
  <br>
  <br>
   <p> In our first project, we engineered a dynamic website focused on revolutionizing the way users interact with produce information. Harnessing the power of API requests, our team seamlessly integrated a robust barcode search functionality.</p>
-  <p>Users can effortlessly explore detailed product information by simply scanning or inputting barcodes. This innovative solution not only enhances the user experience but also provides a valuable resource for individuals seeking accurate and real-time data about their favorite fruits and vegetables.</p>
+  <p>Users can effortlessly explore detailed product information by simply scanning or inputting barcodes.</p>
  <br>
   <a href="#basic" class="card__cta cta">Check Us Out</a>
   </div>
 </div>
 </div>
+
 <!--END PROJECTS MENU 1-->
 <br>
 <!--PROJECT CARDS MENU 2-->
@@ -163,17 +176,19 @@
   <br>
   <br>
   <p>Building upon the success of our initial project, we embarked on an ambitious journey to create an updated version of our product barcode search system.</p>
-  <p>Leveraging advanced API requests, this iteration introduces a refined and enriched user interface, coupled with expanded backend capabilities. Users can now enjoy a more intuitive and feature-rich experience as they access comprehensive product details through barcode scanning.</p>
   <br>
   <a href="#basic" class="card__cta cta">Check Us Out</a>
   <div class="overlay cards__inner"></div>
   </div>
 </div>
+
 <!--END PROJECT CARDS MENU 2-->
 
   <script src="/scripts/global-functions.js"></script>
   <script src="https://kit.fontawesome.com/9281e8684f.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+ 
+
 </body>
 </div>
 </div>
@@ -186,6 +201,8 @@
             <p>Designed By <a href="Nexus Inc.">Nexus</a></p>
         </div>
     </div>
+
  <!-- end of footer section -->
 </html>
+</body>
 
