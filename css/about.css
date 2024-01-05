@@ -25,16 +25,20 @@ html {
 }
 
 body{
-
 background-color:#28274D;
 display: grid;
- place-items: center;
+place-items: center;
+
 }
 
-h1, p{
+p{
   color:#E7E9EA
-
 }
+
+h1{
+  padding-top: 10px;
+}
+
 
 #gradient-text{
     font-family: "Tilt Neon", sans-serif;
@@ -66,10 +70,11 @@ ul {
   list-style: none;
 }
 
-.main {
+main {
   justify-content: center;
   width:40%;
   padding: 10em 1.5em;
+  margin-left: 20%;
 }
 
 
@@ -313,7 +318,7 @@ width: 100%;
 .footer {
   position: fixed;
   position: sticky;
-  width: 150%;
+  width: 200%;
   margin-top: 45px;
   padding-top: 90px;
   padding-right: 100px;
