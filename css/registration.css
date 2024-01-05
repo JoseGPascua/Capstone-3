@@ -7,6 +7,10 @@
   --primary-blue: #233975;
 }
 
+body, html, p, h1, h2, a, label, .copy, .left .copy, .right .copy, .small, .login-container, .login-container a, .input-container, .copy.legal, .copy.legal a, .animated-input, .card-text-black {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
 body, html {
   height: 100%;
   margin: 0;
@@ -27,6 +31,12 @@ body, html {
   color: white; /* Set the color for "Sign Up" */
 }
 
+.glow {
+  font-size: 35px;
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
 
 #bgVideo {
   object-fit: cover;
