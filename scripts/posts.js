@@ -185,11 +185,11 @@ async function sortByMostLikes() {
         createDivElement.innerHTML = `
         <div class="container">
             <div class="row">
-            <div class="col-lg-9 col-sm-12 col-md-12 right-content-mid">
+            <div class="col-lg-9 col-sm-12 col-md-9 w-75 right-content-mid">
                 <img src="${getRandomImage(imagesArray)}" alt="" />
                 <h3>${user.username}<h3>
             </div>
-            <div class="col-lg-3 col-sm-12 col-md-12 right-content-bot">
+            <div class="col-lg-3 col-sm-12 col-md-9 right-content-bot">
                 <div class="bottom-section">
                     <img src='/assets/liked-heart.png' alt="" />
                     <span>${user.likes.length}</span>
