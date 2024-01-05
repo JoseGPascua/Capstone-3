@@ -36,8 +36,8 @@ async function signUpUser() {
         </div>`
         // Reload page after delay
         messageAlert.appendChild(confirm_password_alert);
+        loadingSpinner.style.display = 'block';
         setTimeout(() => {
-            loadingSpinner.style.display = 'none';
             window.location.reload()
         }, "1000")
         return;
@@ -71,8 +71,8 @@ async function signUpUser() {
                 Username is already taken!
             </div>`
             messageAlert.appendChild(username_taken_alert)
+            loadingSpinner.style.display = 'block';
             setTimeout(() => {
-                loadingSpinner.style.display = 'none';
                 window.location.reload()
             }, "1000")
 
@@ -111,6 +111,7 @@ async function signUpUser() {
     }
 }
 function validateInputs(username, password, confirmPassword) {
+    const loadingSpinner = document.getElementById('loadingSpinner');
     // Check if the username and password meet the minimum length requirement
     const minUsernameLength = 6;
     const minPasswordLength = 6;
@@ -130,8 +131,11 @@ function validateInputs(username, password, confirmPassword) {
         </div>`;
         const message = document.getElementById('messageAlert');
         message.appendChild(invalidInputAlert);
-
-        return false; 
+        loadingSpinner.style.display = "block"
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
+        return false;
     }
 }
 
