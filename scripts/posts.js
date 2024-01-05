@@ -93,6 +93,7 @@ async function displayUserProfileInfo() {
 
 async function displayAllPosts() {
     const allPosts = await fetchPosts();
+    console.log(allPosts);
     const filterUsername = allPosts.filter(obj => obj.username !== "string");
     displayPosts(
         filterUsername,
