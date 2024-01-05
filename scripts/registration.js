@@ -25,7 +25,7 @@ async function signUpUser() {
         return;
     }
 // Display Loading Spinner
-    loadingSpinner.style.display='block';
+    // loadingSpinner.style.display='block';
 
     if (password !== confirmPassword) {
         // Display alert for password mismatch
@@ -85,13 +85,10 @@ async function signUpUser() {
             </div>`
             messageAlert.appendChild(username_success_alert);
 
-             // Clear form fields after successful registration
-            signUpForm.reset();
-
             // Redirect to the index page after a delay
+            loadingSpinner.style.display='block';
             setTimeout(() => {
-                loadingSpinner.style.display='none';
-                window.location.href = '/index.html'
+                window.location.assign('/index.html')
             }, "1000")
         }
 
@@ -107,10 +104,10 @@ async function signUpUser() {
         message.appendChild(generic_error_alert);
 
         // Hide loading spinner and reload page after delay
-        setTimeout(() => {
-            loadingSpinner.style.display = 'none';
-            window.location.reload();
-        }, 2000);
+        // setTimeout(() => {
+        //     loadingSpinner.style.display = 'none';
+        //     window.location.reload();
+        // }, 2000);
     }
 }
 function validateInputs(username, password, confirmPassword) {
