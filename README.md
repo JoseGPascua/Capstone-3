@@ -35,6 +35,39 @@ The heart of Nexus lies in the Posts page. Here, IT students and interns can sha
 ## An interesting piece of Javascript
 
 ```javascript
+async function fetchPostID(_postId) {
+    const usersLoginData = getLoginData();
+    const postID = _postId.getAttribute('data-value');
+    // console.log(postID);
+    //fetch post with GET request
+    try {
+        const post = await fetch(`${apiBaseURL}/api/posts/${postID}`, {
+            method: "GET",
+            headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${usersLoginData.token}`,
+                "Content-Type": "application/json",
+            },
+        })
+    
+        if (!post.ok) {
+            throw new Error('Cannot find post')
+        }
+        const postData = await post.json();
+        const postLikes = postData.likes;
+        const check_if_postLiked = postLikes.find(obj => obj.username.includes(usersLoginData.username))
+
+        if (!check_if_postLiked) {
+            likeAPost(postData)
+        } else {
+            unLikeAPost(postData)
+        }
+
+    } catch (error) {
+        console.log('Fetch request failed', error);
+    }
+}
+
 async function likeAPost(_postData) {
     const postContainer = document.getElementById('posts-content');
     const loginData = getLoginData();

@@ -176,6 +176,7 @@ async function fetchPostID(_postId) {
         console.log('Fetch request failed', error);
     }
 }
+
 async function unLikeAPost(_postData) {
     const postContainer = document.getElementById('posts-content')
     const loginData = getLoginData();
