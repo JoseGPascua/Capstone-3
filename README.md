@@ -32,6 +32,42 @@ The heart of Nexus lies in the Posts page. Here, IT students and interns can sha
  
 <img src="/assets/post-page.PNG" alt="home page" width=400px>
 
+## An interesting piece of Javascript
+
+```\javascript
+async function likeAPost(_postData) {
+    const postContainer = document.getElementById('posts-content');
+    const loginData = getLoginData();
+    const postData = _postData
+    const postLike_ID = postData._id
+    console.log(postData);
+
+    const inputBody = {
+        postId: postLike_ID
+    }
+    try {
+        // Post request to like a post
+        const response = await fetch(`${apiBaseURL}/api/likes`, {
+            method: "POST",
+            headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${loginData.token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(inputBody)
+        })
+        if (!response.ok) {
+            throw new Error('POST request failed')
+        }
+        postContainer.innerHTML = ''
+        await displayAllPosts()
+        // console.log('Post Liked');
+    } catch (error) {
+        console.log(error);
+    }
+
+}```
+
 # Authors
 
 Michael Nguyen
