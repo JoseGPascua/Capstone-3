@@ -134,7 +134,7 @@ function validateInputs(username, password, confirmPassword) {
         const message = document.getElementById('messageAlert');
         message.appendChild(invalidInputAlert);
 
-        return false;
+        return false; 
     }
 }
 

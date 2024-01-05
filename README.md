@@ -1,6 +1,8 @@
-# Welcome to Nexus Social Blog
+### Welcome to Nexus Social Blog
 
 Welcome to Nexus, the social blog platform designed for IT students and interns to connect, collaborate, and be inspired. This README provides an overview of the features and structure of the Nexus website.
+
+
 
 # Table of Contents
 - [Introduction](#introduction)
