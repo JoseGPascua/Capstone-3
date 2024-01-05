@@ -129,7 +129,7 @@ function validateInputs(username, password, confirmPassword) {
         const invalidInputAlert = document.createElement('div');
         invalidInputAlert.innerHTML = `
         <div class="alert alert-danger" role="alert">
-            Username and password must be at least ${minUsernameLength} characters long.
+            Password must be at least ${minUsernameLength} characters long.
         </div>`;
         const message = document.getElementById('messageAlert');
         message.appendChild(invalidInputAlert);
