@@ -66,7 +66,7 @@ function generatePostHTML(post, isLikedByUser, time_createdAt) {
     const newPostDate = postDate.toLocaleDateString('en-US', formattedDate);
 
     const createPostDiv = document.createElement('div');
-    createPostDiv.className = 'posts-container w-100 my-2';
+    createPostDiv.className = 'posts-container my-2';
     createPostDiv.style.color = "#E7E9EA";
     createPostDiv.innerHTML = `
         <div class="container">
