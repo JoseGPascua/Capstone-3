@@ -26,13 +26,14 @@ html {
 
 body{
 
- background-color:#28274D;
- display: grid;
+background-color:#28274D;
+display: grid;
  place-items: center;
 }
 
 h1, p{
   color:#E7E9EA
+
 }
 
 #gradient-text{
