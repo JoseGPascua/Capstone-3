@@ -46,7 +46,7 @@ async function fetchPosts() {
 
 async function createPostOnClick() {
     const post_container = document.getElementById('posts-content');
-    // const loading = document.querySelector('.loading-container')
+    const loading = document.querySelector('.loading-container')
     const loginData = getLoginData(); 
     const newPost = document.getElementById('createAPost');
     
@@ -68,11 +68,8 @@ async function createPostOnClick() {
         const response = await fetch(apiBaseURL + "/api/posts/", options)
         if (response.ok) {
             console.log("POST HAS BEEN CREATED");
-            post_container.innerHTML = '';
-            post_container.insertAdjacentHTML('afterbegin', loading.outerHTML);
             await displayPosts();
-        }
-        
+        } 
     } catch (error) {
         console.log('Error', error);
     }
