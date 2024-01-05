@@ -26,7 +26,7 @@ Every Nexus member has a personalized Profile page. This page is your space to s
 # Registration Page 
 To become a part of the Nexus community, visit our Registration page. Create your account, provide some basic information, and get started.
  
-<img src="/assets/registrationpage.png" alt="home page" width=400px>
+<img src="/assets/registration-page.PNG" alt="home page" width=400px>
 # Posts Page 
 The heart of Nexus lies in the Posts page. Here, IT students and interns can share their insights, experiences, and knowledge. Engage in discussions, provide feedback, and explore a wealth of information contributed by the Nexus community.
  
