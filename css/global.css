@@ -314,6 +314,13 @@ a {
     position: relative;
 }
 
+#liked-posts-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
 .posts-container {
     background-color:var(--secondary-bgColor);
     border-radius: 20px;

@@ -97,60 +97,6 @@
     height: auto; /* Maintain aspect ratio */
 }
 
-/* CSS for displayed POSTS || CONTAINER */
-
-#posts-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.liked-posts-container {
-    background-color: var(--secondary-bgColor);
-    border-radius: 20px;
-    position: relative;
-}
-
-.posts-container {
-    background-color: var(--secondary-bgColor);
-    border-radius: 20px;
-    position: relative;
-}
-
-.post-top-info {
-    display: flex;
-    align-items: center;
-}
-
-
-.post-top-info p {
-    font-weight: 600;
-    padding-top: 5%;
-    font-size: 1.2rem;
-}
-
-.post-top-info img {
-    margin: 10px 10px 10px 20px;
-    border-radius: .8rem;
-}
-.post-text {
-    position: relative;
-    background-color: var(--main-bgColor);
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px 10px 5px 20px;
-    border-radius: .8rem;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-}
-
-.post-icons {
-    margin: 1.5%;
-    padding-left: 1.5%;
-}
-
 #passwordMismatch {
     color: red;
     display: none;
