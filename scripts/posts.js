@@ -3,7 +3,7 @@
 
 window.onload = () => {
     getLoginData();
-    displayPosts()
+    displayAllPosts()
     displayUserProfileInfo();
     likeAPost();
     const submitPost = document.getElementById('submitPost');
@@ -92,87 +92,14 @@ async function displayUserProfileInfo() {
         <h1> Welcome, ${userInfo.fullName}</h1>`
 }
 
-async function displayPosts() {
-    const loginData = getLoginData();
-    const postsContainer = document.getElementById('posts-content');
-    const postData = await fetchPosts();
-    console.log(postData);
-
-    if (postData.length === 0) {
-        postsContainer.innerHTML = '<p>No posts available.</p>';
-        return;
-    }
-    const filterUsername = postData.filter(obj => obj.username !== "string")
-    filterUsername.forEach(item => {
-
-        //TODO converting date to minutes, hours, days
-        const postDate = new Date(item.createdAt);
-        const currentDate = new Date();
-        const time = currentDate - postDate;
-
-        const time_createdAt = document.createElement('div');
-        time_createdAt.className = 'post-date';
-
-        let formattedDate = { month: 'short', day: 'numeric' };
-        let newPostDate = postDate.toLocaleDateString('en-US', formattedDate);
-
-        if (time < 60000) {
-            time_createdAt.innerHTML = 'Just now';
-        } else if (time < 3600000) {
-            const minutes = Math.floor(time / 60000);
-            time_createdAt.innerHTML = `${minutes}m ago`;
-        } else if (time < 86400000) {
-            const hours = Math.floor(time / 3600000);
-            time_createdAt.innerHTML = `${hours}h ago`;
-        } else if (time < 172800000) {
-            time_createdAt.innerHTML = 'Yesterday';
-        } else {
-            time_createdAt.innerHTML = newPostDate;
-        }
-        
-        // checking if post is liked or not;
-        const postLikes = item.likes;
-        const postlikes_length = postLikes.length;
-        //returns true if likes.username === logindata.username
-        const isLikedByUser = postLikes.find(object => object.username.includes(loginData.username))
-
-        const createPostDiv = document.createElement('div');
-        // console.log(createPostDiv);
-        createPostDiv.className = 'posts-container my-2';
-        createPostDiv.style.color = '#E7E9EA';
-        createPostDiv.innerHTML = `
-                <div class="container">
-                <div class="row">
-                    <div class="col-md-10 post-top-info">
-                        <img src="${getRandomImage(imagesArray)}" alt="" />
-                        <p class="post-username">${item.username}</p>
-                    </div>
-                    <div class="col-md-2 d-flex justify-content-end">
-                        <div class="post-date">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="post-mid-section">
-                            <div class="post-text">
-                                <p>${item.text}</p>
-                            </div>
-                        </div>
-                        <div class="post-bot-section">
-                            <div class="post-icons">
-                                <div class="liked-post" onclick="fetchPostID(this)" data-value="${item._id}">
-                                <img class="heart-icon" src="${isLikedByUser ? '/assets/liked-heart-fill.png' : '/assets/liked-heart.png'}" alt="" />
-                                <span>${item.likes.length > 0 ? postlikes_length : ""}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-        createPostDiv.querySelector('.post-date').appendChild(time_createdAt);
-        postsContainer.appendChild(createPostDiv);
-    });
+async function displayAllPosts() {
+    const allPosts = await fetchPosts();
+    const filterUsername = allPosts.filter(obj => obj.username !== "string");
+    displayPosts(
+        filterUsername,
+        'posts-content',
+        'No posts available.'
+    );
 }
 
 async function fetchPostID(_postId) {
