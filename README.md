@@ -16,7 +16,7 @@ The landing page serves as the gateway to the Nexus community. This "walled-gard
 # About Page 
 Learn more about the mission and vision behind Nexus on the About page. Meet our intern group, understand our values, and get inspired to contribute to the collaborative atmosphere we aim to cultivate.
  
-![Screenshot](assets/#.png)
+<img src="/assets/about-page.PNG" alt="home page" width=400px>
 
 # Profile Page
 Every Nexus member has a personalized Profile page. This page is your space to share your journey, projects, and skills with the Nexus community.

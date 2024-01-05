@@ -130,7 +130,7 @@ a {
 
 #profileInfo span {
     align-self: flex-end;
-    padding-right: 10%;
+    padding-right: 3%;
 }
 #profileInfo span:nth-child(1) {
     font-weight: bold;
