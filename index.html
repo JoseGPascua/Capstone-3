@@ -58,22 +58,27 @@
       <div id="login-linksz">
       <p>Dont have an account? <a href="registration/registration2.html" >Register Now</a></p></div>
       <!--Icons END-->
+      <!-- Alert message for validation -->
+      <div id="alertMessage"></div>
        <!--Login Form Begins-->
+       <form id="login-form">
+         <input type="text" class="form__input" id="loginUsername" placeholder="username" minlength="6" /><br>
+         <label for="name" class="form__label"></label>
 
-                    <form id="login">
-                      <input type="text" class="form__input" id="username" placeholder="username" minlength="6" /><br>
-                                <label for="name" class="form__label"></label>
-                      
-                                <div class="form__group">
-                                <input type="password" class="form__input" id="password" placeholder="password" minlength="6" />
-                                <label for="name" class="form__label">Password</label>
-                                  </div>
-                                  <div class="remember-me">
-                                    <input type="checkbox" id="rememberMe" name="rememberMe">
-                                    <label for="rememberMe">Remember Me</label>
-                                </div>
-                                <button id="loginButton"  class=loginButton type="submit">Login Now</button>
-                    </form>
+         <div class="form__group">
+         <input type="password" class="form__input" id="loginPassword" placeholder="password" minlength="6" />
+         <label for="name" class="form__label">Password</label>
+            </div>
+         <!--Remember me BUTTON begins-->
+            <div class="remember-me">
+             <input type="checkbox" id="rememberMe" name="rememberMe">
+             <label for="rememberMe">Remember Me</label>
+         </div>
+            <!--Login BUTTON begins-->
+            <button id="loginButton"  class=loginButton type="submit">Login Now</button>
+       </form>
+                      <!--Login Form ENDS-->
+                       <!--Remember me BUTTON begins-->
                               <br>
                               </div>
                             </div>

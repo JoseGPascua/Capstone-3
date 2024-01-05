@@ -2,7 +2,9 @@
 
 "use strict";
 
-const loginForm = document.querySelector("#login");
+const loginForm = document.getElementById("login-form");
+const loginUsername = document.getElementById('loginUsername');
+const loginPassword = document.getElementById('loginPassword');
 
 loginForm.onsubmit = function (event) {
     // Prevent the form from refreshing the page,
@@ -12,8 +14,8 @@ loginForm.onsubmit = function (event) {
     // We can use loginForm.username (for example) to access
     // the input element in the form which has the ID of "username".
     const loginData = {
-        username: loginForm.username.value,
-        password: loginForm.password.value,
+        username: loginUsername.value,
+        password: loginPassword.value
     }
 
     // Disables the button after the form has been submitted already:
