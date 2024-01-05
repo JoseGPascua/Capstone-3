@@ -19,6 +19,11 @@ body, html {
   z-index: -1;
 }
 
+.copy h2 {
+  color: white; /* Set the color for "Sign Up" */
+}
+
+
 #bgVideo {
   object-fit: cover;
   width: 100%;
@@ -36,10 +41,12 @@ main {
   border: none;
 }
 
+
 .card-body {
-  background-color: transparent !important; /* Make the card body transparent */
+  background-color: rgba(255, 255, 255, 0.15); /* Adjust the opacity (last value) as needed */
   border-radius: 25px;
   margin: 20px;
+  color: black;
 }
 
 body {
@@ -99,7 +106,6 @@ a:hover {
 }
 
 .right .copy {
-  color: white;
   text-align: center;
   p {
     margin: 1.5em 0;
@@ -121,13 +127,22 @@ form input[type="password"] {
   padding: 1em;
   margin-bottom: 1.25rem;
   font-size: 0.875rem;
-  color: white !important;
+  color: white ;
 }
 
 label {
   display: block;
   margin-bottom: 0.5rem;
   font-size: 0.75rem;
+  color: white;
+}
+
+.login-container {
+  color: white; /* Set the color for "Already have an account?" */
+}
+
+.login-container a{
+  color:#0D6EFD;
 }
 
 .input-container.password {
@@ -146,6 +161,14 @@ label {
   cursor: pointer;
   height: 0;
   width: 0;
+}
+
+.copy.legal  {
+  color: white;
+}
+
+.copy.legal a{
+  color: #0D6EFD;
 }
 
 .checkbox-container {
