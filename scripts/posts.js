@@ -6,6 +6,7 @@ window.onload = () => {
     displayAllPosts()
     displayUserProfileInfo();
     likeAPost();
+    sortByMostLikes();
     const submitPost = document.getElementById('submitPost');
     submitPost.onclick = () => {
         createPostOnClick();
@@ -162,8 +163,8 @@ async function likeAPost(_postData) {
 async function sortByMostLikes() {
     const loginData = getLoginData();
     const mostLikedSection = document.getElementById('mostlikedpost-section');
-    let postLimit = 50
-    const allPostResponse = await fetch(`${apiBaseURL}/api/posts?limit=${postLimit}&offset=0`, {
+    let postLimit = 100
+    const allPostResponse = await fetch(`${apiBaseURL}/api/posts?limit=${postLimit}`, {
         method: "GET",
         headers: {
             Accept: 'application/json',
@@ -200,7 +201,6 @@ async function sortByMostLikes() {
 
 }
 
-sortByMostLikes();
 
 function logout() {
     const loginData = getLoginData();

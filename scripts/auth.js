@@ -27,6 +27,7 @@ function isLoggedIn () {
 // and feel free to re-use parts of it for other `fetch()` requests
 // you may need to write.
 function login (loginData) {
+    const alertDiv = document.getElementById('alertMessage');
     // POST /auth/login
     const options = { 
         method: "POST",
@@ -42,6 +43,16 @@ function login (loginData) {
     return fetch(apiBaseURL + "/auth/login", options)
         .then(response => response.json())
         .then(loginData => {
+
+                if(loginData.statusCode === 400) {
+                    const createAlert = document.createElement('div');
+                    createAlert.innerHTML = `
+                    <div class="alert alert-danger" role="alert">
+                        Your password is incorrect.
+                    </div>`
+                    // alert('Password incorrect')
+                    alertDiv.appendChild(createAlert)
+                }
             window.localStorage.setItem("login-data", JSON.stringify(loginData));
             window.location.assign("/posts");  // redirect
 
