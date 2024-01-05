@@ -233,6 +233,21 @@ label {
 
 .signup-btn {
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  line-height: 55px;
+  border-radius: 70px;
+  font-weight: 300;
+  font-size: 21px;
+  overflow: hidden;
+  margin-left: 105px;
+  width: 160px;
+  box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+  transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
+  display: block;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0 6px;
+  height: 55px;
 }
 
 .signup-btn:hover {
@@ -240,7 +255,6 @@ label {
   box-shadow: 0 6px 20px rgb(0 118 255 / 23%), 0 0 20px rgba(0, 118, 255, 0.5);
   color: #fff; /* Change text color on hover */
 }
-
 
 @media screen and (min-width: 900px) {
   .split-screen {
