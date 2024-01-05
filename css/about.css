@@ -25,15 +25,20 @@ html {
 }
 
 body{
-overflow: hidden;
- background-color:#28274D;
- display: grid;
- place-items: center;
+background-color:#28274D;
+display: grid;
+place-items: center;
+
 }
 
-h1, p{
+p{
   color:#E7E9EA
 }
+
+h1{
+  padding-top: 10px;
+}
+
 
 #gradient-text{
     font-family: "Tilt Neon", sans-serif;
@@ -65,16 +70,25 @@ ul {
   list-style: none;
 }
 
-.main {
-  width: 100%;
-  max-width: 59rem;
-  padding: 3em 1.5em;
+main {
+  justify-content: center;
+  width:40%;
+  padding: 10em 1.5em;
+  margin-left: 20%;
 }
+
 
 .main__heading {
   font-weight: 600;
   font-size: 2.25em;
+  margin-top: 0em;
   margin-bottom: 0.75em;
+  text-align: center;
+  color: #eceff1;
+}
+
+.main__cards {
+  display: flex;
   text-align: center;
   color: #eceff1;
 }
@@ -108,7 +122,7 @@ ul {
   grid-template-rows: auto auto auto 1fr;
   align-items: start;
   gap: 1.25em;
-  color: #eceff1;
+  color: #f1edec;
   background-color: #2b2b2b;
   border: 1px solid #eceff133;
   border-radius: 15px;
@@ -118,6 +132,7 @@ ul {
   --hue: 165;
   --saturation: 82.26%;
   --lightness: 51.37%;
+  ;
 }
 
 .card:nth-child(2) {
@@ -269,6 +284,10 @@ border-radius: 100px;
 }
 
 #card-wrap{
+  display: inline-flex;
+  float: left;
+  width: 25%;
+  padding: 0 10px;
   width: 100%;
   margin: auto;
   max-width: 70%;
@@ -298,9 +317,8 @@ width: 100%;
 /*footer css*/
 .footer {
   position: fixed;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+  position: sticky;
+  width: 200%;
   margin-top: 45px;
   padding-top: 90px;
   padding-right: 100px;
