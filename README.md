@@ -34,7 +34,7 @@ The heart of Nexus lies in the Posts page. Here, IT students and interns can sha
 
 ## An interesting piece of Javascript
 
-```\javascript
+```javascript
 async function likeAPost(_postData) {
     const postContainer = document.getElementById('posts-content');
     const loginData = getLoginData();
@@ -66,7 +66,8 @@ async function likeAPost(_postData) {
         console.log(error);
     }
 
-}```
+}
+```
 
 # Authors
 
