@@ -1,41 +1,52 @@
-/* Posts Page CSS */
 :root {
   --main-bgColor: #28274D;
   --secondary-bgColor: #393B70;
   --font-color: #E7E9EA;
   --hover-color: #7E7F9C;
+  --primary-blue: #233975;
 }
+
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
 .background-container {
   position: fixed;
-  top: 0;
-  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.copy h2 {
+  color: white; /* Set the color for "Sign Up" */
+}
+
+
+#bgVideo {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Send it to the back */
+  position: absolute;
 }
 
-.card-body,
-.row,
-.col-md-10,
-{
+main {
   position: relative;
-  z-index: 1; /* Make sure it's higher than background-container */
+  z-index: 1;
 }
 
-
-
-/* Your existing styles for the card and form */
 .card {
-  border-radius: 25px;
+  background-color:transparent; /* Adjust the alpha channel for card background */
+  border: none;
 }
 
-/*! --------------------------------------------------------------------- */
 
-/* :root {
-  font-size: 100%;
-  font-size: 16px;
-  line-height: 1.5;
-  --primary-blue: #233975;
+.card-body {
+  background-color: rgba(255, 255, 255, 0.15); /* Adjust the opacity (last value) as needed */
+  border-radius: 25px;
+  margin: 20px;
+  color: black;
 }
 
 body {
@@ -74,32 +85,32 @@ a:hover {
   flex-direction: column;
 }
 
-.left {
+.left, .right {
+  display: flex;
   height: 200px;
+  align-items: flex-start;
+}
+
+.left {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('/_DSF4943.jpg');
   background-size: cover;
-  display: flex;
   justify-content: center;
-  align-items: flex-start;
 }
 
 .left .copy {
   color: white;
   text-align: center;
-}
-
-.left p {
-  font-weight: 400;
+  p {
+    font-weight: 400;
+  }
 }
 
 .right .copy {
-  color: black;
   text-align: center;
-}
-
-.right .copy p {
-  margin: 1.5em 0;
-  font-size: 0.875rem;
+  p {
+    margin: 1.5em 0;
+    font-size: 0.875rem;
+  }
 }
 
 .right form {
@@ -116,12 +127,22 @@ form input[type="password"] {
   padding: 1em;
   margin-bottom: 1.25rem;
   font-size: 0.875rem;
+  color: white ;
 }
 
 label {
   display: block;
   margin-bottom: 0.5rem;
   font-size: 0.75rem;
+  color: white;
+}
+
+.login-container {
+  color: white; /* Set the color for "Already have an account?" */
+}
+
+.login-container a{
+  color:#0D6EFD;
 }
 
 .input-container.password {
@@ -140,6 +161,14 @@ label {
   cursor: pointer;
   height: 0;
   width: 0;
+}
+
+.copy.legal  {
+  color: white;
+}
+
+.copy.legal a{
+  color: #0D6EFD;
 }
 
 .checkbox-container {
@@ -206,15 +235,12 @@ label {
     height: 100vh;
   }
 
-  .left,
-  .right {
-    display: flex;
+  .left, .right {
     width: 50%;
     height: auto;
   }
-} */
+}
 
-/* Add this CSS to your existing or a new CSS file */
 #loadingSpinner {
   display: none;
   position: fixed;
@@ -233,4 +259,3 @@ label {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
