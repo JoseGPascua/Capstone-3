@@ -107,7 +107,7 @@ async function displayPosts(posts, container, message) {
     const loggedInUsername = loggedInUserData.username;
 
     const postsContainer = document.getElementById(container);
-    postsContainer.innerHTML = '';
+    // postsContainer.innerHTML = '';
 
     if (posts.length === 0) {
         postsContainer.innerHTML = `<p>${message}</p>`;
@@ -163,13 +163,46 @@ async function fetchPostID(_postId) {
             throw new Error('Cannot find post')
         }
         const postData = await post.json();
-        likeAPost(postData)
+        const postLikes = postData.likes;
+        const check_if_postLiked = postLikes.find(obj => obj.username.includes(usersLoginData.username))
+
+        if (!check_if_postLiked) {
+            likeAPost(postData)
+        } else {
+            unLikeAPost(postData)
+        }
 
     } catch (error) {
         console.log('Fetch request failed', error);
     }
 }
+async function unLikeAPost(_postData) {
+    const postContainer = document.getElementById('posts-content')
+    const loginData = getLoginData();
+    const postData = _postData;
+    console.log(postData);
+    // find account in the likes array of passed postData
+    const find_like_user = postData.likes.find(user => user.username === loginData.username);
+    const user_ID = find_like_user._id;
 
+    try {
+        const response = await fetch(`${apiBaseURL}/api/likes/${user_ID}`, {
+            method: "DELETE",
+            headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${loginData.token}`,
+                "Content-Type": "application/json",
+            },
+        })
+        if (!response.ok) {
+            console.log(`DELETE REQUEST FAILED`);
+        }
+        postContainer.innerHTML = '';
+        await displayAllPosts();
+    } catch (error) {
+        console.log(error);
+    }
+}
 async function likeAPost(_postData) {
     const postContainer = document.getElementById('posts-content');
     const loginData = getLoginData();
@@ -195,7 +228,7 @@ async function likeAPost(_postData) {
             throw new Error('POST request failed')
         }
         postContainer.innerHTML = ''
-        await displayPosts()
+        await displayAllPosts()
         // console.log('Post Liked');
     } catch (error) {
         console.log(error);

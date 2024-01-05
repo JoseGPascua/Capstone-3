@@ -68,7 +68,8 @@ async function createPostOnClick() {
         const response = await fetch(apiBaseURL + "/api/posts/", options)
         if (response.ok) {
             console.log("POST HAS BEEN CREATED");
-            await displayPosts();
+            post_container.innerHTML = '';
+            await displayAllPosts();
         }
         
     } catch (error) {
@@ -92,6 +93,7 @@ async function displayUserProfileInfo() {
 
 async function displayAllPosts() {
     const allPosts = await fetchPosts();
+    console.log(allPosts);
     const filterUsername = allPosts.filter(obj => obj.username !== "string");
     displayPosts(
         filterUsername,
