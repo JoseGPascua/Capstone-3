@@ -130,10 +130,15 @@ a {
 
 #profileInfo span {
     align-self: flex-end;
-    padding-right: 5%;
+    padding-right: 10%;
 }
 #profileInfo span:nth-child(1) {
-    margin-right: 10%;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+#profileInfo span:nth-child(2) {
+    font-size: .9rem;
+    font-style: italic
 }
 .menu-container {
     position: relative;
